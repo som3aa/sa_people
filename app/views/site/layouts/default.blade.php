@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 		   <html class="no-js lt-ie9" lang="ar" dir="rtl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ar" dir="rtl"> <!--<![endif]-->
+
+<head>
+	<!-- Basic Page Needs
+	================================================== -->
+	<meta charset="utf-8" />
+	<title>
+		@section('title')
+		Laravel 4 Sample Site
+		@show
+	</title>
+	<meta name="keywords" content="your, awesome, keywords, here" />
+	<meta name="author" content="Mohammed Adil" />
+	<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+
+	<!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width">
+
+	<!-- CSS
+	================================================== -->
+	{{ HTML::style('assets/foundation/css/foundation.min.css') }}
+	{{ HTML::style('assets/foundation/css/normalize.css') }}
+	{{ HTML::style('assets/css/main.css') }}
+
+	<!-- javascript
+	================================================== -->
+	{{ HTML::script('assets/foundation/js/vendor/custom.modernizr.js') }}
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+	<!-- header
+	================================================== -->
+	<div class="row header">
+		<div class="large-5 columns">
+
+			<div class="row">
+				<div class="large-12 columns">
+					<h1 class="logo"><a href="/">{{ HTML::image('img/sudactive.png') }}</a></h1>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+
+					<div class="slogan">
+						<h2><a href="/">شخصيات سودانية</a></h2>
+						 <!-- search bar -->
+						  <div class="row">
+						      <div class="large-10 columns">
+
+						          {{ Form::open(array('class' => 'search')) }}
+						              <input type="text" name="keyword" placeholder="ابحث عن اي اسم ... عمر الامين مثلا">
+						              <img src="/../img/search.png" />
+						          {{ Form::close()}}
+						      </div>
+						  </div><!-- end search bar -->
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="large-7 columns">
+
+			<div class="row">
+				<div class="large-12 columns">
+
+					<div class="login_bar">
+					@if( !Auth::check())
+						<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
+					@else 
+						<span>مرحبا , {{ link_to('/../profile/'.Auth::user()->id,Auth::user()->profile->name)   }}</span>
+					@endif
+					</div>
+					<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">الموقع في النسخة التجريبية</a>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+				
+					<div class="slider">
+						<a href="/../pt/1/p/1"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
+						<a href="/../pt/1/p/2"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
+						<a href="/../pt/1/p/2"><img src="/img/p3.png" class="person" style="left:240px; bottom:4px ; z-index:4"></a>
+						<a href="/../pt/1/p/1"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
+						<img src="/img/curve.png" class="curve" />	
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div><!-- End Header -->
+
+
+	<!-- Main Page Content and Sidebar 
+	================================================== -->
+	<div class="row">
+
+		<!-- Main Blog Content -->
+		<div class="large-9 columns" role="content">
+			<!-- Notifications -->
+			@include('notifications') 
+			<!-- ./ notifications -->
+
+			<!-- Content -->
+			@yield('content')
+			<!-- ./ content -->
+		</div><!-- End Main Content -->
+
+		<!-- Sidebar -->
+		<aside class="large-3 columns">
+			@include('site.layouts.sidebar')
+		</aside><!-- End Sidebar -->
+
+	</div><!-- End Main Content and Sidebar -->
+
+
+	<!-- footer 
+	================================================== -->
+	<footer class="row">
+
+		<div class="large-12 columns footer">
+		  <div class="row">
+
+		    <div class="large-6 columns">
+		      <p>جميع الحقوق محفوظة لشبكة سوداكتف 2013 &copy;</p>
+		    </div>
+
+		    <div class="large-6 columns">
+			    <ul class="inline-list left">
+			        <li><a href="/../about/">عن سوداكتف</a></li>
+			        <li><a href="/../join-us/">الانضمام ككاتب</a></li>
+			        <li><a href="/../policy">سياسة الموقع</a></li>
+			        <li><a href="/../contact">اتصل بنا</a></li>
+			    </ul>
+		    </div>
+
+		  </div>
+		</div>
+
+	</footer><!-- End Footer -->
+
+
+	<!-- Javascripts
+	================================================== -->
+	<script>
+		document.write('<script src=/../' +
+		('__proto__' in {} ? 'assets/foundation/js/vendor/zepto' : 'assets/foundation/js/vendor/jquery') +
+		'.js><\/script>')
+	</script>
+
+	{{ HTML::script('assets/foundation/js/foundation.min.js') }}
+
+	<script>
+		$(document).foundation();
+	</script>
+
+	@section('javascripts')
+	@show
+
+</body>
+</html>
