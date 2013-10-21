@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<title>
 		@section('title')
-		Laravel 4 Sample Site
+		{{{ Lang::get('site.title')}}}
 		@show
 	</title>
 	<meta name="keywords" content="your, awesome, keywords, here" />
@@ -53,13 +53,13 @@
 				<div class="large-12 columns">
 
 					<div class="slogan">
-						<h2><a href="/">شخصيات سودانية</a></h2>
+						<h2><a href="/">{{{ Lang::get('site.slogan')}}}</a></h2>
 						 <!-- search bar -->
 						  <div class="row">
 						      <div class="large-10 columns">
 
 						          {{ Form::open(array('class' => 'search')) }}
-						              <input type="text" name="keyword" placeholder="ابحث عن اي اسم ... عمر الامين مثلا">
+						              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
 						              <img src="/../img/search.png" />
 						          {{ Form::close()}}
 						      </div>
@@ -77,12 +77,12 @@
 
 					<div class="login_bar">
 					@if( !Auth::check())
-						<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
+						<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
 					@else 
-						<span>مرحبا , {{ link_to('/../profile/'.Auth::user()->id,Auth::user()->profile->name)   }}</span>
+						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/../profile/'.Auth::user()->id,Auth::user()->profile->name)   }}</span>
 					@endif
 					</div>
-					<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">الموقع في النسخة التجريبية</a>
+					<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">{{{ Lang::get('site.beta') }}}</a>
 
 				</div>
 			</div>
@@ -130,26 +130,24 @@
 	<!-- footer 
 	================================================== -->
 	<footer class="row">
-
 		<div class="large-12 columns footer">
+		  
 		  <div class="row">
-
 		    <div class="large-6 columns">
-		      <p>جميع الحقوق محفوظة لشبكة سوداكتف 2013 &copy;</p>
+		    	<p>{{{ Lang::get('site.copyrights') }}}</p>
 		    </div>
 
 		    <div class="large-6 columns">
 			    <ul class="inline-list left">
-			        <li><a href="/../about/">عن سوداكتف</a></li>
-			        <li><a href="/../join-us/">الانضمام ككاتب</a></li>
-			        <li><a href="/../policy">سياسة الموقع</a></li>
-			        <li><a href="/../contact">اتصل بنا</a></li>
+			        <li><a href="/../about/">{{{ Lang::get('site.about') }}}</a></li>
+			        <li><a href="/../join-us/">{{{ Lang::get('site.join-us') }}}</a></li>
+			        <li><a href="/../policy">{{{ Lang::get('site.policy') }}}</a></li>
+			        <li><a href="/../contact">{{{ Lang::get('site.contact') }}}</a></li>
 			    </ul>
 		    </div>
-
 		  </div>
-		</div>
 
+		</div>
 	</footer><!-- End Footer -->
 
 

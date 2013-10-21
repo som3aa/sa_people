@@ -1,9 +1,9 @@
 @if( !Auth::check() )
 <section>
 
-	<p>اذا رغبت ان تكون عضوا في سوداكتف ما عليك الا التسجيل حتى تستطيع المساهمة بمقالاتك</p>
+	<p>{{{ Lang::get('site.sidebar.join_call') }}}</p>
 	<div class="get_in">
-		<a href="/../join-us" class="button small">انضم الان</a>
+		<a href="/../join-us" class="button small">{{{ Lang::get('site.sidebar.join_now') }}}</a>
 	</div>
 
 </section>
