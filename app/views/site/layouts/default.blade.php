@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<title>
 		@section('title')
-		{{{ Lang::get('site.title')}}}
+		{{{ Lang::get('site.sudactive')}}}
 		@show
 	</title>
 	<meta name="keywords" content="your, awesome, keywords, here" />

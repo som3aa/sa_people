@@ -1,30 +1,34 @@
 @extends('site.layouts.default')
 
+{{-- Web site Title --}}
+@section('title')
+@parent - 
+{{{ Lang::get('site.title') }}}
+@stop
+
 {{-- Content --}}
 @section('content')
 @foreach ($stories as $story)
 <div class="post">
-	<!-- story Title -->
-	<div class="row">
-		<div class="large-12 columns">
-			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
-		</div>
-	</div>
-	<!-- ./ story title -->
-
-	<!-- Post Content -->
+	<!-- Story Content -->
 	<div class="row">
 		<div class="large-4 columns">
-			<a href="{{{ $story->url() }}}" class="thumbnail"><img src="http://placehold.it/300x300" alt=""></a>
+			<a href="{{{ $story->url() }}}" class="th radius">{{ HTML::image('http://sudactive.com/uploads/2013-10/vk9E.jpg') }}</a>
 		</div>
 		<div class="large-8 columns">
+			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
+			<p class="meta">
+                في <a href="#">علماء</a> ,
+                مساهمة <a href="#">محمد عادل</a> ,
+                (Sept 16th, 2012)
+			</p>
 			<p>
 				{{ Str::limit($story->content, 200) }}
 			</p>
-			<p><a class="bottun small" href="{{{ $story->url() }}}">Read more</a></p>
+			<a class="button small" href="{{{ $story->url() }}}">{{{ Lang::get('site.read_more') }}}</a>
 		</div>
 	</div>
-	<!-- ./ post content -->
+	<!-- ./ Story Content -->
 </div>
 
 @endforeach
