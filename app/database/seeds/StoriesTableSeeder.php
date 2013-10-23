@@ -2,25 +2,9 @@
 
 class StoriesTableSeeder extends Seeder {
 
-    protected $content = 'In mea autem etiam menandri, quot elitr vim ei, eos semper disputationi id? Per facer appetere eu, duo et animal maiestatis. Omnesque invidunt mnesarchum ex mel, vis no case senserit dissentias. Te mei minimum singulis inimicus, ne labores accusam necessitatibus vel, vivendo nominavi ne sed. Posidonium scriptorem consequuntur cum ex? Posse fabulas iudicabit in nec, eos cu electram forensibus, pro ei commodo tractatos reformidans. Qui eu lorem augue alterum, eos in facilis pericula mediocritatem?
+    protected $content = 'الطيب صالح - أو "عبقري الرواية العربية" كما جرى بعض النقاد على تسميته- أديب عربي من السودان، اسمه الكامل الطيب محمد صالح أحمد. ولد عام  في إقليم   شمالي السودان بقرية كَرْمَكوْل بالقرب من قرية دبة الفقراء وهي إحدى قرى قبيلة الركابية التي ينتسب إليها، وتوفي في أحدي مستشفيات العاصمة البريطانية التي أقام فيها في ليلة الأربعاء 18 شباط/فبراير 2009 الموافق عاش مطلع حياته وطفولته في ذلك الإقليم، وفي شبابه انتقل إلى  لإكمال دراسته فحصل من جامعتها على درجة البكالوريوس في العلوم. سافر إلى إنجلترا حيث واصل دراسته، وغيّر تخصصه إلى دراسة الشؤون الدولية السياسية.
 
-Est hinc legimus oporteat in. Sit ei melius delicatissimi. Duo ex qualisque adolescens! Pri cu solum aeque. Aperiri docendi vituperatoribus has ea!
-
-Sed ut ludus perfecto sensibus, no mea iisque facilisi. Choro tation melius et mea, ne vis nisl insolens. Vero autem scriptorem cu qui? Errem dolores no nam, mea tritani platonem id! At nec tantas consul, vis mundi petentium elaboraret ex, mel appareat maiestatis at.
-
-Sed et eros concludaturque. Mel ne aperiam comprehensam! Ornatus delicatissimi eam ex, sea an quidam tritani placerat? Ad eius iriure consequat eam, mazim temporibus conclusionemque eum ex.
-
-Te amet sumo usu, ne autem impetus scripserit duo, ius ei mutat labore inciderint! Id nulla comprehensam his? Ut eam deleniti argumentum, eam appellantur definitionem ad. Pro et purto partem mucius!
-
-Cu liber primis sed, esse evertitur vis ad. Ne graeco maiorum mea! In eos nostro docendi conclusionemque. Ne sit audire blandit tractatos? An nec dicam causae meliore, pro tamquam offendit efficiendi ut.
-
-Te dicta sadipscing nam, denique albucius conclusionemque ne usu, mea eu euripidis philosophia! Qui at vivendo efficiendi! Vim ex delenit blandit oportere, in iriure placerat cum. Te cum meis altera, ius ex quis veri.
-
-Mutat propriae eu has, mel ne veri bonorum tincidunt. Per noluisse sensibus honestatis ut, stet singulis ea eam, his dicunt vivendum mediocrem ei. Ei usu mutat efficiantur, eum verear aperiam definitiones an! Simul dicam instructior ius ei. Cu ius facer doming cotidieque! Quot principes eu his, usu vero dicat an.
-
-Ex dicta perpetua qui, pericula intellegam scripserit id vel. Id fabulas ornatus necessitatibus mel. Prompta dolorem appetere ea has. Vel ad expetendis instructior!
-
-Te his dolorem adversarium? Pri eu rebum viris, tation molestie id pri. Mel ei stet inermis dissentias. Sed ea dolorum detracto vituperata. Possit oportere similique cu nec, ridens animal quo ex?';
+تنقل الطيب صالح بين عدة مواقع مهنية فعدا عن خبرة قصيرة في إدارة مدرسة، عمل ----الطيب صالح لسنوات طويلة من حياته في القسم العربي لهيئة الإذاعة البريطانية, وترقى بها حتى وصل إلى منصب مدير قسم الدراما, وبعد استقالته من البي بي سي عاد إلى السودان وعمل لفترة في الإذاعة السودانية, ثم هاجر إلى دولة قطر وعمل في وزارة إعلامها وكيلاً ومشرفاً على أجهزتها. عمل بعد ذلك مديراً إقليمياً بمنظمة اليونيسكو في باريس, وعمل ممثلاً لهذه المنظمة في الخليج العربي. ويمكن القول أن حالة الترحال والتنقل بين الشرق والغرب والشمال والجنوب أكسبته خبرة واسعة بأحوال الحياة والعالم وأهم من ذلك أحوال أمته وقضاياها وهو ما وظفه في كتاباته وأعماله الروائية وخاصة روايته العالمية موسم الهجرة إلى الشمال.';
 
     public function run()
     {
@@ -33,8 +17,8 @@ Te his dolorem adversarium? Pri eu rebum viris, tation molestie id pri. Mel ei s
             array(
                 'user_id'        => $user_id,
                 'category_id'    => $category_id,
-                'title'      => 'Lorem ipsum dolor sit amet',
-                'slug'       => 'lorem-ipsum-dolor-sit-amet',
+                'title'      => 'بلقيس محمد الحسن عثمان',
+                'slug'       => 'بلقيس-محمد-الحسن-عثمان',
                 'content'    => $this->content,
                 'image'    => 'http://placehold.it/300x300',
                 'status'    => 0,
@@ -47,8 +31,8 @@ Te his dolorem adversarium? Pri eu rebum viris, tation molestie id pri. Mel ei s
             array(
                 'user_id'        => $user_id,
                 'category_id'    => $category_id,
-                'title'      => 'Vivendo suscipiantur vim te vix',
-                'slug'       => 'vivendo-suscipiantur-vim-te-vix',
+                'title'      => 'الطيب صالح',
+                'slug'       => 'الطيب-صالح',
                 'content'    => $this->content,
                 'image'    => 'http://placehold.it/300x300',
                 'status'    => 0,
@@ -61,8 +45,8 @@ Te his dolorem adversarium? Pri eu rebum viris, tation molestie id pri. Mel ei s
             array(
                 'user_id'        => $user_id,
                 'category_id'    => $category_id,
-                'title'      => 'In iisque similique reprimique eum',
-                'slug'       => 'in-iisque-similique-reprimique-eum',
+                'title'      => 'بلقيس محمد الحسن عثمان',
+                'slug'       => 'بلقيس-محمد-الحسن-عثمان',
                 'content'    => $this->content,
                 'image'    => 'http://placehold.it/300x300',
                 'status'    => 0,
