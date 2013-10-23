@@ -60,4 +60,12 @@ class Story extends Eloquent {
         return $this->date($this->updated_at);
 	}
 
+	/**
+	 * category relationship
+	 */
+	public function category()
+	{
+	    return $this->BelongTo('category');
+	}
+
 }
