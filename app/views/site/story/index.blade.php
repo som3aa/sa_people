@@ -19,8 +19,7 @@
 			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
 			<p class="meta">
                 في <a href="#">علماء</a> ,
-                مساهمة <a href="#">محمد عادل</a> ,
-                (Sept 16th, 2012)
+                مساهمة <a href="#">محمد عادل</a>
 			</p>
 			<p>
 				{{ Str::limit($story->content, 200) }}

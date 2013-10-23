@@ -15,8 +15,7 @@
       <h4>{{ $story->title }}</h4>
   		<p class="meta">
   	    في <a href="#">علماء</a> ,
-  	    مساهمة <a href="#">محمد عادل</a> ,
-  	    (Sept 16th, 2012)
+  	    مساهمة <a href="#">محمد عادل</a>
   		</p>
     </div>
   </div>

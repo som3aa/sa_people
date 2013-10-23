@@ -33,7 +33,6 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-
 </head>
 
 <body>
@@ -103,11 +102,9 @@
 		</div>
 	</div><!-- End Header -->
 
-
 	<!-- Main Page Content and Sidebar 
 	================================================== -->
 	<div class="row">
-
 		<!-- Main Blog Content -->
 		<div class="large-9 columns" role="content">
 			<!-- Notifications -->
@@ -120,17 +117,15 @@
 		</div><!-- End Main Content -->
 
 		<!-- Sidebar -->
-		<aside class="large-3 columns">
+		<aside class="large-3 columns sidebar">
 			@include('site.layouts.sidebar')
 		</aside><!-- End Sidebar -->
-
 	</div><!-- End Main Content and Sidebar -->
-
 
 	<!-- footer 
 	================================================== -->
-	<div class="row">
-		<div class="large-12 columns footer">
+	<footer class="row footer">
+		<div class="large-12 columns">
 		  
 		  <div class="row">
 		    <div class="large-6 columns">
@@ -148,7 +143,7 @@
 		  </div>
 
 		</div>
-	</div><!-- End Footer -->
+	</footer><!-- End Footer -->
 
 
 	<!-- Javascripts
