@@ -1,6 +1,6 @@
 <?php
 
-class story extends Eloquent {
+class Story extends Eloquent {
 
 	/**
 	 * Returns a formatted post content entry,
@@ -20,7 +20,7 @@ class story extends Eloquent {
 	 */
 	public function url()
 	{
-		return Url::to($this->slug);
+		return URL::to($this->slug);
 	}
 
 	/**

@@ -119,7 +119,7 @@ ul.breadcrumbs {
 	font-size: 1.3em ;
 }
 
-article {
+.post {
 	border-bottom: 1px solid #f3f3f3;
 	margin-bottom: 1.4em;
 	background-color: #fff;
@@ -128,12 +128,12 @@ article {
 	box-shadow: 0 2px 3px #d6d3cb;
 }
 
-article h4 {
+.post h4 {
 	color: #777;
 	margin-bottom: 0.2em;
 }
 
-article .meta {
+.post .meta {
 	display: block;
 	margin-bottom: 0.7em;
 	color: #bbb;

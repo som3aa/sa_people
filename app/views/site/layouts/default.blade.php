@@ -129,7 +129,7 @@
 
 	<!-- footer 
 	================================================== -->
-	<footer class="row">
+	<div class="row">
 		<div class="large-12 columns footer">
 		  
 		  <div class="row">
@@ -148,7 +148,7 @@
 		  </div>
 
 		</div>
-	</footer><!-- End Footer -->
+	</div><!-- End Footer -->
 
 
 	<!-- Javascripts

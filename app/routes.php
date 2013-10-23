@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('site.story.index');
-});
+
+# stories - Second to last set, match slug
+Route::get('{storySlug}', 'StoryController@getView');
+
+# Index Page - Last route, no matches
+Route::get('/','StoryController@getIndex');
