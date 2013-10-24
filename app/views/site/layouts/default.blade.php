@@ -106,6 +106,10 @@
 	<div class="row">
 		<!-- Main Blog Content -->
 		<div class="large-9 columns" role="content">
+			<!-- breadcrumbs -->
+			@yield('breadcrumbs')
+			<!-- ./ breadcrumbs -->
+
 			<!-- Notifications -->
 			@include('notifications') 
 			<!-- ./ notifications -->

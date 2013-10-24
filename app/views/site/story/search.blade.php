@@ -6,6 +6,9 @@
 {{{ $keyword }}}
 @stop
 
+{{-- Breadcrumbs --}}
+@section('breadcrumbs', Breadcrumbs::render('search', $keyword))
+
 {{-- Content --}}
 @section('content')
 

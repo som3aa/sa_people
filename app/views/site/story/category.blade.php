@@ -6,6 +6,9 @@
 {{{ $category->name }}}
 @stop
 
+{{-- Breadcrumbs --}}
+@section('breadcrumbs', Breadcrumbs::render('category',$category))
+
 {{-- Content --}}
 @section('content')
 

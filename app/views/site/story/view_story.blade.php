@@ -6,6 +6,9 @@
 {{{ $story->title }}}
 @stop
 
+{{-- Breadcrumbs --}}
+@section('breadcrumbs', Breadcrumbs::render('story',$story))
+
 {{-- Content --}}
 @section('content')
 <div class="post">
