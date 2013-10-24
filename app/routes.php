@@ -17,3 +17,9 @@ Route::get('{storySlug}', 'StoryController@getView');
 
 # Index Page - Last route, no matches
 Route::get('/','StoryController@getIndex');
+
+# categories
+Route::get('/c/{categorySlug}', 'StoryController@getCategory');
+
+# Search stories
+Route::post('/','StoryController@getSearch');

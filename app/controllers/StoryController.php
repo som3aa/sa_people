@@ -9,14 +9,21 @@ class StoryController extends BaseController {
     protected $story;
 
     /**
+     * Category Model
+     * @var Category
+     */
+    protected $category;
+
+    /**
      * Inject the models.
      * @param Story $story
      */
-    public function __construct(Story $story)
+    public function __construct(Story $story, category $category)
     {
         parent::__construct();
 
         $this->story = $story;
+        $this->category = $category;
     }
     
 	/**
@@ -31,6 +38,44 @@ class StoryController extends BaseController {
 
 		// Show the page
 		return View::make('site/story/index', compact('stories'));
+	}
+
+	public function getSearch() 
+	{
+		// Get the Keyword
+		$keyword = Input::get('keyword');
+
+		// Get the stories
+		$stories = $this->story->where('title', 'LIKE', '%'.$keyword.'%')->paginate(10);
+
+		// Show the page
+		return View::make('site/story/search', compact('stories','keyword'));
+	}
+
+	/**
+	 * Returns specific catagroy the stories.
+	 *
+	 * @return View
+	 */
+	public function getCategory($slug)
+	{
+		// Get this category data
+		$category = $this->category->where('slug', '=', $slug)->first();
+
+		// Check if the category exists
+		if (is_null($category))
+		{
+			// If we ended up in here, it means that
+			// a page or a story didn't exist.
+			// So, this means that it is time for
+			// 404 error page.
+			return App::abort(404);
+		}
+		// Get the stories
+		$stories = $category->story()->paginate(10);
+
+		// Show the page
+		return View::make('site/story/category', compact('category','stories'));
 	}
 
 	/**

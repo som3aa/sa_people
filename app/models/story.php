@@ -65,7 +65,7 @@ class Story extends Eloquent {
 	 */
 	public function category()
 	{
-	    return $this->BelongTo('category');
+	    return $this->BelongsTo('category');
 	}
 
 }

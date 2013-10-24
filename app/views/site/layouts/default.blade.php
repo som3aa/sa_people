@@ -56,8 +56,7 @@
 						 <!-- search bar -->
 						  <div class="row">
 						      <div class="large-10 columns">
-
-						          {{ Form::open(array('class' => 'search')) }}
+						          {{ Form::open(array('action'=> 'StoryController@getIndex','class' => 'search')) }}
 						              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
 						              <img src="/../img/search.png" />
 						          {{ Form::close()}}

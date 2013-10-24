@@ -14,7 +14,7 @@
     <div class="large-12 columns">
       <h4>{{ $story->title }}</h4>
   		<p class="meta">
-  	    في <a href="#">علماء</a> ,
+  	    في <a href="/../c/{{{$story->category->slug}}}">{{{ $story->category->name }}}</a> ,
   	    مساهمة <a href="#">محمد عادل</a>
   		</p>
     </div>
