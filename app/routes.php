@@ -12,14 +12,16 @@
 */
 
 
+# Search stories
+Route::get('/s','StoryController@getSearch');
+
+# categories
+Route::get('/c/{categorySlug}', 'StoryController@getCategory');
+
 # stories - Second to last set, match slug
 Route::get('{storySlug}', 'StoryController@getView');
 
 # Index Page - Last route, no matches
 Route::get('/','StoryController@getIndex');
 
-# categories
-Route::get('/c/{categorySlug}', 'StoryController@getCategory');
 
-# Search stories
-Route::post('/','StoryController@getSearch');
