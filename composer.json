@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.0.*",
-		"davejamesmiller/laravel-breadcrumbs": "~2.1.0"
+		"davejamesmiller/laravel-breadcrumbs": "~2.1.0",
+		"zizaco/confide": "2.0.x",
+		"zizaco/entrust": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
