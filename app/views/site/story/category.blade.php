@@ -6,6 +6,17 @@
 {{{ $category->name }}}
 @stop
 
+{{-- SEO - General Meta --}}
+@section('meta_data')
+  <link href="{{{ $category->url() }}}" rel="canonical" />
+  <meta name="description" content="موقع شخصيات هو جزء من شبكة سوداكتف، لتوثيق الشخصيات السودانية البارزة في المجتمع" />
+  <meta property="og:image" content="{{{ Config::get('app.url').'/img/sudactive-logo.jpg' }}}" />
+  <meta property="og:title" content="سوداكتف - {{{$category->name}}}" />
+  <meta name="description" content="موقع شخصيات هو جزء من شبكة سوداكتف، لتوثيق الشخصيات السودانية البارزة في المجتمع" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{{ $category->url() }}}" />
+@stop
+
 {{-- Breadcrumbs --}}
 @section('breadcrumbs', Breadcrumbs::render('category',$category))
 

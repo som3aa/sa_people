@@ -11,9 +11,9 @@
 		{{{ Lang::get('site.sudactive')}}}
 		@show
 	</title>
-	<meta name="keywords" content="your, awesome, keywords, here" />
-	<meta name="author" content="Mohammed Adil" />
-	<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+	<meta name="keywords" content="شخصيات,سودانية,سودان,سوداني,سودانين,سوداكتف,sudactive,sudan,sudanese" />
+	<meta name="author" content="Sudactive.com" />
+	@yield('meta_data')
 
 	<!-- Mobile Specific Metas
 	================================================== -->
@@ -142,6 +142,17 @@
 			</section>
 			@endif
 			<!-- ./ join us call -->
+
+			<!-- last stories -->
+			<section>
+				<h4>اخر الشخصيات</h4>
+				<ul class="side-nav">
+				@foreach(story::all()->take(5) as $story)
+					<li>{{ Link_to($story->slug,$story->title) }}</li>
+				@endforeach
+				</ul>
+			</section>
+			<!-- ./ last stories -->
 		</aside><!-- End Sidebar -->
 	</div><!-- End Main Content and Sidebar -->
 

@@ -3,7 +3,7 @@
 	<!-- Story Content -->
 	<div class="row">
 		<div class="large-4 columns">
-			<a href="{{{ $story->url() }}}" class="th radius">{{ HTML::image('http://sudactive.com/uploads/2013-10/vk9E.jpg') }}</a>
+			<a href="{{{ $story->url() }}}" class="th radius">{{ HTML::image('http://sudactive.com/uploads/2013-10/vk9E.jpg',$story->title) }}</a>
 		</div>
 		<div class="large-8 columns">
 			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>

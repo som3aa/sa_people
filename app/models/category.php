@@ -10,4 +10,14 @@ class Category extends Eloquent {
 	    return $this->hasMany('Story');
 	}
 
+	/**
+	 * Get the URL to the category.
+	 *
+	 * @return string
+	 */
+	public function url()
+	{
+		return URL::to('/c/'.$this->slug);
+	}
+
 }
