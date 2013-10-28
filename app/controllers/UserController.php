@@ -19,20 +19,6 @@ class UserController extends BaseController {
     }
 
     /**
-     * Users settings page
-     *
-     * @return View
-     */
-    public function getIndex()
-    {
-        list($user,$redirect) = $this->user->checkAuthAndRedirect('user');
-        if($redirect){return $redirect;}
-
-        // Show the page
-        return View::make('site/user/index', compact('user'));
-    }
-
-    /**
      * Stores new user
      *
      */
@@ -78,60 +64,6 @@ class UserController extends BaseController {
 
             return Redirect::to('user/create')
                 ->withInput(Input::except('password'))
-                ->with( 'error', $error );
-        }
-    }
-
-    /**
-     * Edits a user
-     *
-     */
-    public function postEdit($user)
-    {
-        // Validate the inputs
-        $validator = Validator::make(Input::all(), $user->getUpdateRules());
-
-
-        if ($validator->passes())
-        {
-            $oldUser = clone $user;
-            $user->username = Input::get( 'username' );
-            $user->email = Input::get( 'email' );
-
-            $password = Input::get( 'password' );
-            $passwordConfirmation = Input::get( 'password_confirmation' );
-
-            if(!empty($password)) {
-                if($password === $passwordConfirmation) {
-                    $user->password = $password;
-                    // The password confirmation will be removed from model
-                    // before saving. This field will be used in Ardent's
-                    // auto validation.
-                    $user->password_confirmation = $passwordConfirmation;
-                } else {
-                    // Redirect to the new user page
-                    return Redirect::to('users')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
-                }
-            } else {
-                unset($user->password);
-                unset($user->password_confirmation);
-            }
-
-            $user->prepareRules($oldUser, $user);
-
-            // Save if valid. Password field will be hashed before save
-            $user->amend();
-        }
-
-        // Get validation errors (see Ardent package)
-        $error = $user->errors()->all();
-
-        if(empty($error)) {
-            return Redirect::to('user')
-                ->with( 'success', Lang::get('user/user.user_account_updated') );
-        } else {
-            return Redirect::to('user')
-                ->withInput(Input::except('password','password_confirmation'))
                 ->with( 'error', $error );
         }
     }
@@ -300,49 +232,4 @@ class UserController extends BaseController {
         return Redirect::to('/');
     }
 
-    /**
-     * Get user's profile
-     * @param $username
-     * @return mixed
-     */
-    public function getProfile($username)
-    {
-        $userModel = new User;
-        $user = $userModel->getUserByUsername($username);
-
-        // Check if the user exists
-        if (is_null($user))
-        {
-            return App::abort(404);
-        }
-
-        return View::make('site/user/profile', compact('user'));
-    }
-
-    public function getSettings()
-    {
-        list($user,$redirect) = User::checkAuthAndRedirect('user/settings');
-        if($redirect){return $redirect;}
-
-        return View::make('site/user/profile', compact('user'));
-    }
-
-    /**
-     * Process a dumb redirect.
-     * @param $url1
-     * @param $url2
-     * @param $url3
-     * @return string
-     */
-    public function processRedirect($url1,$url2,$url3)
-    {
-        $redirect = '';
-        if( ! empty( $url1 ) )
-        {
-            $redirect = $url1;
-            $redirect .= (empty($url2)? '' : '/' . $url2);
-            $redirect .= (empty($url3)? '' : '/' . $url3);
-        }
-        return $redirect;
-    }
 }

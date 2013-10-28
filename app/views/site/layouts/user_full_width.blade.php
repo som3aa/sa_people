@@ -105,68 +105,20 @@
 	================================================== -->
 	<div class="row">
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
-			<!-- breadcrumbs -->
-			@yield('breadcrumbs')
-			<!-- ./ breadcrumbs -->
+		<div class="large-12 columns" role="content">
 
-			<!-- Notifications -->
-			@include('notifications') 
-			<!-- ./ notifications -->
-
-			<!-- Content -->
-			@yield('content')
-			<!-- ./ content -->
-		</div><!-- End Main Content -->
-
-		<!-- Sidebar -->
-		<aside class="large-3 columns sidebar">
-
-			<!-- Memeber Area -->
-			@if( Auth::check() )
-				<section>
-					<h4>مرحبا , {{ Auth::user()->username }}</h4>
-
-					<ul class="side-nav">
-				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
-					</ul>
-				</section>
-			@endif
-			<!-- ./ Memeber Area -->
-
-			<!-- categories list -->
-			<section>
-				<h4>التصنيفات</h4>
-				<ul class="side-nav">
-				@foreach(Category::all()  as $category)
-					<li>{{ Link_to('/c/'.$category->slug,$category->name.' ('.$category->story()->count().')') }}</li>
-				@endforeach
-				</ul>
-			</section>
-			<!-- ./ categories list -->
-
-			<!-- join us call -->
-			@if( !Auth::check() )
-			<section>
-				<p>{{{ Lang::get('site.sidebar.join_call') }}}</p>
-				<div class="get_in">
-					<a href="/../join-us" class="button small">{{{ Lang::get('site.sidebar.join_now') }}}</a>
+			<div class="row">
+			    <div class="large-6 large-centered columns post">
+			        <!-- Notifications -->
+			        @include('notifications') 
+			        <!-- ./ notifications -->
+					<!-- Content -->
+					@yield('content')
+					<!-- ./ content -->
 				</div>
-			</section>
-			@endif
-			<!-- ./ join us call -->
-
-			<!-- last stories -->
-			<section>
-				<h4>اخر الشخصيات</h4>
-				<ul class="side-nav">
-				@foreach(story::all()->take(5) as $story)
-					<li>{{ Link_to($story->slug,$story->title) }}</li>
-				@endforeach
-				</ul>
-			</section>
-			<!-- ./ last stories -->
-		</aside><!-- End Sidebar -->
+			</div>
+			
+		</div>
 	</div><!-- End Main Content and Sidebar -->
 
 	<!-- footer 
