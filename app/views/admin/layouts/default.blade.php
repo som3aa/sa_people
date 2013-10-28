@@ -13,7 +13,6 @@
 	</title>
 	<meta name="keywords" content="شخصيات,سودانية,سودان,سوداني,سودانين,سوداكتف,sudactive,sudan,sudanese" />
 	<meta name="author" content="Sudactive.com" />
-	@yield('meta_data')
 
 	<!-- Mobile Specific Metas
 	================================================== -->
@@ -48,25 +47,6 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="large-12 columns">
-
-					<div class="slogan">
-						<h2><a href="/">{{{ Lang::get('site.slogan')}}}</a></h2>
-						 <!-- search bar -->
-						  <div class="row">
-						      <div class="large-10 columns">
-						          	<form method="get" action="/../s/" class="search">
-						              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
-						              <img src="/../img/search.png" />
-						        	</form>
-						      </div>
-						  </div><!-- end search bar -->
-					</div>
-
-				</div>
-			</div>
-
 		</div>
 		<div class="large-7 columns">
 
@@ -85,19 +65,6 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="large-12 columns">
-				
-					<div class="slider">
-						<a href="/../pt/1/p/1"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
-						<a href="/../pt/1/p/2"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
-						<a href="/../pt/1/p/2"><img src="/img/p3.png" class="person" style="left:240px; bottom:4px ; z-index:4"></a>
-						<a href="/../pt/1/p/1"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
-						<img src="/img/curve.png" class="curve" />	
-					</div>
-					
-				</div>
-			</div>
 		</div>
 	</div><!-- End Header -->
 
@@ -105,69 +72,30 @@
 	================================================== -->
 	<div class="row">
 		<!-- Main Blog Content -->
-		<div class="large-9 columns" role="content">
-			<!-- breadcrumbs -->
-			@yield('breadcrumbs')
-			<!-- ./ breadcrumbs -->
+		<div class="large-12 columns" role="content">
 
 			<!-- Notifications -->
 			@include('notifications') 
 			<!-- ./ notifications -->
 
-			<!-- Content -->
-			@yield('content')
-			<!-- ./ content -->
-		</div><!-- End Main Content -->
+			<div class="row">
+			    <div class="large-12 columns post">
 
-		<!-- Sidebar -->
-		<aside class="large-3 columns sidebar">
+			        <!-- admin menu -->
+			        <dl class="sub-nav">
+			        	<dd><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></dd>
+			        	<dd><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></dd>
+			        	<dd><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></dd>
+			        	<dd><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></dd>
+			        </dl>
+			        <!-- ./ admin menu -->
 
-			<!-- Memeber Area -->
-			@if( Auth::check() )
-				<section>
-					<h4>مرحبا , {{ Auth::user()->username }}</h4>
-
-					<ul class="side-nav">
-						<li><a href="/../admin/stories">لوحة التحكم</a></li>
-				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
-					</ul>
-				</section>
-			@endif
-			<!-- ./ Memeber Area -->
-
-			<!-- categories list -->
-			<section>
-				<h4>التصنيفات</h4>
-				<ul class="side-nav">
-				@foreach(Category::all()  as $category)
-					<li>{{ Link_to('/c/'.$category->slug,$category->name.' ('.$category->story()->count().')') }}</li>
-				@endforeach
-				</ul>
-			</section>
-			<!-- ./ categories list -->
-
-			<!-- join us call -->
-			@if( !Auth::check() )
-			<section>
-				<p>{{{ Lang::get('site.sidebar.join_call') }}}</p>
-				<div class="get_in">
-					<a href="/../join-us" class="button small">{{{ Lang::get('site.sidebar.join_now') }}}</a>
+					<!-- Content -->
+					@yield('content')
+					<!-- ./ content -->
 				</div>
-			</section>
-			@endif
-			<!-- ./ join us call -->
-
-			<!-- last stories -->
-			<section>
-				<h4>اخر الشخصيات</h4>
-				<ul class="side-nav">
-				@foreach(story::all()->take(5) as $story)
-					<li>{{ Link_to($story->slug,$story->title) }}</li>
-				@endforeach
-				</ul>
-			</section>
-			<!-- ./ last stories -->
-		</aside><!-- End Sidebar -->
+			</div>
+		</div><!-- End Main Content -->
 	</div><!-- End Main Content and Sidebar -->
 
 	<!-- footer 

@@ -11,6 +11,28 @@
 |
 */
 
+/** ------------------------------------------
+ *  Admin Routes
+ *  ------------------------------------------
+ */
+
+Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
+{
+	# Blog Management
+    Route::get('stories/{post}/show', 'AdminStoriesController@getShow')
+        ->where('post', '[0-9]+');
+    Route::get('stories/{post}/edit', 'AdminStoriesController@getEdit')
+        ->where('post', '[0-9]+');
+    Route::post('stories/{post}/edit', 'AdminStoriesController@postEdit')
+        ->where('post', '[0-9]+');
+    Route::get('stories/{post}/delete', 'AdminStoriesController@getDelete')
+        ->where('post', '[0-9]+');
+    Route::post('stories/{post}/delete', 'AdminStoriesController@postDelete')
+        ->where('post', '[0-9]+');
+    Route::controller('stories', 'AdminStoriesController');
+    
+});
+
 
 /** ------------------------------------------
  *  Frontend Site Routes

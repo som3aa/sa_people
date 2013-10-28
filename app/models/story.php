@@ -24,6 +24,14 @@ class Story extends Eloquent {
 	}
 
 	/**
+	 * category relationship
+	 */
+	public function category()
+	{
+	    return $this->BelongsTo('category');
+	}
+	
+	/**
      * Get the date the post was created.
      *
      * @param \Carbon|null $date
@@ -58,14 +66,6 @@ class Story extends Eloquent {
 	public function updated_at()
 	{
         return $this->date($this->updated_at);
-	}
-
-	/**
-	 * category relationship
-	 */
-	public function category()
-	{
-	    return $this->BelongsTo('category');
 	}
 
 }
