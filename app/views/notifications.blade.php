@@ -23,29 +23,3 @@
     @endif
 </div>
 @endif
-
-@if ($message = Session::get('warning'))
-<div class="alert-box warning">
-	<a href="" class="close">&times;</a>
-    @if(is_array($message))
-    @foreach ($message as $m)
-    {{ $m }}
-    @endforeach
-    @else
-    {{ $message }}
-    @endif
-</div>
-@endif
-
-@if ($message = Session::get('info'))
-<div class="alert-box info">
-	<a href="" class="close">&times;</a>
-    @if(is_array($message))
-    @foreach ($message as $m)
-    {{ $m }}
-    @endforeach
-    @else
-    {{ $message }}
-    @endif
-</div>
-@endif

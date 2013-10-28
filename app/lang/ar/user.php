@@ -13,6 +13,7 @@ return array(
 	'register'              => 'التسجيل',
 	'login'                 => 'الدخول',
 	'forgot_password'       => 'نسيت كلمة المرور',
-	'welcome'				=> 'مرحبا ,'
+	'welcome'				=> 'مرحبا ,',
+	'user_account_created'  => 'تم اضافة الحساب بنجاح, راجع ايميلك لتفعيل الحساب',
 
 );
