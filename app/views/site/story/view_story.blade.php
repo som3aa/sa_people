@@ -39,7 +39,7 @@
   <div class="row">
     <div class="large-8 small-centered columns">
       <div class="th radius" style="margin-bottom:30px;">
-        {{ HTML::image('http://sudactive.com/uploads/2013-10/vk9E.jpg',$story->title,array('itemprop'=>'image')) }}
+        {{ HTML::image($story->image,$story->title,array('itemprop'=>'image')) }}
       </div>
     </div>
   </div>

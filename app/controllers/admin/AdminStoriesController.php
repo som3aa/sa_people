@@ -72,12 +72,13 @@ class AdminStoriesController extends AdminController {
         {
             // Create a new story
             $user = Auth::user();
+            $image = $this->story->upload(Input::file('image')) ;
 
             // Update the story data
             $this->story->title            = Input::get('title');
-            $this->story->slug             = Str::slug(Input::get('title'));
+            $this->story->slug             = String::slug(Input::get('title'));
             $this->story->content          = Input::get('content');
-            $this->story->image            = 'http://placehold.it/300x300';
+            $this->story->image            = $image;
             $this->story->status           = 0;
             $this->story->meta_title       = 'test';
             $this->story->meta_description = 'test';

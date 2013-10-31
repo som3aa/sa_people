@@ -76,4 +76,26 @@ class Story extends Eloquent {
         return $this->date($this->updated_at);
 	}
 
+	/**
+	 * Upload story image
+	 *
+	 * @p
+	 */
+	public function upload($image=null) {
+		//upload data
+		$destinationPath = 'uploads/'.date('Y-m').'/';
+		$extension =$image->getClientOriginalExtension(); //if you need extension of the file
+		$filename = str_random(4).'.'.$extension;
+
+		//upload now!
+		$uploadSuccess = $image->move($destinationPath, $filename);
+
+		//success message
+		if($uploadSuccess) {
+			return URL::to($destinationPath.$filename);
+	    } else {
+	    	// Redirect to the story create page
+            return Redirect::to('admin/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
+	    }
+	}
 }
