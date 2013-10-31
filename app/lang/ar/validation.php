@@ -96,7 +96,9 @@ return array(
 	'attributes' => array(
 		'name' => 'الاسم',
 		'story' => 'القصة',
-		'image_path' => 'الصورة',
+		'title' => 'العنوان',
+		'content' => 'النص',
+		'image' => 'الصورة',
 		'username' => 'اسم المستخدم',
 		'email' => 'الايميل',
 		'password' => 'كلمة مرور',

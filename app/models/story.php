@@ -28,9 +28,17 @@ class Story extends Eloquent {
 	 */
 	public function category()
 	{
-	    return $this->BelongsTo('category');
+	    return $this->BelongsTo('Category');
 	}
 	
+	/**
+	 * User relationship
+	 */
+	public function user()
+	{
+	    return $this->BelongsTo('User');
+	}
+
 	/**
      * Get the date the post was created.
      *

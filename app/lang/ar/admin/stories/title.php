@@ -2,9 +2,9 @@
 
 return array(
 
-	'blog_management'    => 'ادارة الشخصيات',
-	'blog_update'        => 'تعديل شخصية',
-	'blog_delete'        => 'حذف شخصية',
-	'create_a_new_blog'  => 'اضافة شخصية',
+	'story_management'    => 'ادارة الشخصيات',
+	'story_update'        => 'تعديل شخصية',
+	'story_delete'        => 'حذف شخصية',
+	'create_a_new_story'  => 'اضافة شخصية',
 
 );

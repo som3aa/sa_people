@@ -74,21 +74,21 @@
 		<!-- Main Blog Content -->
 		<div class="large-12 columns" role="content">
 
-			<!-- Notifications -->
-			@include('notifications') 
-			<!-- ./ notifications -->
-
 			<div class="row">
 			    <div class="large-12 columns post">
 
 			        <!-- admin menu -->
 			        <dl class="sub-nav">
-			        	<dd><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></dd>
-			        	<dd><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></dd>
-			        	<dd><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></dd>
-			        	<dd><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></dd>
+			        	<dd><h4><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></h4></dd>
+			        	<dd><h4><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></h4></dd>
+			        	<dd><h4><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></h4></dd>
+			        	<dd><h4><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></h4></dd>
 			        </dl>
 			        <!-- ./ admin menu -->
+
+			        <!-- Notifications -->
+					@include('notifications') 
+					<!-- ./ notifications -->
 
 					<!-- Content -->
 					@yield('content')

@@ -5,13 +5,13 @@ class AdminStoriesController extends AdminController {
 
     /**
      * Story Model
-     * @var Post
+     * @var Story
      */
     protected $story;
 
     /**
      * Inject the models.
-     * @param Post $story
+     * @param Story $story
      */
     public function __construct(Story $story)
     {
@@ -20,17 +20,17 @@ class AdminStoriesController extends AdminController {
     }
 
     /**
-     * Show a list of all the blog posts.
+     * Show a list of all the stories.
      *
      * @return View
      */
     public function getIndex()
     {
         // Title
-        $title = Lang::get('admin/stories/title.blog_management');
+        $title = Lang::get('admin/stories/title.story_management');
 
         // Grab all the stories
-        $stories = $this->story->all();
+        $stories = $this->story->orderBy('created_at', 'DESC')->get();
 
         // Show the page
         return View::make('admin/stories/index', compact('stories', 'title'));
@@ -44,10 +44,10 @@ class AdminStoriesController extends AdminController {
 	public function getCreate()
 	{
         // Title
-        $title = Lang::get('admin/blogs/title.create_a_new_blog');
+        $title = Lang::get('admin/stories/title.create_a_new_story');
 
         // Show the page
-        return View::make('admin/blogs/create_edit', compact('title'));
+        return View::make('admin/stories/create', compact('title'));
 	}
 
 	/**
@@ -59,8 +59,9 @@ class AdminStoriesController extends AdminController {
 	{
         // Declare the rules for the form validation
         $rules = array(
-            'title'   => 'required|min:3',
-            'content' => 'required|min:3'
+            'title'   => 'required',
+            'content' => 'required',
+            'image' => 'required|image'
         );
 
         // Validate the inputs
@@ -69,31 +70,34 @@ class AdminStoriesController extends AdminController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-            // Create a new blog post
+            // Create a new story
             $user = Auth::user();
 
-            // Update the blog post data
-            $this->post->title            = Input::get('title');
-            $this->post->slug             = Str::slug(Input::get('title'));
-            $this->post->content          = Input::get('content');
-            $this->post->meta_title       = Input::get('meta-title');
-            $this->post->meta_description = Input::get('meta-description');
-            $this->post->meta_keywords    = Input::get('meta-keywords');
-            $this->post->user_id          = $user->id;
+            // Update the story data
+            $this->story->title            = Input::get('title');
+            $this->story->slug             = Str::slug(Input::get('title'));
+            $this->story->content          = Input::get('content');
+            $this->story->image            = 'http://placehold.it/300x300';
+            $this->story->status           = 0;
+            $this->story->meta_title       = 'test';
+            $this->story->meta_description = 'test';
+            $this->story->meta_keywords    = 'test';
+            $this->story->category_id      = Input::get('category_id');
+            $this->story->user_id          = $user->id;
 
-            // Was the blog post created?
-            if($this->post->save())
+            // Was the story created?
+            if($this->story->save())
             {
-                // Redirect to the new blog post page
-                return Redirect::to('admin/blogs/' . $this->post->id . '/edit')->with('success', Lang::get('admin/blogs/messages.create.success'));
+                // Redirect to the new story page
+                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.create.success'));
             }
 
-            // Redirect to the blog post create page
-            return Redirect::to('admin/blogs/create')->with('error', Lang::get('admin/blogs/messages.create.error'));
+            // Redirect to the story create page
+            return Redirect::to('admin/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/blogs/create')->withInput()->withErrors($validator);
+        return Redirect::to('admin/stories/create')->withInput()->withErrors($validator);
 	}
 
     /**
@@ -102,13 +106,13 @@ class AdminStoriesController extends AdminController {
      * @param $post
      * @return Response
      */
-	public function getEdit($post)
+	public function getEdit($story)
 	{
         // Title
-        $title = Lang::get('admin/blogs/title.blog_update');
+        $title = Lang::get('admin/stories/title.story_update');
 
         // Show the page
-        return View::make('admin/blogs/create_edit', compact('post', 'title'));
+        return View::make('admin/stories/edit', compact('story', 'title'));
 	}
 
     /**
@@ -117,7 +121,7 @@ class AdminStoriesController extends AdminController {
      * @param $post
      * @return Response
      */
-	public function postEdit($post)
+	public function postEdit($story)
 	{
 
         // Declare the rules for the form validation
@@ -132,52 +136,52 @@ class AdminStoriesController extends AdminController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-            // Update the blog post data
-            $post->title            = Input::get('title');
-            $post->slug             = Str::slug(Input::get('title'));
-            $post->content          = Input::get('content');
-            $post->meta_title       = Input::get('meta-title');
-            $post->meta_description = Input::get('meta-description');
-            $post->meta_keywords    = Input::get('meta-keywords');
+            // Update the blog story data
+            $story->title            = Input::get('title');
+            $story->slug             = Str::slug(Input::get('title'));
+            $story->content          = Input::get('content');
+            $story->meta_title       = Input::get('meta-title');
+            $story->meta_description = Input::get('meta-description');
+            $story->meta_keywords    = Input::get('meta-keywords');
 
-            // Was the blog post updated?
-            if($post->save())
+            // Was the blog story updated?
+            if($story->save())
             {
-                // Redirect to the new blog post page
-                return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('success', Lang::get('admin/blogs/messages.update.success'));
+                // Redirect to the new blog story page
+                return Redirect::to('admin/stories/' . $story->id . '/edit')->with('success', Lang::get('admin/stories/messages.update.success'));
             }
 
-            // Redirect to the blogs post management page
-            return Redirect::to('admin/blogs/' . $post->id . '/edit')->with('error', Lang::get('admin/blogs/messages.update.error'));
+            // Redirect to the blogs story management page
+            return Redirect::to('admin/stories/' . $story->id . '/edit')->with('error', Lang::get('admin/stories/messages.update.error'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/blogs/' . $post->id . '/edit')->withInput()->withErrors($validator);
+        return Redirect::to('admin/stories/' . $story->id . '/edit')->withInput()->withErrors($validator);
 	}
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param $post
+     * @param $story
      * @return Response
      */
-    public function getDelete($post)
+    public function getDelete($story)
     {
         // Title
-        $title = Lang::get('admin/blogs/title.blog_delete');
+        $title = Lang::get('admin/stories/title.story_delete');
 
         // Show the page
-        return View::make('admin/blogs/delete', compact('post', 'title'));
+        return View::make('admin/stories/delete', compact('story', 'title'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param $post
+     * @param $story
      * @return Response
      */
-    public function postDelete($post)
+    public function postDelete($story)
     {
         // Declare the rules for the form validation
         $rules = array(
@@ -190,19 +194,19 @@ class AdminStoriesController extends AdminController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-            $id = $post->id;
-            $post->delete();
+            $id = $story->id;
+            $story->delete();
 
-            // Was the blog post deleted?
-            $post = Post::find($id);
-            if(empty($post))
+            // Was the story deleted?
+            $story = Story::find($id);
+            if(empty($story))
             {
-                // Redirect to the blog posts management page
-                return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/messages.delete.success'));
+                // Redirect to the stories management page
+                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.delete.success'));
             }
         }
-        // There was a problem deleting the blog post
-        return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/messages.delete.error'));
+        // There was a problem deleting the story
+        return Redirect::to('admin/stories')->with('error', Lang::get('admin/stories/messages.delete.error'));
     }
 
 }

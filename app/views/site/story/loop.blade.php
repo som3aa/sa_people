@@ -9,7 +9,7 @@
 			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
 			<p class="meta">
                 في <a href="/../c/{{{$story->category->slug}}}">{{{ $story->category->name }}}</a> ,
-                مساهمة <a href="#">محمد عادل</a>
+                مساهمة <a href="#">{{{ $story->user->username }}}</a>
 			</p>
 			<p>
 				{{ Str::limit($story->content, 200) }}

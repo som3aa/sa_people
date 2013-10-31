@@ -11,6 +11,13 @@
 |
 */
 
+
+/** ------------------------------------------
+ *  Route model binding
+ *  ------------------------------------------
+ */
+Route::model('story', 'Story');
+
 /** ------------------------------------------
  *  Admin Routes
  *  ------------------------------------------
@@ -19,16 +26,16 @@
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 {
 	# Blog Management
-    Route::get('stories/{post}/show', 'AdminStoriesController@getShow')
-        ->where('post', '[0-9]+');
-    Route::get('stories/{post}/edit', 'AdminStoriesController@getEdit')
-        ->where('post', '[0-9]+');
-    Route::post('stories/{post}/edit', 'AdminStoriesController@postEdit')
-        ->where('post', '[0-9]+');
-    Route::get('stories/{post}/delete', 'AdminStoriesController@getDelete')
-        ->where('post', '[0-9]+');
-    Route::post('stories/{post}/delete', 'AdminStoriesController@postDelete')
-        ->where('post', '[0-9]+');
+    Route::get('stories/{story}/show', 'AdminStoriesController@getShow')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/edit', 'AdminStoriesController@getEdit')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/edit', 'AdminStoriesController@postEdit')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/delete', 'AdminStoriesController@getDelete')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/delete', 'AdminStoriesController@postDelete')
+        ->where('story', '[0-9]+');
     Route::controller('stories', 'AdminStoriesController');
     
 });
