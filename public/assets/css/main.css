@@ -171,3 +171,20 @@ div.facebook {
 section.fb_section {
 	background-color: #f5f5dc;
 }
+
+ 
+/* wysihtml5 */
+#toolbar [data-wysihtml5-action] {
+	float: left;
+	margin-left: 10px;
+}
+
+.wysihtml5-command-active {
+	font-weight: bold;
+}
+
+textarea {
+	height: 280px;
+    font-size: 14px;
+    line-height: 23px;
+}

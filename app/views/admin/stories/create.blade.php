@@ -28,11 +28,17 @@
     </p>
 
 	{{-- Story Content --}}
-    <p>
 	{{ Form::label('content', 'النص') }}
-	{{ Form::textarea('content','',array('class' => $errors->has('content') ? 'error' : '')) }}
+	<div id="toolbar" style="display: none;">
+		<a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+		<a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+		<a data-wysihtml5-command="justifyCenter">align center</a> |
+		<a data-wysihtml5-command="insertUnorderedList">insert unordered list</a>
+		<a data-wysihtml5-action="change_view">switch to html view</a>
+	</div>
+	{{ Form::textarea('content','',array('class' => $errors->has('content') ? 'error' : '','id' => 'textarea')) }}
 	{{ $errors->first('content', '<small class="error">:message</small>') }}
-	</p>
+	<br/>
 
 	{{-- Story Image --}}
     <p>
@@ -49,5 +55,23 @@
 
 {{ Form::close() }}
 {{-- ./ Form for New Story --}}
+
+@stop
+
+@section('javascripts')
+
+<!-- wysihtml5 parser rules -->
+<script src="/../assets/wysihtml5/js/simple.js"></script>
+<!-- Library -->
+<script src="/../assets/wysihtml5/js/wysihtml5-0.4.0pre.min.js"></script>
+
+<script>
+var editor = new wysihtml5.Editor("textarea", {
+	toolbar:        "toolbar",
+	parserRules:    wysihtml5ParserRules,
+	stylesheets:    "/../assets/wysihtml5/css/stylesheet.css",
+	useLineBreaks:  false
+});
+</script>
 
 @stop

@@ -29,7 +29,7 @@
       <h4 itemprop="name">{{ $story->title }}</h4>
   		<p class="meta">
   	    في <a href="/../c/{{{$story->category->slug}}}" itemprop="jobTitle">{{{ $story->category->name }}}</a> ,
-  	    مساهمة <a href="#">محمد عادل</a>
+  	    مساهمة <a href="#">{{{ $story->user->username }}}</a>
   		</p>
     </div>
   </div>

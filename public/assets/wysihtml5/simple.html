@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+
+<title>wysihtml5 - Simple Demo</title>
+
+<style>
+  body {
+    font-family: Verdana;
+    font-size: 11px;
+  }
+
+  #toolbar [data-wysihtml5-action] {
+    float: right;
+    margin-right: 10px;
+  }
+  
+  #toolbar,
+  textarea {
+    width: 600px;
+    padding: 5px;
+  }
+  
+  textarea {
+    height: 280px;
+    font-family: Verdana;
+    font-size: 11px;
+  }
+  
+  .wysihtml5-command-active {
+    font-weight: bold;
+  }
+</style>
+
+<h1>wysihtml5 - Simple Editor Example</h1>
+
+<form>
+  <div id="toolbar" style="display: none;">
+    <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+    <a data-wysihtml5-command="justifyCenter">align center</a> |
+    <a data-wysihtml5-command="insertUnorderedList">insert unordered list</a>
+    <a data-wysihtml5-action="change_view">switch to html view</a>
+  </div>
+  <textarea id="textarea" placeholder="Enter text ..."></textarea>
+  <br><input type="reset" value="Reset form!">
+</form>
+
+<script src="js/simple.js"></script>
+<script src="js/wysihtml5-0.4.0pre.min.js"></script>
+<script>
+  var editor = new wysihtml5.Editor("textarea", {
+    toolbar:        "toolbar",
+    parserRules:    wysihtml5ParserRules,
+    stylesheets:    "css/stylesheet.css",
+    useLineBreaks:  false
+  });
+</script>
