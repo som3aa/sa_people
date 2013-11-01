@@ -13,10 +13,10 @@ return array(
 	|
 	*/
 
-	"password" => "Passwords must be six characters and match the confirmation.",
+	"password" => ".زكلمة المرور يجب ان تكون سته حروف على الاقل و تشابه التحقيق",
 
-	"user"     => "We can't find a user with that e-mail address.",
+	"user"     => "لم نستطيع التعذر على مستخدم بهذا البريد الالكتروني",
 
-	"token"    => "This password reset token is invalid.",
+	"token"    => "هذه التعريفة منتهية مسبقاً! ",
 
 );

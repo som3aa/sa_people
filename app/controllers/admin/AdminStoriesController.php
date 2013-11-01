@@ -82,7 +82,6 @@ class AdminStoriesController extends AdminController {
             $this->story->status           = 0;
             $this->story->meta_title       = 'test';
             $this->story->meta_description = 'test';
-            $this->story->meta_keywords    = 'test';
             $this->story->category_id      = Input::get('category_id');
             $this->story->user_id          = $user->id;
 
@@ -143,7 +142,6 @@ class AdminStoriesController extends AdminController {
             $story->content          = Input::get('content');
             $story->meta_title       = Input::get('meta-title');
             $story->meta_description = Input::get('meta-description');
-            $story->meta_keywords    = Input::get('meta-keywords');
 
             // Was the blog story updated?
             if($story->save())

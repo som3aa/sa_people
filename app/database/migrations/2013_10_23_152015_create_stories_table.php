@@ -23,7 +23,6 @@ class CreateStoriesTable extends Migration {
             $table->boolean('status')->default(0);
 			$table->string('meta_title');
 			$table->string('meta_description');
-			$table->string('meta_keywords');
 			$table->timestamps();
 		});
 	}
