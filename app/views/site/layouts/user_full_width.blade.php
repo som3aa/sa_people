@@ -23,7 +23,7 @@
 	================================================== -->
 	{{ HTML::style('assets/foundation/css/foundation.min.css') }}
 	{{ HTML::style('assets/foundation/css/normalize.css') }}
-	{{ HTML::style('assets/css/main.css') }}
+	{{ HTML::style('assets/style.css') }}
 
 	<!-- javascript
 	================================================== -->
