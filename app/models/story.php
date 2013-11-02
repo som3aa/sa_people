@@ -92,7 +92,7 @@ class Story extends Eloquent {
 
 		//success message
 		if($uploadSuccess) {
-			return URL::to($destinationPath.$filename);
+			return $destinationPath.$filename;
 	    } else {
 	    	// Redirect to the story create page
             return Redirect::to('admin/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));

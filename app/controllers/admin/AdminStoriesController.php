@@ -79,7 +79,7 @@ class AdminStoriesController extends AdminController {
             $this->story->slug             = String::slug(Input::get('title'));
             $this->story->content          = Input::get('content');
             $this->story->image            = $image;
-            $this->story->status           = 0;
+            $this->story->status           = Input::get('status') ? 1 : 0;
             $this->story->meta_title       = 'test';
             $this->story->meta_description = 'test';
             $this->story->category_id      = Input::get('category_id');
@@ -126,8 +126,9 @@ class AdminStoriesController extends AdminController {
 
         // Declare the rules for the form validation
         $rules = array(
-            'title'   => 'required|min:3',
-            'content' => 'required|min:3'
+            'title'   => 'required',
+            'content' => 'required',
+            'image' => 'image'
         );
 
         // Validate the inputs
@@ -136,18 +137,29 @@ class AdminStoriesController extends AdminController {
         // Check if the form validates with success
         if ($validator->passes())
         {
-            // Update the blog story data
+            // Update the story data
             $story->title            = Input::get('title');
-            $story->slug             = Str::slug(Input::get('title'));
+            $story->slug             = String::slug(Input::get('title'));
             $story->content          = Input::get('content');
-            $story->meta_title       = Input::get('meta-title');
-            $story->meta_description = Input::get('meta-description');
+            $story->status           = Input::get('status') ? 1 : 0;
+            $story->meta_title       = 'test';
+            $story->meta_description = 'test';
+            $story->category_id      = Input::get('category_id');
+            $story->user_id          = Input::get('user_id');
+            if(is_file(Input::file('image'))) {
+                //upload the new image
+                $image = $this->story->upload(Input::file('image')) ;
+                //Delete old attached image
+                File::delete($story->image);
+                //attach the new image
+                $story->image = $image;
+            }
 
-            // Was the blog story updated?
+            // Was the story updated?
             if($story->save())
             {
-                // Redirect to the new blog story page
-                return Redirect::to('admin/stories/' . $story->id . '/edit')->with('success', Lang::get('admin/stories/messages.update.success'));
+                // Redirect to the new story page
+                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.update.success'));
             }
 
             // Redirect to the blogs story management page
@@ -195,6 +207,9 @@ class AdminStoriesController extends AdminController {
         {
             $id = $story->id;
             $story->delete();
+
+            //Delete attached image
+            File::delete($story->image);
 
             // Was the story deleted?
             $story = Story::find($id);

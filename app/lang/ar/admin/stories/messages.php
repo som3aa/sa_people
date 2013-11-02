@@ -10,8 +10,8 @@ return array(
 	),
 
 	'update' => array(
-		'error'   => 'Blog post was not updated, please try again',
-		'success' => 'Blog post updated successfully.'
+		'error'   => 'حدث خطأ اثناء التحديث الرجاء المحاولة مرة اخرى',
+		'success' => 'تم تحديث المقال بنجاح'
 	),
 
 	'delete' => array(

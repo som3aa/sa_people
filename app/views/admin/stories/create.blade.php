@@ -21,6 +21,11 @@
 	{{ $errors->first('title', '<small class="error">:message</small>') }}
 	</p>
 
+	<p>
+	{{ Form::label('status', 'منشور؟' , array('style'=>'display:inline;margin-left:5px') ) }}
+	{{ Form::checkbox('status', true, false);}}
+	</p>
+
 	{{-- Story Category --}}
     <p class="large-3">
 	{{ Form::label('category_id', 'التصنيف') }}
