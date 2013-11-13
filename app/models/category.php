@@ -3,6 +3,11 @@
 class Category extends Eloquent {
 
 	/**
+	 * disable timestamps
+	 */
+	public $timestamps = false;
+
+	/**
 	 * story relationship
 	 */
 	public function story()
