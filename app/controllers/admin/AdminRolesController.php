@@ -180,7 +180,7 @@ class AdminRolesController extends AdminController {
             if ($role->save())
             {
                 // Redirect to the role page
-                return Redirect::to('admin/roles/' . $role->id . '/edit')->with('success', Lang::get('admin/roles/messages.update.success'));
+                return Redirect::to('admin/roles')->with('success', Lang::get('admin/roles/messages.update.success'));
             }
             else
             {
