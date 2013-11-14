@@ -15,13 +15,13 @@
     <form method="post" action="" autocomplete="off">
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        <input type="hidden" name="id" value="{{ $story->id }}" />
+        <input type="hidden" name="id" value="{{ $role->id }}" />
         <!-- ./ csrf token -->
-        <p>هل انت متاكد من حذف مقال : {{{ $story->title }}}</p>
+        <p>هل انت متاكد من حذف الصلاحية : {{{ $role->name }}}</p>
         <!-- Form Actions -->
         <p>
             {{ Form::submit('حذف',array('class'=> 'button small')) }}
-            <a href="{{{ URL::to('admin/stories') }}}" class="button small secondary">الغاء</a>
+            <a href="{{{ URL::to('admin/roles') }}}" class="button small secondary">الغاء</a>
         </p>
         <!-- ./ form actions -->
     </form>

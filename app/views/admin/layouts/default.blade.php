@@ -83,6 +83,7 @@
 			        	<dd><h4><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></h4></dd>
 			        	<dd><h4><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></h4></dd>
 			        	<dd><h4><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></h4></dd>
+			        	<dd><h4><a href="{{{ URL::to('admin/roles') }}}">الصلاحيات</a></h4></dd>
 			        </dl>
 			        <!-- ./ admin menu -->
 

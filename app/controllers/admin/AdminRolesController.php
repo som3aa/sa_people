@@ -46,7 +46,7 @@ class AdminRolesController extends AdminController {
         $title = Lang::get('admin/roles/title.role_management');
 
         // Grab all the groups
-        $roles = $this->role;
+        $roles = $this->role->all();
 
         // Show the page
         return View::make('admin/roles/index', compact('roles', 'title'));
@@ -103,7 +103,7 @@ class AdminRolesController extends AdminController {
             if ($this->role->id)
             {
                 // Redirect to the new role page
-                return Redirect::to('admin/roles/' . $this->role->id . '/edit')->with('success', Lang::get('admin/roles/messages.create.success'));
+                return Redirect::to('admin/roles')->with('success', Lang::get('admin/roles/messages.create.success'));
             }
 
             // Redirect to the new role page
@@ -226,29 +226,6 @@ class AdminRolesController extends AdminController {
 
             // There was a problem deleting the role
             return Redirect::to('admin/roles')->with('error', Lang::get('admin/roles/messages.delete.error'));
-    }
-
-    /**
-     * Show a list of all the roles formatted for Datatables.
-     *
-     * @return Datatables JSON
-     */
-    public function getData()
-    {
-        $roles = Role::select(array('roles.id',  'roles.name', 'roles.id as users', 'roles.created_at'));
-
-        return Datatables::of($roles)
-        // ->edit_column('created_at','{{{ Carbon::now()->diffForHumans(Carbon::createFromFormat(\'Y-m-d H\', $test)) }}}')
-        ->edit_column('users', '{{{ DB::table(\'assigned_roles\')->where(\'role_id\', \'=\', $id)->count()  }}}')
-
-
-        ->add_column('actions', '<a href="{{{ URL::to(\'admin/roles/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
-                                <a href="{{{ URL::to(\'admin/roles/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
-                    ')
-
-        ->remove_column('id')
-
-        ->make();
     }
 
 }

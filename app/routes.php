@@ -19,6 +19,7 @@
 Route::model('story', 'Story');
 Route::model('category', 'Category');
 Route::model('user', 'User');
+Route::model('role', 'Role');
 
 /** ------------------------------------------
  *  Admin Routes
@@ -39,6 +40,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('stories/{story}/delete', 'AdminStoriesController@postDelete')
         ->where('story', '[0-9]+');
     Route::controller('stories', 'AdminStoriesController');
+
     # Categories Management
     Route::get('categories/{category}/show', 'AdminCategoriesController@getShow')
         ->where('category', '[0-9]+');
@@ -51,6 +53,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('categories/{category}/delete', 'AdminCategoriesController@postDelete')
         ->where('category', '[0-9]+');
     Route::controller('categories', 'AdminCategoriesController');
+
     # Users Management
     Route::get('users/{user}/show', 'AdminUsersController@getShow')
         ->where('user', '[0-9]+');
@@ -63,6 +66,19 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('users/{user}/delete', 'AdminUsersController@postDelete')
         ->where('user', '[0-9]+');
     Route::controller('users', 'AdminUsersController');
+
+    # User Role Management
+    Route::get('roles/{role}/show', 'AdminRolesController@getShow')
+        ->where('role', '[0-9]+');
+    Route::get('roles/{role}/edit', 'AdminRolesController@getEdit')
+        ->where('role', '[0-9]+');
+    Route::post('roles/{role}/edit', 'AdminRolesController@postEdit')
+        ->where('role', '[0-9]+');
+    Route::get('roles/{role}/delete', 'AdminRolesController@getDelete')
+        ->where('role', '[0-9]+');
+    Route::post('roles/{role}/delete', 'AdminRolesController@postDelete')
+        ->where('role', '[0-9]+');
+    Route::controller('roles', 'AdminRolesController');
 });
 
 
