@@ -29,7 +29,7 @@
     <tr>
       <td>{{{ $user->username }}}</td>
       <td>{{{ $user->email }}}</td>
-      <td>{{{ 'test' }}}</td>
+      <td> @foreach($user->roles as $role) {{{ $role->name }}} @endforeach</td>
       <td> @if($user->confirmed) yes @else no @endif </td>
       <td>{{{ $user->created_at }}}</td>
       <td>

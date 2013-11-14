@@ -42,9 +42,20 @@
 	{{ $errors->first('password_confirmation', '<small class="error">:message</small>') }}
 	</p>
 
+	{{-- confirmed ? --}}
 	<p>
 	{{ Form::label('confirmed', 'مفعل؟' , array('style'=>'display:inline;margin-left:5px') ) }}
 	{{ Form::checkbox('confirmed', true, false);}}
+	</p>
+
+	{{-- roles --}}
+	<p>
+    {{ Form::label('roles', 'الصلاحيات') }}
+    <select name="roles[]" id="roles[]" multiple>
+        @foreach ($roles as $role)
+        	<option value="{{{ $role->id }}}"{{{ ( in_array($role->id, $selectedRoles) ? ' selected="selected"' : '') }}}>{{{ $role->name }}}</option>
+        @endforeach
+	</select>
 	</p>
 
 	{{-- Actions --}}

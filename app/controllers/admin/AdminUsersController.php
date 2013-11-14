@@ -2,7 +2,7 @@
 
 class AdminUsersController extends AdminController {
 
-
+    
     /**
      * User Model
      * @var User
@@ -10,13 +10,29 @@ class AdminUsersController extends AdminController {
     protected $user;
 
     /**
-     * Inject the models.
-     * @param user $user
+     * Role Model
+     * @var Role
      */
-    public function __construct(User $user)
+    protected $role;
+
+    /**
+     * Permission Model
+     * @var Permission
+     */
+    protected $permission;
+
+    /**
+     * Inject the models.
+     * @param User $user
+     * @param Role $role
+     * @param Permission $permission
+     */
+    public function __construct(User $user, Role $role, Permission $permission)
     {
         parent::__construct();
         $this->user = $user;
+        $this->role = $role;
+        $this->permission = $permission;
     }
 
     /**
@@ -43,11 +59,17 @@ class AdminUsersController extends AdminController {
 	 */
 	public function getCreate()
 	{
+        // All roles
+        $roles = $this->role->all();
+
+        // Selected groups
+        $selectedRoles = Input::old('roles', array());
+
         // Title
         $title = Lang::get('admin/users/title.create_a_new_user');
 
         // Show the page
-        return View::make('admin/users/create', compact('title'));
+        return View::make('admin/users/create', compact('roles','selectedRoles','title'));
 	}
 
 	/**
@@ -67,16 +89,13 @@ class AdminUsersController extends AdminController {
         $this->user->password_confirmation = Input::get( 'password_confirmation' );
         $this->user->confirmed = Input::get('confirmed') ? 1 : 0;
 
-        // Permissions are currently tied to roles. Can't do this yet.
-        //$user->permissions = $user->roles()->preparePermissionsForSave(Input::get( 'permissions' ));
-
         // Save if valid. Password field will be hashed before save
         $this->user->save();
 
         if ( $this->user->id )
         {
             // Save roles. Handles updating.
-            //$this->user->saveRoles(Input::get( 'roles' ));
+            $this->user->saveRoles(Input::get( 'roles' ));
 
             // Redirect to the new user page
             return Redirect::to('admin/users')->with('success', Lang::get('admin/users/messages.create.success'));
@@ -95,22 +114,25 @@ class AdminUsersController extends AdminController {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $post
+     * @param $user
      * @return Response
      */
 	public function getEdit($user)
 	{
+        // All roles
+        $roles = $this->role->all();
+
         // Title
         $title = Lang::get('admin/users/title.user_update');
 
         // Show the page
-        return View::make('admin/users/edit', compact('user', 'title'));
+        return View::make('admin/users/edit', compact('user','title','roles'));
 	}
 
     /**
      * Update the specified resource in storage.
      *
-     * @param $post
+     * @param $user
      * @return Response
      */
 	public function postEdit($user)
@@ -151,7 +173,7 @@ class AdminUsersController extends AdminController {
             $user->amend();
 
             // Save roles. Handles updating.
-            //$user->saveRoles(Input::get( 'roles' ));
+            $user->saveRoles(Input::get( 'roles' ));
         } else {
             return Redirect::to('admin/users/' . $user->id . '/edit')->with('error', Lang::get('admin/users/messages.update.error'));
         }
@@ -198,7 +220,7 @@ class AdminUsersController extends AdminController {
             return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.delete.impossible'));
         }
 
-        //AssignedRoles::where('user_id', $user->id)->delete();
+        AssignedRoles::where('user_id', $user->id)->delete();
 
         $id = $user->id;
         $user->delete();
