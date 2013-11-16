@@ -26,7 +26,7 @@
   <tbody>
     @foreach ($stories as $story)
     <tr>
-      <td>{{ link_to($story->slug,$story->title) }}</td>
+      <td>@if (!$story->status) {{ '!' }} @endif {{ link_to($story->slug,$story->title) }}</td>
       <td>{{{ $story->category->name }}}</td>
       <td>{{{ $story->user->username }}}</td>
       <td>{{{ $story->created_at }}}</td>

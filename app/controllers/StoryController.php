@@ -9,6 +9,12 @@ class StoryController extends BaseController {
     protected $story;
 
     /**
+     * User Model
+     * @var User
+     */
+    protected $user;
+
+    /**
      * Category Model
      * @var Category
      */
@@ -18,12 +24,13 @@ class StoryController extends BaseController {
      * Inject the models.
      * @param Story $story
      */
-    public function __construct(Story $story, category $category)
+    public function __construct(Story $story, category $category,User $user)
     {
         parent::__construct();
 
         $this->story = $story;
         $this->category = $category;
+        $this->user = $user;
     }
     
 	/**
@@ -100,8 +107,68 @@ class StoryController extends BaseController {
 			return App::abort(404);
 		}
 
+		// Get this story comments
+		$comments = $story->comments()->orderBy('created_at', 'ASC')->get();
+
+        // Get current user and check permission
+        $user = $this->user->currentUser();
+        $canComment = false;
+        if(!empty($user)) {
+            $canComment = $user->can('post_comment');
+        }
+
 		// Show the page
-		return View::make('site/story/view_story', compact('story'));
+		return View::make('site/story/view_story', compact('story', 'comments', 'canComment'));
+	}
+
+	/**
+	 * View a story.
+	 *
+	 * @param  string  $slug
+	 * @return Redirect
+	 */
+	public function postView($slug)
+	{
+
+        $user = $this->user->currentUser();
+        $canComment = $user->can('post_comment');
+		if ( ! $canComment)
+		{
+			return Redirect::to($slug . '#comments')->with('error', 'You need to be logged in to post comments!');
+		}
+
+		// Get this story data
+		$story = $this->story->where('slug', '=', $slug)->first();
+
+		// Declare the rules for the form validation
+		$rules = array(
+			'comment' => 'required|min:3'
+		);
+
+		// Validate the inputs
+		$validator = Validator::make(Input::all(), $rules);
+
+		// Check if the form validates with success
+		if ($validator->passes())
+		{
+			// Save the comment
+			$comment = new Comment;
+			$comment->user_id = Auth::user()->id;
+			$comment->content = Input::get('comment');
+
+			// Was the comment saved with success?
+			if($story->comments()->save($comment))
+			{
+				// Redirect to this story page
+				return Redirect::to($slug . '#comments')->with('success', 'Your comment was added with success.');
+			}
+
+			// Redirect to this story page
+			return Redirect::to($slug . '#comments')->with('error', 'There was a problem adding your comment, please try again.');
+		}
+
+		// Redirect to this story page
+		return Redirect::to($slug)->withInput()->withErrors($validator);
 	}
 
 }

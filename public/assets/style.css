@@ -188,3 +188,10 @@ textarea {
     font-size: 14px;
     line-height: 23px;
 }
+
+
+#comment {
+	width: 75%;
+	height: 150px;
+	margin-bottom: 10px;
+}

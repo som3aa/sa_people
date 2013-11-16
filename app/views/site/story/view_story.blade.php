@@ -52,6 +52,64 @@
     </div>
   </div>
   <!-- ./ Story content -->
+
+  <br/><br/>
+
+  <!-- Story Comments -->
+  <a id="comments"></a>
+  <h4>{{{ $comments->count() }}} تعليق</h4>
+
+  @if ($comments->count())
+  @foreach ($comments as $comment)
+  <div class="row">
+    <div class="large-2 columns">
+      <img class="th" src="http://placehold.it/60x60" alt="">
+    </div>
+    <div class="large-10 columns">
+      <div class="row">
+        <div class="large-12 columns">
+          <div>{{{ $comment->author->username }}}</div>
+          <hr />
+        </div>
+        <div class="large-12 columns">
+          {{{ $comment->content() }}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  @endforeach
+  @else
+  <hr />
+  @endif
+
+  @if ( ! Auth::check())
+    اذا اردت ان تضيف تعليق يجب عليك تسجيل الدخول اولا<br /><br />
+    اضغط <a href="{{{ URL::to('user/login') }}}">هنا</a> لتسجيل الدخول.
+  @elseif ( ! $canComment )
+    You don't have the correct permissions to add comments.
+  @else
+
+    @if($errors->has())
+    <div class="alert-box alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+
+    <h4>اضف تعليقك</h4>
+    <form  method="post" action="{{{ URL::to($story->slug) }}}">
+      <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
+
+      <textarea rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
+
+      <input type="submit" id="submit" value="ارسال" class="button small secondary" />
+    </form>
+  @endif
+
 </div>
 
 @stop

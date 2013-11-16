@@ -2,6 +2,8 @@
 
 use Zizaco\Confide\ConfideUser;
 use Zizaco\Entrust\HasRole;
+use Zizaco\Confide\Confide;
+use Zizaco\Confide\ConfideEloquentRepository;
 
 class User extends ConfideUser {
 	use HasRole; // Add this trait to your user model
@@ -43,6 +45,12 @@ class User extends ConfideUser {
             }
         }
         return $roleIds;
+    }
+
+
+    public function currentUser()
+    {
+        return (new Confide(new ConfideEloquentRepository()))->user();
     }
 
 }

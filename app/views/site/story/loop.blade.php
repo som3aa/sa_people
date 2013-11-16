@@ -12,7 +12,7 @@
                 مساهمة <a href="#">{{{ $story->user->username }}}</a>
 			</p>
 			<p>
-				{{ Str::limit($story->content, 200) }}
+				{{ Str::limit($story->content, 100) }}
 			</p>
 			<a class="button small" href="{{{ $story->url() }}}">{{{ Lang::get('site.read_more') }}}</a>
 		</div>

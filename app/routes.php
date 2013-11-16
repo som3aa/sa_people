@@ -20,6 +20,7 @@ Route::model('story', 'Story');
 Route::model('category', 'Category');
 Route::model('user', 'User');
 Route::model('role', 'Role');
+Route::model('comment', 'Comment');
 
 /** ------------------------------------------
  *  Admin Routes
@@ -40,6 +41,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('stories/{story}/delete', 'AdminStoriesController@postDelete')
         ->where('story', '[0-9]+');
     Route::controller('stories', 'AdminStoriesController');
+
+    # Comment Management
+    Route::get('comments/{comment}/edit', 'AdminCommentsController@getEdit')
+        ->where('comment', '[0-9]+');
+    Route::post('comments/{comment}/edit', 'AdminCommentsController@postEdit')
+        ->where('comment', '[0-9]+');
+    Route::get('comments/{comment}/delete', 'AdminCommentsController@getDelete')
+        ->where('comment', '[0-9]+');
+    Route::post('comments/{comment}/delete', 'AdminCommentsController@postDelete')
+        ->where('comment', '[0-9]+');
+    Route::controller('comments', 'AdminCommentsController');
 
     # Categories Management
     Route::get('categories/{category}/show', 'AdminCategoriesController@getShow')
@@ -95,6 +107,7 @@ Route::get('/c/{categorySlug}', 'StoryController@getCategory');
 
 # stories - Second to last set, match slug
 Route::get('{storySlug}', 'StoryController@getView');
+Route::post('{storySlug}', 'StoryController@postView');
 
 # Index Page - Last route, no matches
 Route::get('/','StoryController@getIndex');
