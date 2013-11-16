@@ -16,6 +16,14 @@ class User extends ConfideUser {
 	    return $this->hasMany('Story');
 	}
 
+    /**
+     * profile relationship
+     */
+    public function profile()
+    {
+        return $this->hasOne('Profile');
+    }
+
 	/**
      * Save roles inputted from multiselect
      * @param $inputRoles
@@ -47,7 +55,16 @@ class User extends ConfideUser {
         return $roleIds;
     }
 
-
+    /**
+     * Get user by username
+     * @param $username
+     * @return mixed
+     */
+    public function getUserByUsername( $username )
+    {
+        return $this->where('username', '=', $username)->first();
+    }
+    
     public function currentUser()
     {
         return (new Confide(new ConfideEloquentRepository()))->user();

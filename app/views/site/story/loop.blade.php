@@ -8,8 +8,8 @@
 		<div class="large-8 columns">
 			<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
 			<p class="meta">
-                في <a href="/../c/{{{$story->category->slug}}}">{{{ $story->category->name }}}</a> ,
-                مساهمة <a href="#">{{{ $story->user->username }}}</a>
+                في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
+                مساهمة {{ link_to('/user/profile/'.$story->user->username,$story->user->profile->name) }}
 			</p>
 			<p>
 				{{ Str::limit($story->content, 100) }}

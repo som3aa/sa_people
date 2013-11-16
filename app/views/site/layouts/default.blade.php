@@ -56,7 +56,7 @@
 						 <!-- search bar -->
 						  <div class="row">
 						      <div class="large-10 columns">
-						          	<form method="get" action="/../s/" class="search">
+						          	<form method="get" action="/../search/" class="search">
 						              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
 						              <img src="/../img/search.png" />
 						        	</form>
@@ -77,7 +77,7 @@
 					@if( !Auth::check())
 						<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
 					@else 
-						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->username)   }}</span>
+						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->profile->name)   }}</span>
 					@endif
 					</div>
 					<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">{{{ Lang::get('site.beta') }}}</a>
@@ -125,7 +125,7 @@
 			<!-- Memeber Area -->
 			@if( Auth::check() )
 				<section>
-					<h4>مرحبا , {{ Auth::user()->username }}</h4>
+					<h4>الحساب</h4>
 
 					<ul class="side-nav">
 						<li><a href="/../admin/stories">لوحة التحكم</a></li>
@@ -140,7 +140,7 @@
 				<h4>التصنيفات</h4>
 				<ul class="side-nav">
 				@foreach(Category::all()  as $category)
-					<li>{{ Link_to('/c/'.$category->slug,$category->name.' ('.$category->story()->count().')') }}</li>
+					<li>{{ Link_to('/category/'.$category->slug,$category->name.' ('.$category->story()->count().')') }}</li>
 				@endforeach
 				</ul>
 			</section>

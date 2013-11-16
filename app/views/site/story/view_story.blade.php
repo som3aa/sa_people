@@ -28,8 +28,8 @@
     <div class="large-12 columns">
       <h4 itemprop="name">{{ $story->title }}</h4>
   		<p class="meta">
-  	    في <a href="/../c/{{{$story->category->slug}}}" itemprop="jobTitle">{{{ $story->category->name }}}</a> ,
-  	    مساهمة <a href="#">{{{ $story->user->username }}}</a>
+  	    في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
+        مساهمة {{ link_to('/user/profile/'.$story->user->username,$story->user->profile->name) }}
   		</p>
     </div>
   </div>

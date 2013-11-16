@@ -28,7 +28,7 @@
     <tr>
       <td>@if (!$story->status) {{ '!' }} @endif {{ link_to($story->slug,$story->title) }}</td>
       <td>{{{ $story->category->name }}}</td>
-      <td>{{{ $story->user->username }}}</td>
+      <td>{{{ $story->user->profile->name }}}</td>
       <td>{{{ $story->created_at }}}</td>
       <td>
         <a href="{{{ URL::to('admin/stories/'.$story->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 

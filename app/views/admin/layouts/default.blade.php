@@ -57,7 +57,7 @@
 					@if( !Auth::check())
 						<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
 					@else 
-						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->username)   }}</span>
+						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->profile->name)   }}</span>
 					@endif
 					</div>
 					<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">{{{ Lang::get('site.beta') }}}</a>

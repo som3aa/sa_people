@@ -232,4 +232,25 @@ class UserController extends BaseController {
         return Redirect::to('/');
     }
 
+   /**
+     * Get user's profile
+     * @param $username
+     * @return mixed
+     */
+    public function getProfile($username)
+    {
+        $userModel = new User;
+        $user = $userModel->getUserByUsername($username);
+
+        // Check if the user exists
+        if (is_null($user))
+        {
+            return App::abort(404);
+        }
+
+        // Gram user stories
+        $stories = $user->story()->orderBy('created_at', 'DESC')->paginate(10);
+
+        return View::make('site/user/profile', compact('user','stories'));
+    }
 }

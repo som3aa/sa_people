@@ -27,7 +27,7 @@
     <tr>
       <td>{{{ Str::limit($comment->content, 40, '...') }}}</td>
       <td>{{ link_to($comment->story->slug,$comment->story->title) }}</td>
-      <td>{{{ $comment->user->username }}}</td>
+      <td>{{{ $comment->user->profile->name }}}</td>
       <td>{{{ $comment->created_at }}}</td>
       <td>
         <a href="{{{ URL::to('admin/comments/'.$comment->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 

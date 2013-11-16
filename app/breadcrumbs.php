@@ -20,3 +20,9 @@ Breadcrumbs::register('search', function($breadcrumbs,$keyword) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('نتائج البحث عن ( '.$keyword.' )');
 });
+
+// profile 
+Breadcrumbs::register('profile', function($breadcrumbs,$user) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($user->profile->name, URL::to('user/'.$user->username));
+});

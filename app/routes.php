@@ -100,10 +100,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
  */
 
 # Search stories
-Route::get('/s','StoryController@getSearch');
+Route::get('/search','StoryController@getSearch');
 
 # categories
-Route::get('/c/{categorySlug}', 'StoryController@getCategory');
+Route::get('/category/{categorySlug}', 'StoryController@getCategory');
 
 # stories - Second to last set, match slug
 Route::get('{storySlug}', 'StoryController@getView');

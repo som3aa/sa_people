@@ -27,7 +27,7 @@
   <tbody>
     @foreach ($users as $user)
     <tr>
-      <td>{{{ $user->username }}}</td>
+      <td>{{{ $user->username.' - '.$user->profile->name }}}</td>
       <td>{{{ $user->email }}}</td>
       <td> @foreach($user->roles as $role) {{{ $role->name }}} @endforeach</td>
       <td> @if($user->confirmed) yes @else no @endif </td>
