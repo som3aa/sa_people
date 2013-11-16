@@ -19,6 +19,15 @@ class UserController extends BaseController {
     }
 
     /**
+     * Displays the form for user creation
+     *
+     */
+    public function getCreate()
+    {
+        return View::make('site/user/create');
+    }
+
+    /**
      * Stores new user
      *
      */
@@ -67,16 +76,6 @@ class UserController extends BaseController {
                 ->with( 'error', $error );
         }
     }
-
-    /**
-     * Displays the form for user creation
-     *
-     */
-    public function getCreate()
-    {
-        return View::make('site/user/create');
-    }
-
 
     /**
      * Displays the login form
@@ -251,6 +250,6 @@ class UserController extends BaseController {
         // Gram user stories
         $stories = $user->story()->orderBy('created_at', 'DESC')->paginate(10);
 
-        return View::make('site/user/profile', compact('user','stories'));
+        return View::make('site/account/profile', compact('user','stories'));
     }
 }

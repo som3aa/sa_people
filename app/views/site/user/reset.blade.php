@@ -1,4 +1,4 @@
-@extends('site.layouts.user_full_width')
+@extends('site.layouts.user')
 
 {{-- Web site Title --}}
 @section('title')
@@ -12,7 +12,8 @@
 	<h1>{{{ Lang::get('user.forgot_password') }}}</h1>
 	
 	<form method="POST" action="{{{ (Confide::checkAction('UserController@do_reset_password'))    ?: URL::to('/user/reset') }}}" accept-charset="UTF-8">
-	    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+	    <input type="hidden" name="token" value="{{{ $token }}}">
+	    <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
 
 	    <label for="password">{{{ Lang::get('confide::confide.password') }}}</label>
 	    <input placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">

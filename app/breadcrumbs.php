@@ -21,8 +21,15 @@ Breadcrumbs::register('search', function($breadcrumbs,$keyword) {
     $breadcrumbs->push('نتائج البحث عن ( '.$keyword.' )');
 });
 
-// profile 
+// Profile 
 Breadcrumbs::register('profile', function($breadcrumbs,$user) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push($user->profile->name, URL::to('user/'.$user->username));
 });
+
+// Any Page 
+Breadcrumbs::register('page', function($breadcrumbs,$title) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($title);
+});
+

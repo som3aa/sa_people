@@ -29,7 +29,7 @@ Route::model('comment', 'Comment');
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 {
-	# Blog Management
+	# Stories Management
     Route::get('stories/{story}/show', 'AdminStoriesController@getShow')
         ->where('story', '[0-9]+');
     Route::get('stories/{story}/edit', 'AdminStoriesController@getEdit')
@@ -93,24 +93,23 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('roles', 'AdminRolesController');
 });
 
-
 /** ------------------------------------------
- *  Frontend Site Routes
+ *  Admin Routes
  *  ------------------------------------------
  */
 
-# Search stories
-Route::get('/search','StoryController@getSearch');
+Route::group(array('prefix' => 'account', 'before' => 'auth'), function()
+{
+    # Account Edit Profile
+    # Acconut Stories Managment
+    
+    # Account Setting
+    //:: User Account Routes ::
+    Route::post('user/{user}/edit', 'AccountUserController@postEdit')
+        ->where('user', '[0-9]+');
+    Route::controller('user', 'AccountUserController');
 
-# categories
-Route::get('/category/{categorySlug}', 'StoryController@getCategory');
-
-# stories - Second to last set, match slug
-Route::get('{storySlug}', 'StoryController@getView');
-Route::post('{storySlug}', 'StoryController@postView');
-
-# Index Page - Last route, no matches
-Route::get('/','StoryController@getIndex');
+});
 
 
 /** ------------------------------------------
@@ -130,3 +129,22 @@ Route::post('user/login', 'UserController@postLogin');
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
+
+
+/** ------------------------------------------
+ *  Frontend Site Routes
+ *  ------------------------------------------
+ */
+
+# Search stories
+Route::get('/search','StoryController@getSearch');
+
+# categories
+Route::get('/category/{categorySlug}', 'StoryController@getCategory');
+
+# stories - Second to last set, match slug
+Route::get('{storySlug}', 'StoryController@getView');
+Route::post('{storySlug}', 'StoryController@postView');
+
+# Index Page - Last route, no matches
+Route::get('/','StoryController@getIndex');

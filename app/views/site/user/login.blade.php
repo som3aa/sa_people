@@ -1,4 +1,4 @@
-@extends('site.layouts.user_full_width')
+@extends('site.layouts.user')
 
 {{-- Web site Title --}}
 @section('title')
