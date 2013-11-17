@@ -3,10 +3,10 @@
 class UserController extends BaseController {
 
     /**
-     * User Model
-     * @var User
+     * Story Model
+     * @var Story
      */
-    protected $user;
+    protected $story;
 
     /**
      * Inject the models.
@@ -248,7 +248,7 @@ class UserController extends BaseController {
         }
 
         // Gram user stories
-        $stories = $user->story()->orderBy('created_at', 'DESC')->paginate(10);
+        $stories = $user->story()->whereStatus('1')->paginate(10);
 
         return View::make('site/account/profile', compact('user','stories'));
     }

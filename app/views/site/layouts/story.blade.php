@@ -21,25 +21,13 @@
 
 	<!-- Sidebar -->
 	<aside class="large-3 columns sidebar">
-		<!-- Memeber Area -->
-		@if( Auth::check() )
-			<section>
-				<h4>الحساب</h4>
-
-				<ul class="side-nav">
-					<li><a href="/../admin/stories">لوحة التحكم</a></li>
-					<li><a href="/../account/user">حسابي</a></li>
-			 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
-				</ul>
-			</section>
-		@endif
-
+	
 		<!-- categories list -->
 		<section>
 			<h4>التصنيفات</h4>
 			<ul class="side-nav">
 			@foreach(Category::all()  as $category)
-				<li>{{ Link_to('/category/'.$category->slug,$category->name.' ('.$category->story()->count().')') }}</li>
+				<li>{{ Link_to('/category/'.$category->slug,$category->name.' ('.$category->story()->whereStatus('1')->count().')') }}</li>
 			@endforeach
 			</ul>
 		</section>
@@ -58,7 +46,7 @@
 		<section>
 			<h4>اخر الشخصيات</h4>
 			<ul class="side-nav">
-			@foreach(story::all()->take(5) as $story)
+			@foreach(story::whereStatus('1')->take(5)->get() as $story)
 				<li>{{ Link_to($story->slug,$story->title) }}</li>
 			@endforeach
 			</ul>

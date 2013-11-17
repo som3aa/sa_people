@@ -14,18 +14,24 @@ h1.logo {
 	margin: 10px 0 15px 0 ;
 }
 
-.header .login_bar {
+#login_bar {
 	background: #e07051; 
 	color: #ffffff ;
 	float: left;
-	padding: 6px 20px 10px 20px;
+	padding: 6px 15px 10px 15px;
 	font-size: 0.85em;
 	margin-bottom: 40px;
 }
 
-.header .login_bar a {
+#login_bar a {
 	color: #ffffff;
 	font-weight: bold;
+}
+
+#login_bar img {
+	margin: -3px 2px 0; ;
+	width: 23px;
+	height: 23px;
 }
 
 /* Sub-header */
@@ -191,4 +197,28 @@ textarea {
 	width: 75%;
 	height: 150px;
 	margin-bottom: 10px;
+}
+
+
+
+#login_bar .f-dropdown  {
+	padding: 7px;
+	float: left!important;
+	left: 15px!important;
+	margin-top: 17px;
+}
+
+#login_bar .f-dropdown.right:before {
+	right: 166px;
+}
+
+#login_bar .f-dropdown.right:after {
+	right: 165px;
+}
+
+#login_bar .f-dropdown a {
+	font-weight: normal;
+	display: block;
+	color: #e07051;
+	line-height: inherit;
 }

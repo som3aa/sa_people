@@ -41,7 +41,7 @@ class StoryController extends BaseController {
 	public function getIndex()
 	{
 		// Get all the stories
-		$stories = $this->story->orderBy('created_at', 'DESC')->paginate(10);
+		$stories = $this->story->whereStatus('1')->orderBy('created_at', 'DESC')->paginate(10);
 
 		// Show the page
 		return View::make('site/story/index', compact('stories'));
@@ -53,7 +53,7 @@ class StoryController extends BaseController {
 		$keyword = Input::get('keyword');
 
 		// Get the stories
-		$stories = $this->story->where('title', 'LIKE', '%'.$keyword.'%')->paginate(10);
+		$stories = $this->story->whereStatus('1')->where('title', 'LIKE', '%'.$keyword.'%')->paginate(10);
 
 		// Show the page
 		return View::make('site/story/search', compact('stories','keyword'));
@@ -79,7 +79,7 @@ class StoryController extends BaseController {
 			return App::abort(404);
 		}
 		// Get the stories
-		$stories = $category->story()->paginate(10);
+		$stories = $category->story()->whereStatus('1')->paginate(10);
 
 		// Show the page
 		return View::make('site/story/category', compact('category','stories'));
@@ -95,7 +95,7 @@ class StoryController extends BaseController {
 	public function getView($slug)
 	{
 		// Get this story data
-		$story = $this->story->where('slug', '=', $slug)->first();
+		$story = $this->story->whereStatus('1')->where('slug', '=', $slug)->first();
 
 		// Check if the story exists
 		if (is_null($story))

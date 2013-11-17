@@ -47,14 +47,28 @@
 
 		<!-- Account Tob Bar  -->
 		<div class="large-7 columns">
-			<div class="login_bar">
-			@if( !Auth::check())
-				<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
+			<div id="login_bar">
+			@if( Auth::check())
+				<span>
+					<a href="#" data-dropdown="drop" class="dropdown">
+					{{ Auth::user()->profile->name }}
+					@if (!empty($user->profile->avatar))
+		              {{ HTML::image($user->profile->avatar,$user->profile->name) }}
+		            @else
+		              {{ HTML::image('img/avatar.jpg') }}
+		            @endif </a>
+			        <ul id="drop" data-dropdown-content class="f-dropdown tiny">
+						@if(Entrust::hasRole('admin')) <li><a href="/../admin/stories">لوحة التحكم</a></li> @endif
+			       	 	<li><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+			       	 	<li style="border-bottom:1px solid #cecece;padding-bottom:2"><a href="/../account/stories">مقالاتي</a></li>
+						<li><a href="/../account/user">اعدادات الحساب</a></li>
+				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
+			        </ul>
+				</span>
 			@else 
-				<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->profile->name)   }}</span>
+				<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
 			@endif
 			</div>
-			<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">{{{ Lang::get('site.beta') }}}</a>
 		</div>
 	</div><!-- End Header -->
 
@@ -126,6 +140,7 @@
 	</script>
 
 	{{ HTML::script('assets/foundation/js/foundation.min.js') }}
+	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
 
 	<script>
 		$(document).foundation();
