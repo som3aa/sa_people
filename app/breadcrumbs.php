@@ -7,7 +7,7 @@ Breadcrumbs::register('home', function($breadcrumbs) {
 
 Breadcrumbs::register('category', function($breadcrumbs, $category) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($category->name, URL::to('/c/'.$category->slug));
+    $breadcrumbs->push($category->name, URL::to('/category/'.$category->slug));
 });
 
 Breadcrumbs::register('story', function($breadcrumbs, $story) {

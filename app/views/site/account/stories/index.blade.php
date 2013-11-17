@@ -1,58 +1,42 @@
-@extends('site.layouts.account')
+@extends('admin.layouts.account')
 
 {{-- Web site Title --}}
 @section('title')
-@parent - 
-{{{ 'تعديل حسابي' }}}
+@parent -
+{{{ $title }}}
 @stop
-
-{{-- Breadcrumbs --}}
-@section('breadcrumbs', Breadcrumbs::render('page','تعديل حسابي'))
 
 {{-- Content --}}
 @section('content')
 
-<div class="post">
+<h3>{{{ $title }}}</h3>
 
-{{-- Form for New User --}}
-{{ Form::model($user,array('action' => array('AccountSettingsController@postEdit',$user->id))) }}
-    
-    {{-- Username --}}
-    <p>
-    {{ Form::label('username', 'اسم المستخدم') }}
-    {{ Form::text('username',Input::old('username'),array('class' => $errors->has('username') ? 'error' : '')) }}
-    {{ $errors->first('username', '<small class="error">:message</small>') }}
-    </p>
-
-    {{-- Email --}}
-    <p>
-    {{ Form::label('email', 'الايميل') }}
-    {{ Form::text('email',Input::old('email'),array('class' => $errors->has('email') ? 'error' : '')) }}
-    {{ $errors->first('email', '<small class="error">:message</small>') }}
-    </p>
-
-    {{-- Password --}}
-    <p>
-    {{ Form::label('password', 'كلمة المرور') }}
-    {{ Form::password('password','',array('class' => $errors->has('password') ? 'error' : '')) }}
-    {{ $errors->first('password', '<small class="error">:message</small>') }}
-    </p>
-
-    {{-- Password Confirm --}}
-    <p>
-    {{ Form::label('password_confirmation', 'تاكيد كلمة المرور') }}
-    {{ Form::password('password_confirmation','',array('class' => $errors->has('password_confirmation') ? 'error' : '')) }}
-    {{ $errors->first('password_confirmation', '<small class="error">:message</small>') }}
-    </p>
-
-    {{-- Actions --}}
-    <p>
-    {{ Form::submit('تحديث',array('class'=> 'button small')) }}
-    </p>
-
-{{ Form::close() }}
-{{-- ./ Form for New User --}}
-
-</div>
+<a href="{{{ URL::to('admin/stories/create') }}}" class="button small secondary">اضافة</a>
+  
+<table>
+  <thead>
+    <tr>
+      <th class="large-4">{{{ Lang::get('admin/stories/table.title') }}}</th>
+      <td class="large-2">{{{ Lang::get('admin/stories/table.category') }}}</td>
+      <td class="large-2">{{{ Lang::get('admin/stories/table.user') }}}</td>
+      <td class="large-2">{{{ Lang::get('admin/stories/table.created_at') }}}</td>
+      <td class="large-2">اوامر</td>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($stories as $story)
+    <tr>
+      <td>@if (!$story->status) {{ '!' }} @endif {{ link_to($story->slug,$story->title) }}</td>
+      <td>{{{ $story->category->name }}}</td>
+      <td>{{{ $story->user->profile->name }}}</td>
+      <td>{{{ $story->created_at }}}</td>
+      <td>
+        <a href="{{{ URL::to('admin/stories/'.$story->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 
+        <a href="{{{ URL::to('admin/stories/'.$story->id.'/delete') }}}"  class="button small" style="margin:0">حذف</a>
+      </td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 
 @stop

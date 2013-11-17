@@ -102,6 +102,17 @@ Route::group(array('prefix' => 'account', 'before' => 'auth'), function()
 {
     # Account Edit Profile
     # Acconut Stories Managment
+    Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/edit', 'AccountStoriesController@getEdit')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/edit', 'AccountStoriesController@postEdit')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/delete', 'AccountStoriesController@getDelete')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/delete', 'AccountStoriesController@postDelete')
+        ->where('story', '[0-9]+');
+    Route::controller('stories', 'AccountStoriesController');
     
     # Account Setting
     //:: User Account Routes ::

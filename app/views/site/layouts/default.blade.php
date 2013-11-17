@@ -13,6 +13,7 @@
 	</title>
 	<meta name="keywords" content="شخصيات,سودانية,سودان,سوداني,سودانين,سوداكتف,sudactive,sudan,sudanese" />
 	<meta name="author" content="Sudactive.com" />
+	@yield('meta_data')
 
 	<!-- Mobile Specific Metas
 	================================================== -->
@@ -39,64 +40,58 @@
 	<!-- header
 	================================================== -->
 	<div class="row header">
+		<!-- Sudactive Header -->
 		<div class="large-5 columns">
-
-			<div class="row">
-				<div class="large-12 columns">
-					<h1 class="logo"><a href="/">{{ HTML::image('img/sudactive.png') }}</a></h1>
-				</div>
-			</div>
-
+			<h1 class="logo"><a href="/">{{ HTML::image('img/sudactive.png') }}</a></h1>
 		</div>
+
+		<!-- Account Tob Bar  -->
 		<div class="large-7 columns">
-
-			<div class="row">
-				<div class="large-12 columns">
-
-					<div class="login_bar">
-					@if( !Auth::check())
-						<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
-					@else 
-						<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->profile->name)   }}</span>
-					@endif
-					</div>
-
-				</div>
+			<div class="login_bar">
+			@if( !Auth::check())
+				<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
+			@else 
+				<span>{{{ Lang::get('user.welcome') }}} {{ link_to('/user/profile/'.Auth::user()->username,Auth::user()->profile->name)   }}</span>
+			@endif
 			</div>
-
+			<a href="/../contact" style="float:left;padding:5px 10px;color:#555;">{{{ Lang::get('site.beta') }}}</a>
 		</div>
 	</div><!-- End Header -->
 
-	<!-- Main Page Content and Sidebar 
-	================================================== -->
-	<div class="row">
-		<!-- Main Blog Content -->
-		<div class="large-12 columns" role="content">
-
-			<div class="row">
-			    <div class="large-12 columns post">
-
-			        <!-- admin menu -->
-			        <dl class="sub-nav">
-			        	<dd><h4><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/roles') }}}">الصلاحيات</a></h4></dd>
-			        </dl>
-			        <!-- ./ admin menu -->
-
-			        <!-- Notifications -->
-					@include('notifications') 
-					<!-- ./ notifications -->
-
-					<!-- Content -->
-					@yield('content')
-					<!-- ./ content -->
-				</div>
+	<!-- sub-header
+	================================================= -->
+	<div class="row sub-header">
+		<!-- Slider slagan -->
+		<div class="large-5 columns">
+			<div class="slogan">
+				<h2><a href="/">{{{ Lang::get('site.slogan')}}}</a></h2>
+				 <!-- search bar -->
+				  <div class="row">
+				      <div class="large-10 columns">
+				          	<form method="get" action="/../search/" class="search">
+				              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
+				              <img src="/../img/search.png" />
+				        	</form>
+				      </div>
+				  </div><!-- end search bar -->
 			</div>
-		</div><!-- End Main Content -->
-	</div><!-- End Main Content and Sidebar -->
+		</div>
+
+		<!-- Account Tob Bar  -->
+		<div class="large-7 columns">
+			<div class="slider">
+				<a href="/../pt/1/p/1"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
+				<a href="/../pt/1/p/2"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
+				<a href="/../pt/1/p/2"><img src="/img/p3.png" class="person" style="left:240px; bottom:4px ; z-index:4"></a>
+				<a href="/../pt/1/p/1"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
+				<img src="/img/curve.png" class="curve" />	
+			</div>
+		</div>
+	</div><!-- End Header -->
+
+	<!-- Middel Container
+	================================================= -->
+	@yield('container')
 
 	<!-- footer 
 	================================================== -->
