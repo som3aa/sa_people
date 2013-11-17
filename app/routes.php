@@ -21,6 +21,7 @@ Route::model('category', 'Category');
 Route::model('user', 'User');
 Route::model('role', 'Role');
 Route::model('comment', 'Comment');
+Route::model('profile', 'Profile');
 
 /** ------------------------------------------
  *  Admin Routes
@@ -101,6 +102,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 Route::group(array('prefix' => 'account', 'before' => 'auth'), function()
 {
     # Account Edit Profile
+    //:: User Account Routes ::
+    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
+        ->where('profile', '[0-9]+');
+    Route::controller('profile', 'AccountProfileController');
+
     # Acconut Stories Managment
     Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
         ->where('story', '[0-9]+');

@@ -1,9 +1,34 @@
-@extends('admin.layouts.account')
+@extends('site.layouts.account')
 
 {{-- Web site Title --}}
 @section('title')
-@parent -
+@parent - 
 {{{ $title }}}
+@stop
+
+{{-- Tabes --}}
+@section('tabes')
+  <ul class="tabes">
+    <li class=""><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+    <li class=""><a href="/../account/profile">تعديل بروفايلي</a></li>
+    <li class="active"><a href="/../account/stories">ادارة المقالات</a></li>
+    <li class=""><a href="/../account/user">اعدادات الحساب</a></li>
+  </ul>
+@stop
+
+{{-- Sidebar --}}
+@section('sidebar')
+  <!-- categories list -->
+  <section>
+    {{-- Avatar --}}
+    <div class="th radius">
+      @if (!empty($user->profile->avatar))
+        {{ HTML::image($user->profile->avatar,$user->profile->name) }}
+      @else
+        {{ HTML::image('img/avatar.jpg') }}
+      @endif
+    </div>
+  </section>
 @stop
 
 {{-- Content --}}
@@ -18,7 +43,6 @@
     <tr>
       <th class="large-4">{{{ Lang::get('admin/stories/table.title') }}}</th>
       <td class="large-2">{{{ Lang::get('admin/stories/table.category') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.user') }}}</td>
       <td class="large-2">{{{ Lang::get('admin/stories/table.created_at') }}}</td>
       <td class="large-2">اوامر</td>
     </tr>
@@ -28,7 +52,6 @@
     <tr>
       <td>@if (!$story->status) {{ '!' }} @endif {{ link_to($story->slug,$story->title) }}</td>
       <td>{{{ $story->category->name }}}</td>
-      <td>{{{ $story->user->profile->name }}}</td>
       <td>{{{ $story->created_at }}}</td>
       <td>
         <a href="{{{ URL::to('admin/stories/'.$story->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 

@@ -9,63 +9,44 @@ class AccountProfileController extends AccountController {
      */
     public function getIndex()
     {
-        $user = Auth::user();
+        $profile = Auth::user()->profile;
         // Show the page
-        return View::make('site/account/setting/index', compact('user'));
+        return View::make('site/account/profile/index', compact('profile'));
     }
 
     /**
-     * Edits a user
+     * Edits a profile
      *
      */
-    public function postEdit($user)
+    public function postEdit($profile)
     {
-        // Validate the inputs
-        $validator = Validator::make(Input::all(), $user->getUpdateRules());
+        // Declare the rules for the form validation
+        $rules = array(
+            'name'   => 'required',
+            'location' => 'required',
+        );
 
+        // Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->passes())
         {
-            $oldUser = clone $user;
-            $user->username = Input::get( 'username' );
-            $user->email = Input::get( 'email' );
+            $profile->name = Input::get( 'name' );
+            $profile->location = Input::get( 'location' );
 
-            $password = Input::get( 'password' );
-            $passwordConfirmation = Input::get( 'password_confirmation' );
-
-            if(!empty($password)) {
-                if($password === $passwordConfirmation) {
-                    $user->password = $password;
-                    // The password confirmation will be removed from model
-                    // before saving. This field will be used in Ardent's
-                    // auto validation.
-                    $user->password_confirmation = $passwordConfirmation;
-                } else {
-                    // Redirect to the new user page
-                    return Redirect::to('account/setting')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
-                }
-            } else {
-                unset($user->password);
-                unset($user->password_confirmation);
+            // Was the story created?
+            if($profile->save())
+            {
+                // Redirect to the new story page
+                return Redirect::to('account/profile')->with('success', Lang::get('admin/stories/messages.create.success'));
             }
 
-            $user->prepareRules($oldUser, $user);
-
-            // Save if valid. Password field will be hashed before save
-            $user->amend();
+            // Redirect to the story create page
+            return Redirect::to('account/profile')->with('error', Lang::get('admin/stories/messages.create.error'));
         }
 
-        // Get validation errors (see Ardent package)
-        $error = $user->errors()->all();
-
-        if(empty($error)) {
-            return Redirect::to('account/setting')
-                ->with( 'success', Lang::get('user/user.user_account_updated') );
-        } else {
-            return Redirect::to('account/setting')
-                ->withInput(Input::except('password','password_confirmation'))
-                ->with( 'error', $error );
-        }
+        // Form validation failed
+        return Redirect::to('account/profile')->withInput()->withErrors($validator);
     }
 
 }

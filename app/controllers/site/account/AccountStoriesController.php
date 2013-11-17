@@ -23,10 +23,10 @@ class AccountStoriesController extends AccountController {
         $title = Lang::get('admin/stories/title.story_management');
 
         // Grab all the stories
-        $stories = $this->story->orderBy('created_at', 'DESC')->get();
+        $stories = $this->story->whereUser_id(Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         // Show the page
-        return View::make('admin/stories/index', compact('stories', 'title'));
+        return View::make('site/account/stories/index', compact('stories', 'title'));
     }
 
 	/**
@@ -40,7 +40,7 @@ class AccountStoriesController extends AccountController {
         $title = Lang::get('admin/stories/title.create_a_new_story');
 
         // Show the page
-        return View::make('admin/stories/create', compact('title'));
+        return View::make('site/account/stories/index', compact('title'));
 	}
 
 	/**

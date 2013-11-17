@@ -6,13 +6,33 @@
 {{{ 'تعديل حسابي' }}}
 @stop
 
-{{-- Breadcrumbs --}}
-@section('breadcrumbs', Breadcrumbs::render('page','تعديل حسابي'))
+{{-- Tabes --}}
+@section('tabes')
+  <ul class="tabes">
+    <li class=""><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+    <li class=""><a href="/../account/profile">تعديل بروفايلي</a></li>
+    <li class=""><a href="/../account/stories">ادارة المقالات</a></li>
+    <li class="active"><a href="/../account/user">اعدادات الحساب</a></li>
+  </ul>
+@stop
+
+{{-- Sidebar --}}
+@section('sidebar')
+  <!-- categories list -->
+  <section>
+    {{-- Avatar --}}
+    <div class="th radius">
+      @if (!empty($user->profile->avatar))
+        {{ HTML::image($user->profile->avatar,$user->profile->name) }}
+      @else
+        {{ HTML::image('img/avatar.jpg') }}
+      @endif
+    </div>
+  </section>
+@stop
 
 {{-- Content --}}
 @section('content')
-
-<div class="post">
 
 {{-- Form for New User --}}
 {{ Form::model($user,array('action' => array('AccountUserController@postEdit',$user->id))) }}
@@ -52,7 +72,5 @@
 
 {{ Form::close() }}
 {{-- ./ Form for New User --}}
-
-</div>
 
 @stop
