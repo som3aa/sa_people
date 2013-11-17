@@ -37,10 +37,9 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) {
         Session::put('loginRedirect', Request::url());
-        //return Redirect::to('user/login/');
+        return Redirect::to('user/login/');
     }
 });
-
 
 Route::filter('auth.basic', function()
 {
@@ -80,4 +79,39 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Role Permissions
+|--------------------------------------------------------------------------
+|
+| Access filters based on roles.
+|
+*/
+
+// Check for role on all admin routes
+Entrust::routeNeedsRole( 'admin*', array('admin'), Redirect::to('/') );
+
+// Check for permissions on admin actions
+Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/comments*', 'manage_comments', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );
+
+
+/*
+|--------------------------------------------------------------------------
+| account Access
+|--------------------------------------------------------------------------
+|
+| test
+|
+*/
+
+Route::filter('account-auth', function()
+{
+    list($user,$redirect) = User::checkAuthAndRedirect('user');
+    if($redirect){return $redirect;}
 });

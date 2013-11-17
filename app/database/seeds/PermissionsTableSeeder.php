@@ -9,8 +9,8 @@ class PermissionsTableSeeder extends Seeder {
 
         $permissions = array(
             array(
-                'name'      => 'manage_blogs',
-                'display_name'      => 'manage blogs'
+                'name'      => 'manage_stories',
+                'display_name'      => 'manage stories'
             ),
             array(
                 'name'      => 'manage_posts',

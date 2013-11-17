@@ -129,6 +129,7 @@
 
 					<ul class="side-nav">
 						<li><a href="/../admin/stories">لوحة التحكم</a></li>
+						<li><a href="/../account/user">حسابي</a></li>
 				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
 					</ul>
 				</section>
