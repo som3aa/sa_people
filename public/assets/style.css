@@ -222,3 +222,42 @@ textarea {
 	color: #e07051;
 	line-height: inherit;
 }
+
+.account {
+	border-right: 1px solid #ddd;
+}
+
+.tabes {
+	float: right;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+}
+
+.tabes > li {
+	position: relative;
+	top: 1px;
+	cursor: pointer;
+	float: right;
+	list-style: none;
+	display: inline-block;
+}
+
+.tabes > li > a {
+	padding: 0 15px;
+	margin-right: 2px;
+	line-height: 36px;
+	border: 1px solid transparent;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	color: #333;
+	cursor: pointer;
+	display: block;
+}
+
+.tabes > li.active > a {
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: transparent;
+}

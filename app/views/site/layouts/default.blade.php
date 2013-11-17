@@ -60,8 +60,9 @@
 			        <ul id="drop" data-dropdown-content class="f-dropdown tiny">
 						@if(Entrust::hasRole('admin')) <li><a href="/../admin/stories">لوحة التحكم</a></li> @endif
 			       	 	<li><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
-			       	 	<li style="border-bottom:1px solid #cecece;padding-bottom:2"><a href="/../account/stories">مقالاتي</a></li>
-						<li><a href="/../account/user">اعدادات الحساب</a></li>
+			       	 	<li><a href="/../account/profile">تعديل بروفايلي</a></li>
+			       	 	<li><a href="/../account/stories">ادارة المقالات</a></li>
+						<li style="border-bottom:1px solid #cecece;padding-bottom:2"><a href="/../account/user">اعدادات الحساب</a></li>
 				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
 			        </ul>
 				</span>

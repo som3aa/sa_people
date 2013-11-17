@@ -82,12 +82,18 @@
 			    <div class="large-12 columns post">
 
 			        <!-- admin menu -->
-			        <dl class="sub-nav">
-			        	<dd><h4><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></h4></dd>
-			        	<dd><h4><a href="{{{ URL::to('admin/roles') }}}">الصلاحيات</a></h4></dd>
+			        <dl class="tabes">
+
+			        	<li @yield('s-active')
+			        	><a href="{{{ URL::to('admin/stories') }}}">الشخصيات</a></li>
+			        	<li @yield('c-active')
+			        	><a href="{{{ URL::to('admin/categories') }}}">التصنيفات</a></li>
+			        	<li @yield('co-active')
+			        	><a href="{{{ URL::to('admin/comments') }}}">التعليقات</a></li>
+			        	<li @yield('u-active')
+			        	><a href="{{{ URL::to('admin/users') }}}">الاعضاء</a></li>
+			        	<li @yield('r-active')
+			        	><a href="{{{ URL::to('admin/roles') }}}">الصلاحيات</a></li>
 			        </dl>
 			        <!-- ./ admin menu -->
 

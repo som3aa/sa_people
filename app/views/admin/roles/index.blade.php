@@ -6,6 +6,8 @@
 {{{ $title }}}
 @stop
 
+@section('r-active') class="active" @stop
+
 {{-- Content --}}
 @section('content')
 

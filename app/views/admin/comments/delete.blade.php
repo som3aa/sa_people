@@ -6,6 +6,8 @@
 {{{ $title }}}
 @stop
 
+@section('co-active') class="active" @stop
+
 {{-- Content --}}
 @section('content')
 

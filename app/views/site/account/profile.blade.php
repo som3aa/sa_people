@@ -17,50 +17,71 @@
   <meta property="og:url" content="{{{ URL::to('u/'.$user->username) }}}" />
 @stop
 
-{{-- Breadcrumbs --}}
-@section('breadcrumbs', Breadcrumbs::render('profile',$user))
+{{-- Tabes --}}
+@section('tabes')
+  <ul class="tabes">
+    <li class="active"><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+    <li class=""><a href="/../account/profile">تعديل بروفايلي</a></li>
+    <li class=""><a href="/../account/stories">ادارة المقالات</a></li>
+    <li class=""><a href="/../account/user">اعدادات الحساب</a></li>
+  </ul>
+@stop
+
+{{-- Sidebar --}}
+@section('sidebar')
+  <!-- categories list -->
+  <section>
+    {{-- Avatar --}}
+    <div class="th radius">
+      @if (!empty($user->profile->avatar))
+        {{ HTML::image($user->profile->avatar,$user->profile->name) }}
+      @else
+        {{ HTML::image('img/avatar.jpg') }}
+      @endif
+    </div>
+  </section>
+@stop
 
 {{-- Content --}}
 @section('content')
 
     {{-- Profile Sections --}}
-    <div class="post">
-    <div class="row">
-        <div class="large-4 columns">
-          {{-- Avatar --}}
-          <div class="th radius">
-            @if (!empty($user->profile->avatar))
-              {{ HTML::image($user->profile->avatar,$user->profile->name) }}
-            @else
-              {{ HTML::image('img/avatar.jpg') }}
-            @endif
-          </div>
-        </div>
+    <p>
+      <h3>{{ $user->profile->name}}</h3>
+      <h6 style="margin-top:-15px;"> {{ $user->username }}@</h6>
+    </p>
+    <p>{{ $user->profile->bio }}</p>
 
-        {{-- Profile Details --}}
-        <div class="large-8 columns">
-          <p>
-            <h3>{{ $user->profile->name}}</h3>
-            <h6 style="margin-top:-15px;"> {{ $user->username }}@</h6>
-          </p>
-          <p>{{ $user->profile->bio }}</p>
-        </div>
-    </div>
-    </div>
+    <hr />
 
     {{-- Stories Sections --}}
-    <h4>من كتاباته :</h4>
+    <h5>من كتاباته :</h5>
     @if(count($stories) > 0)
-    {{--include the stories loop --}}
-    @include('site.story.loop')
+      @foreach ($stories as $story)
+      <!-- Story Content -->
+      <div class="row">
+        <div class="large-2 columns">
+          <a href="{{{ $story->url() }}}" class="th radius">{{ HTML::image($story->image,$story->title) }}</a>
+        </div>
+        <div class="large-10 columns">
+          <strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong>
+          <p class="meta">
+              في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
+              مساهمة {{ link_to('/user/profile/'.$story->user->username,$story->user->profile->name) }}
+          </p>
+        </div>
+      </div>
+      <!-- ./ Story Content -->
+      <br/>
+      @endforeach
+
+      {{ $stories->links() }}
 
     @else
     <!-- Post Content -->
-    <div class="post">
-        <div class="row">
-            <div class="large-12 columns">
-                <p>لا توجد شخصيات مضافة حاليا.</p>
-            </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <p>لا توجد شخصيات مضافة حاليا.</p>
         </div>
     </div>
 
