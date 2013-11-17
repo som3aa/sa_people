@@ -52,8 +52,8 @@
 				<span>
 					<a href="#" data-dropdown="drop" class="dropdown">
 					{{ Auth::user()->profile->name }}
-					@if (!empty($user->profile->avatar))
-		              {{ HTML::image($user->profile->avatar,$user->profile->name) }}
+					@if (!empty(Auth::user()->profile->avatar))
+		              {{ HTML::image(Auth::user()->profile->avatar,Auth::user()->profile->name) }}
 		            @else
 		              {{ HTML::image('img/avatar.jpg') }}
 		            @endif </a>

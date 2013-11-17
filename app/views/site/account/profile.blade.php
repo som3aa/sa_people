@@ -21,9 +21,11 @@
 @section('tabes')
   <ul class="tabes">
     <li class="active"><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+    @if(Auth::user()->username == $user->username)
     <li class=""><a href="/../account/profile">تعديل بروفايلي</a></li>
     <li class=""><a href="/../account/stories">ادارة المقالات</a></li>
     <li class=""><a href="/../account/user">اعدادات الحساب</a></li>
+    @endif
   </ul>
 @stop
 
