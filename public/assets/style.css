@@ -261,3 +261,15 @@ textarea {
 	border: 1px solid #ddd;
 	border-bottom-color: transparent;
 }
+
+
+
+
+
+
+
+.birthday {
+	float: right;
+	width: 100px;
+	margin-left: 5px;
+}

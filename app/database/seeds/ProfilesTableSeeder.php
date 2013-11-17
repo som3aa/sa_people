@@ -13,7 +13,7 @@ class ProfilesTableSeeder extends Seeder {
                 'user_id'        => 1,
                 'name'      => 'محمد عادل',
                 'location'       => 'الخرطوم - السودان',
-                'birthday'    => new DateTime,
+                'birthday'    => new DateTime('1979-03-14'),
                 'avatar'    => '',
                 'bio'    => $this->bio,
                 'created_at' => new DateTime,

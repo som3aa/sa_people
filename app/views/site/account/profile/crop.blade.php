@@ -5,7 +5,7 @@
 @parent - 
 {{{ 'تعديل البروفايل' }}}
 @stop
-{{ HTML::script('http://code.jquery.com/jquery-1.10.1.min.js') }}
+
 {{-- Tabes --}}
 @section('tabes')
   <ul class="tabes">
@@ -35,6 +35,52 @@
 {{-- Content --}}
 @section('content')  
 
+	<style type="text/css">
+
+	/* Apply these styles only when #preview-pane has
+	   been placed within the Jcrop widget */
+	.jcrop-holder #preview-pane {
+	  display: block;
+	  position: absolute;
+	  z-index: 2000;
+	  top: 10px;
+	  right: -240px;
+	}
+
+	/* The Javascript code will set the aspect ratio of the crop
+	   area based on the size of the thumbnail preview,
+	   specified here */
+	#preview-pane .preview-container {
+	  width: 200px;
+	  height: 200px;
+	  overflow: hidden;
+	  direction: ltr !important;
+	}
+
+	div.jcrop-holder div > div {
+	  direction: ltr !important;
+	}
+
+	</style>
+
+	<h4>تعديل صورة البروفايل :</h4>
+
+	<br />
+
+	<img src="/../{{ $user->profile->avatar}}" id="target" alt="[Jcrop Example]" />
+
+	<div id="preview-pane">
+	  <div class="preview-container th radius">
+	    <img src="/../{{ $user->profile->avatar}}" class="jcrop-preview" alt="Preview" />
+	  </div>
+	</div>
+
+@stop
+
+@section('javascripts')
+
+	{{ HTML::script('assets/foundation/js/vendor/jquery.js') }}
+	
 	{{ HTML::script('assets/jcrop/js/jquery.Jcrop.min.js') }}
 	{{ HTML::style('assets/jcrop/css/jquery.Jcrop.min.css') }}
 
@@ -98,45 +144,5 @@
 
 
 	</script>
-
-	<style type="text/css">
-
-	/* Apply these styles only when #preview-pane has
-	   been placed within the Jcrop widget */
-	.jcrop-holder #preview-pane {
-	  display: block;
-	  position: absolute;
-	  z-index: 2000;
-	  top: 10px;
-	  right: -240px;
-	}
-
-	/* The Javascript code will set the aspect ratio of the crop
-	   area based on the size of the thumbnail preview,
-	   specified here */
-	#preview-pane .preview-container {
-	  width: 200px;
-	  height: 200px;
-	  overflow: hidden;
-	  direction: ltr !important;
-	}
-
-	div.jcrop-holder div > div {
-	  direction: ltr !important;
-	}
-
-	</style>
-
-	<h4>تعديل صورة البروفايل :</h4>
-
-	<br />
-
-	<img src="/../{{ $user->profile->avatar}}" id="target" alt="[Jcrop Example]" />
-
-	<div id="preview-pane">
-	  <div class="preview-container th radius">
-	    <img src="/../{{ $user->profile->avatar}}" class="jcrop-preview" alt="Preview" />
-	  </div>
-	</div>
 
 @stop

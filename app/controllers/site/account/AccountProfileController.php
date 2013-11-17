@@ -23,7 +23,7 @@ class AccountProfileController extends AccountController {
         // Declare the rules for the form validation
         $rules = array(
             'name'   => 'required',
-            'location' => 'required',
+            'location' => 'required'
         );
 
         // Validate the inputs
@@ -33,6 +33,8 @@ class AccountProfileController extends AccountController {
         {
             $profile->name = Input::get( 'name' );
             $profile->location = Input::get( 'location' );
+            $profile->bio = Input::get( 'bio' );
+            $profile->birthday = new DateTime(Input::get('day').'-'.Input::get('month').'-'.Input::get('year'));
 
             // Was the story created?
             if($profile->save())

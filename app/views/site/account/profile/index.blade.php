@@ -52,6 +52,23 @@
     {{ $errors->first('location', '<small class="error">:message</small>') }}
     </p>
 
+    {{-- BirthDay --}}
+    <p>
+    {{ Form::label('BirthDay', 'تاريخ الميلاد') }}
+      <?php $date = new DateTime($profile->birthday); ?>
+     {{ Form::selectRange('day', 1, 31,$date->format('d'),array('class'=>'birthday')) }}
+     {{ Form::selectMonth('month',$date->format('m'),array('class'=>'birthday')); }}
+     {{ Form::selectRange('year', 2014,1920,$date->format('Y'),array('class'=>'birthday')) }}
+    </p>
+
+    <br/>
+    {{-- Bio --}}
+    <p>
+    {{ Form::label('bio', 'عن نفسك') }}
+    {{ Form::textarea('bio',Input::old('bio'),array('class' => $errors->has('bio') ? 'error' : '')) }}
+    {{ $errors->first('bio', '<small class="error">:message</small>') }}
+    </p>
+
     {{-- Actions --}}
     <p>
     {{ Form::submit('تحديث',array('class'=> 'button small')) }}
