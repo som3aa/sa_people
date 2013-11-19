@@ -52,6 +52,18 @@
     {{ $errors->first('location', '<small class="error">:message</small>') }}
     </p>
 
+    {{-- Gender --}}
+    <p>
+    {{ Form::label('gender_label', 'الجنس') }}
+    <span><input style="display:inline" type="radio" name="gender" value="1" id="male" 
+          @if($profile->gender == 1) checked @endif>
+          <label style="display:inline" for="male" >ذكر</label></span>
+     <span><input style="display:inline; margin-right:10px;" type="radio" name="gender" value="2" id="female"
+          @if($profile->gender == 2) checked @endif>
+          <label style="display:inline" for="female">انثى</label></span>
+    {{ $errors->first('gender', '<small class="error">:message</small>') }}
+    </p>
+
     {{-- BirthDay --}}
     <p>
     {{ Form::label('BirthDay', 'تاريخ الميلاد') }}

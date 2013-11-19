@@ -16,6 +16,7 @@ class ProfilesTableSeeder extends Seeder {
                 'birthday'    => new DateTime('1979-03-14'),
                 'avatar'    => '',
                 'bio'    => $this->bio,
+                'gender'    => 1,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ),
@@ -26,6 +27,7 @@ class ProfilesTableSeeder extends Seeder {
                 'birthday'    => new DateTime,
                 'avatar'    => 'http://placehold.it/400x400',
                 'bio'    => $this->bio,
+                'gender'    => 2,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
             ))

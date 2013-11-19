@@ -35,6 +35,7 @@ class AccountProfileController extends AccountController {
             $profile->location = Input::get( 'location' );
             $profile->bio = Input::get( 'bio' );
             $profile->birthday = new DateTime(Input::get('day').'-'.Input::get('month').'-'.Input::get('year'));
+            $profile->gender = Input::get( 'gender' );
 
             // Was the story created?
             if($profile->save())
