@@ -34,19 +34,37 @@
 {{-- Content --}}
 @section('content')
 
-  {{-- Delete Blog Form --}}
-  <form method="post" action="" autocomplete="off">
-      <!-- CSRF Token -->
-      <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-      <input type="hidden" name="id" value="{{ $story->id }}" />
-      <!-- ./ csrf token -->
-      <p>هل انت متاكد من حذف مقال : {{{ $story->title }}}</p>
-      <!-- Form Actions -->
-      <p>
-          {{ Form::submit('حذف',array('class'=> 'button small')) }}
-          <a href="{{{ URL::to('admin/stories') }}}" class="button small secondary">الغاء</a>
+<a href="{{{ URL::to('account/stories/') }}}" class="button small secondary">رجوع</a>
+
+  <!-- Story header -->
+  <div class="row">
+    <div class="large-12 columns">
+      <h4 itemprop="name">{{ $story->title }}</h4>
+      <p class="meta">
+        في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
+        مساهمة {{ link_to('/user/profile/'.$story->user->username,$story->user->profile->name) }}
       </p>
-      <!-- ./ form actions -->
-  </form>
+    </div>
+  </div>
+  <!-- ./ Story header -->
+
+  <!-- Story image -->
+  <div class="row">
+    <div class="large-8 small-centered columns">
+      <div class="th radius" style="margin-bottom:30px;">
+        {{ HTML::image($story->image,$story->title,array('itemprop'=>'image')) }}
+      </div>
+    </div>
+  </div>
+  <!-- ./ Story image -->
+
+  <!-- Story content -->
+  <div class="row">
+    <div class="large-12 columns">
+      <p>{{ $story->content }}</p>
+    </div>
+  </div>
+  <!-- ./ Story content -->
+  
 
 @stop

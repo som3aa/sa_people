@@ -89,7 +89,7 @@ class Story extends Eloquent {
 	/**
 	 * Upload story image
 	 *
-	 * @p
+	 * @return string
 	 */
 	public function upload($image=null) {
 		//upload data
@@ -108,13 +108,4 @@ class Story extends Eloquent {
             return Redirect::to('admin/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
 	    }
 	}
-
-	/**
-     * Get Published stories
-     * @return opject
-     */
-    public function getPublished()
-    {
-        return $this->where('status', '=',1);
-    }
 }
