@@ -34,77 +34,68 @@ class UserController extends BaseController {
      */
     public function postIndex()
     {
-        $this->user->username = Input::get( 'username' );
-        $this->user->email = Input::get( 'email' );
+        
+        // Declare the rules for the form validation
+        $rules = array(
+            'username' => 'required|alpha_dash|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|between:4,11|confirmed',
+            'password_confirmation' => 'between:4,11',
+            'name'   => 'required',
+            'location' => 'required',
+            'gender'  => 'required'
+        );
 
-        $password = Input::get( 'password' );
-        $passwordConfirmation = Input::get( 'password_confirmation' );
+        // Validate the inputs
+        $validator = Validator::make(Input::all(), $rules);
 
-        if(!empty($password)) {
-            if($password === $passwordConfirmation) {
-                $this->user->password = $password;
-                // The password confirmation will be removed from model
-                // before saving. This field will be used in Ardent's
-                // auto validation.
-                $this->user->password_confirmation = $passwordConfirmation;
+        if ($validator->passes())
+        {   
+            $this->user->username = Input::get( 'username' );
+            $this->user->email = Input::get( 'email' );
+
+            $password = Input::get( 'password' );
+            $passwordConfirmation = Input::get( 'password_confirmation' );
+
+            if(!empty($password)) {
+                if($password === $passwordConfirmation) {
+                    $this->user->password = $password;
+                    // The password confirmation will be removed from model
+                    // before saving. This field will be used in Ardent's
+                    // auto validation.
+                    $this->user->password_confirmation = $passwordConfirmation;
+                } else {
+                    // Redirect to the new user page
+                    return Redirect::to('user/create')
+                        ->withInput(Input::except('password','password_confirmation'))
+                        ->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+                }
             } else {
-                // Redirect to the new user page
-                return Redirect::to('user/create')
-                    ->withInput(Input::except('password','password_confirmation'))
-                    ->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+                unset($this->user->password);
+                unset($this->user->password_confirmation);
             }
-        } else {
-            unset($this->user->password);
-            unset($this->user->password_confirmation);
-        }
 
-        // Save if valid. Password field will be hashed before save
-        $this->user->save();
+            // Save if valid. Password field will be hashed before save
+            $this->user->save();
 
-        if ( $this->user->id )
-        {
-                        // Declare the rules for the form validation
-                        $rules = array(
-                            'name'   => 'required',
-                            'location' => 'required'
-                        );
+            $this->profile->name = Input::get( 'name' );
+            $this->profile->location = Input::get( 'location' );
+            $this->profile->bio = Input::get( 'bio' );
+            $this->profile->birthday = new DateTime(Input::get('day').'-'.Input::get('month').'-'.Input::get('year'));
+            $this->profile->gender = Input::get( 'gender' );
+            $this->profile->user_id = $this->user->id ;
 
-                        // Validate the inputs
-                        $validator = Validator::make(Input::all(), $rules);
-
-                        if ($validator->passes())
-                        {   
-                            $this->profile->name = Input::get( 'name' );
-                            $this->profile->location = Input::get( 'location' );
-                            $this->profile->bio = Input::get( 'bio' );
-                            $this->profile->birthday = new DateTime(Input::get('day').'-'.Input::get('month').'-'.Input::get('year'));
-                            $this->profile->gender = Input::get( 'gender' );
-                            $this->profile->user_id = $this->user->id ;
-
-                            // Was the story created?
-                            $this->profile->save();
-                        }
-
-                        if ($validator->failed()) {$this->user->delete();}
-
-
-                        // Form validation failed
-                        return Redirect::to('user/create')->withInput()->withErrors($validator);
-
+            // Was the story created?
+            $this->profile->save();
 
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')
                 ->with( 'success', Lang::get('user.user_account_created') );
         }
-        else
-        {
-            // Get validation errors (see Ardent package)
-            $error = $this->user->errors()->all();
 
-            return Redirect::to('user/create')
-                ->withInput(Input::except('password'))
-                ->with( 'error', $error );
-        }
+        // Form validation failed
+        return Redirect::to('user/create')->withInput(Input::except('password'))->withErrors($validator);
+
     }
 
     /**

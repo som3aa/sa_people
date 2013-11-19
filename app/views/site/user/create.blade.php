@@ -14,31 +14,39 @@
 	<form method="POST" action="{{{ (Confide::checkAction('UserController@store')) ?: URL::to('user')  }}}" accept-charset="UTF-8">
 	    <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
 
+	        {{-- username --}}
 	        <label for="username">{{{ Lang::get('confide::confide.username') }}}<small> ( بالنجليزي فقط )</small></label>
-	        <input placeholder="{{{ Lang::get('confide::confide.username') }}}" type="text" name="username" id="username" value="{{{ Input::old('username') }}}">
-
+	        <input placeholder="{{{ Lang::get('confide::confide.username') }}}" type="text" name="username" id="username" value="{{{ Input::old('username') }}}"
+	       	class="{{{ $errors->has('username') ? 'error' : '' }}}">{{ $errors->first('username', '<small class="error">:message</small>') }}
+	        
+	       	{{-- email --}}
 	        <label for="email">{{{ Lang::get('confide::confide.e_mail') }}} <small> ( {{ Lang::get('confide::confide.signup.confirmation_required') }} )</small></label>
-	        <input placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
+	        <input placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}"
+	        class="{{{ $errors->has('email') ? 'error' : '' }}}">{{ $errors->first('email', '<small class="error">:message</small>') }}
 
+	        {{-- password --}}
 	        <label for="password">{{{ Lang::get('confide::confide.password') }}}</label>
-	        <input placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
+	        <input placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password"
+	        class="{{{ $errors->has('password') ? 'error' : '' }}}">{{ $errors->first('password', '<small class="error">:message</small>') }}
 
+	        {{-- password confirmation --}}
 	        <label for="password_confirmation">{{{ Lang::get('confide::confide.password_confirmation') }}}</label>
-	        <input placeholder="{{{ Lang::get('confide::confide.password_confirmation') }}}" type="password" name="password_confirmation" id="password_confirmation">
+	        <input placeholder="{{{ Lang::get('confide::confide.password_confirmation') }}}" type="password" name="password_confirmation" id="password_confirmation"
+	        class="{{{ $errors->has('password_confirmation') ? 'error' : '' }}}">{{ $errors->first('password_confirmation', '<small class="error">:message</small>') }}
 
 	        <br/><hr /><br/>
 
 	        <h4>معلومات البروفايل</h4>
 
 		    {{-- name --}}
-		    {{ Form::label('name', 'الاسم') }}
-		    {{ Form::text('name',Input::old('name'),array('class' => $errors->has('name') ? 'error' : '')) }}
-		    {{ $errors->first('name', '<small class="error">:message</small>') }}
+	        <label for="name">الاسم<small> ( بالنجليزي فقط )</small></label>
+	        <input placeholder="الاسم" type="text" name="name" id="name" value="{{{ Input::old('name') }}}"
+	       	class="{{{ $errors->has('name') ? 'error' : '' }}}">{{ $errors->first('name', '<small class="error">:message</small>') }}
 
 		    {{-- location --}}
-		    {{ Form::label('location', 'المكان') }}
-		    {{ Form::text('location',Input::old('location'),array('class' => $errors->has('location') ? 'error' : '')) }}
-		    {{ $errors->first('location', '<small class="error">:message</small>') }}
+	        <label for="location">مكان الاقامة<small> ( بالنجليزي فقط )</small></label>
+	        <input placeholder="مكان الاقامة" type="text" name="location" id="location" value="{{{ Input::old('location') }}}"
+	       	class="{{{ $errors->has('location') ? 'error' : '' }}}">{{ $errors->first('location', '<small class="error">:message</small>') }}
 
 		    {{-- Gender --}}
 		    {{ Form::label('gender_label', 'الجنس') }}
