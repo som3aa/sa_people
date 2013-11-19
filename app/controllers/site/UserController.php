@@ -3,19 +3,20 @@
 class UserController extends BaseController {
 
     /**
-     * Story Model
+     * profile Model
      * @var Story
      */
-    protected $story;
+    protected $profile;
 
     /**
      * Inject the models.
      * @param User $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Profile $profile)
     {
         parent::__construct();
         $this->user = $user;
+        $this->profile = $profile;
     }
 
     /**
@@ -62,6 +63,35 @@ class UserController extends BaseController {
 
         if ( $this->user->id )
         {
+                        // Declare the rules for the form validation
+                        $rules = array(
+                            'name'   => 'required',
+                            'location' => 'required'
+                        );
+
+                        // Validate the inputs
+                        $validator = Validator::make(Input::all(), $rules);
+
+                        if ($validator->passes())
+                        {   
+                            $this->profile->name = Input::get( 'name' );
+                            $this->profile->location = Input::get( 'location' );
+                            $this->profile->bio = Input::get( 'bio' );
+                            $this->profile->birthday = new DateTime(Input::get('day').'-'.Input::get('month').'-'.Input::get('year'));
+                            $this->profile->gender = Input::get( 'gender' );
+                            $this->profile->user_id = $this->user->id ;
+
+                            // Was the story created?
+                            $this->profile->save();
+                        }
+
+                        if ($validator->failed()) {$this->user->delete();}
+
+
+                        // Form validation failed
+                        return Redirect::to('user/create')->withInput()->withErrors($validator);
+
+
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')
                 ->with( 'success', Lang::get('user.user_account_created') );
