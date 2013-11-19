@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 class String {
 
 	/**
@@ -51,5 +53,14 @@ class String {
 
 	    return $dst;
 	}
+
+	public static function date(Carbon $date)
+    {
+        if($date->diffInDays(Carbon::now()) < 7) {
+            return $date->diffForHumans();
+        } else {
+            return $date->toFormattedDateString();
+        }
+    }
 
 }

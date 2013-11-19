@@ -4,6 +4,7 @@ use Zizaco\Confide\ConfideUser;
 use Zizaco\Entrust\HasRole;
 use Zizaco\Confide\Confide;
 use Zizaco\Confide\ConfideEloquentRepository;
+use Carbon\Carbon;
 
 class User extends ConfideUser {
 	use HasRole; // Add this trait to your user model
@@ -22,6 +23,16 @@ class User extends ConfideUser {
     public function profile()
     {
         return $this->hasOne('Profile');
+    }
+
+    /**
+     * Get the date the user was created.
+     *
+     * @return string
+     */
+    public function joined()
+    {
+        return String::date(Carbon::createFromFormat('Y-n-j G:i:s', $this->created_at));
     }
 
 	/**

@@ -273,3 +273,21 @@ textarea {
 	width: 100px;
 	margin-left: 5px;
 }
+
+
+.top_meta {
+	font-size: 12px;
+	color: #a3a3a3;
+	margin-top: 7px ;
+	direction: ltr;
+}
+
+.top_meta .date , .top_meta .comments {
+	display: block;
+	margin: 3px 0;
+}
+
+.top_meta .comments a {
+	color: #a3a3a3;
+	text-decoration: underline;
+}

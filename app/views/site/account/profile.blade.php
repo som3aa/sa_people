@@ -42,6 +42,7 @@
       @endif
     </div>
   </section>
+  
 @stop
 
 {{-- Content --}}
