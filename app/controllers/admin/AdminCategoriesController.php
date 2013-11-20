@@ -1,6 +1,6 @@
 <?php
 
-class AdminCategoriesController extends AdminController {
+class AdminCategoriesController extends BaseController {
 
 
     /**

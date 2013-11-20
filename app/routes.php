@@ -23,6 +23,42 @@ Route::model('role', 'Role');
 Route::model('comment', 'Comment');
 Route::model('profile', 'Profile');
 
+
+/** ------------------------------------------
+ *  Frontend Account Routes
+ *  ------------------------------------------
+ */
+
+Route::group(array('prefix' => 'account', 'before' => 'account-auth'), function()
+{
+    # Account Edit Profile
+    //:: User Account Routes ::
+    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
+        ->where('profile', '[0-9]+');
+    Route::controller('profile', 'AccountProfileController');
+
+    # Acconut Stories Managment
+    Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/edit', 'AccountStoriesController@getEdit')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/edit', 'AccountStoriesController@postEdit')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/delete', 'AccountStoriesController@getDelete')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/delete', 'AccountStoriesController@postDelete')
+        ->where('story', '[0-9]+');
+    Route::controller('stories', 'AccountStoriesController');
+    
+    # Account Setting
+    //:: User Account Routes ::
+    Route::post('user/{user}/edit', 'AccountUserController@postEdit')
+        ->where('user', '[0-9]+');
+    Route::controller('user', 'AccountUserController');
+
+});
+
+
 /** ------------------------------------------
  *  Admin Routes
  *  ------------------------------------------
@@ -94,40 +130,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('roles', 'AdminRolesController');
 });
 
-/** ------------------------------------------
- *  Admin Routes
- *  ------------------------------------------
- */
-
-Route::group(array('prefix' => 'account', 'before' => 'auth'), function()
-{
-    # Account Edit Profile
-    //:: User Account Routes ::
-    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
-        ->where('profile', '[0-9]+');
-    Route::controller('profile', 'AccountProfileController');
-
-    # Acconut Stories Managment
-    Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
-        ->where('story', '[0-9]+');
-    Route::get('stories/{story}/edit', 'AccountStoriesController@getEdit')
-        ->where('story', '[0-9]+');
-    Route::post('stories/{story}/edit', 'AccountStoriesController@postEdit')
-        ->where('story', '[0-9]+');
-    Route::get('stories/{story}/delete', 'AccountStoriesController@getDelete')
-        ->where('story', '[0-9]+');
-    Route::post('stories/{story}/delete', 'AccountStoriesController@postDelete')
-        ->where('story', '[0-9]+');
-    Route::controller('stories', 'AccountStoriesController');
-    
-    # Account Setting
-    //:: User Account Routes ::
-    Route::post('user/{user}/edit', 'AccountUserController@postEdit')
-        ->where('user', '[0-9]+');
-    Route::controller('user', 'AccountUserController');
-
-});
-
 
 /** ------------------------------------------
  *  Frontend User Routes
@@ -149,9 +151,12 @@ Route::controller('user', 'UserController');
 
 
 /** ------------------------------------------
- *  Frontend Site Routes
+ *  Frontend Story Routes
  *  ------------------------------------------
  */
+
+# Index Page
+Route::get('/','StoryController@getIndex');
 
 # Search stories
 Route::get('/search','StoryController@getSearch');
@@ -159,9 +164,6 @@ Route::get('/search','StoryController@getSearch');
 # categories
 Route::get('/category/{categorySlug}', 'StoryController@getCategory');
 
-# stories - Second to last set, match slug
+# stories
 Route::get('{storySlug}', 'StoryController@getView');
 Route::post('{storySlug}', 'StoryController@postView');
-
-# Index Page - Last route, no matches
-Route::get('/','StoryController@getIndex');

@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('layouts.admin')
 
 {{-- Web site Title --}}
 @section('title')
@@ -6,12 +6,19 @@
 {{{ $title }}}
 @stop
 
-@section('co-active') class="active" @stop
-
 {{-- Content --}}
 @section('content')
 
-<h3>{{{ $title }}}</h3>
+{{-- Tabes --}}
+<ul class="tabes">
+  <li class=""><a href="/../admin/stories">الشخصيات</a></li>
+  <li class=""><a href="/../admin/categories">التصنيفات</a></li>
+  <li class="active"><a href="/../admin/comments">التعليقات</a></li>
+  <li class=""><a href="/../admin/users">الاعضاء</a></li>
+  <li class=""><a href="/../admin/roles">الصلاحيات</a></li>
+</ul>
+
+<h4>{{{ $title }}}</h4>
 
 {{-- Form for The comment --}}
 {{ Form::model($comment) }}
@@ -33,7 +40,7 @@
 	{{-- Actions --}}
     <p>
 	{{ Form::submit('تحديث',array('class'=> 'button small')) }}
-	<a href="{{{ URL::to('admin/categories') }}}" class="button small secondary">الغاء</a>
+	<a href="{{{ URL::to('admin/comments') }}}" class="button small secondary">الغاء</a>
 	</p>
 
 {{ Form::close() }}

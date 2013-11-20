@@ -1,6 +1,6 @@
 <?php
 
-class AdminStoriesController extends BaseController {
+class AccountStoriesController extends BaseController {
 
 
     /**
@@ -30,10 +30,10 @@ class AdminStoriesController extends BaseController {
         $title = Lang::get('admin/stories/title.story_management');
 
         // Grab all the stories
-        $stories = $this->story->orderBy('created_at', 'DESC')->get();
+        $stories = $this->story->whereUser_id(Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
         // Show the page
-        return View::make('admin/stories/index', compact('stories', 'title'));
+        return View::make('account/stories/index', compact('stories', 'title'));
     }
 
 	/**
@@ -47,7 +47,7 @@ class AdminStoriesController extends BaseController {
         $title = Lang::get('admin/stories/title.create_a_new_story');
 
         // Show the page
-        return View::make('admin/stories/create', compact('title'));
+        return View::make('account/stories/create', compact('title'));
 	}
 
 	/**
@@ -79,7 +79,6 @@ class AdminStoriesController extends BaseController {
             $this->story->slug             = String::slug(Input::get('title'));
             $this->story->content          = Input::get('content');
             $this->story->image            = $image;
-            $this->story->status           = Input::get('status') ? 1 : 0;
             $this->story->meta_title       = 'test';
             $this->story->meta_description = 'test';
             $this->story->category_id      = Input::get('category_id');
@@ -89,16 +88,32 @@ class AdminStoriesController extends BaseController {
             if($this->story->save())
             {
                 // Redirect to the new story page
-                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.create.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.create.success'));
             }
 
             // Redirect to the story create page
-            return Redirect::to('admin/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
+            return Redirect::to('account/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/stories/create')->withInput()->withErrors($validator);
+        return Redirect::to('account/stories/create')->withInput()->withErrors($validator);
 	}
+
+
+    /**
+     * Show specified resource.
+     *
+     * @param $story
+     * @return Response
+     */
+    public function getShow($story)
+    {
+        // Title
+        $title = Lang::get('account/stories/title.story_update');
+
+        // Show the page
+        return View::make('account/stories/show', compact('story', 'title'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -112,7 +127,7 @@ class AdminStoriesController extends BaseController {
         $title = Lang::get('admin/stories/title.story_update');
 
         // Show the page
-        return View::make('admin/stories/edit', compact('story', 'title'));
+        return View::make('account/stories/edit', compact('story', 'title'));
 	}
 
     /**
@@ -141,11 +156,9 @@ class AdminStoriesController extends BaseController {
             $story->title            = Input::get('title');
             $story->slug             = String::slug(Input::get('title'));
             $story->content          = Input::get('content');
-            $story->status           = Input::get('status') ? 1 : 0;
             $story->meta_title       = 'test';
             $story->meta_description = 'test';
             $story->category_id      = Input::get('category_id');
-            $story->user_id          = Input::get('user_id');
             if(is_file(Input::file('image'))) {
                 //upload the new image
                 $image = $this->story->upload(Input::file('image')) ;
@@ -159,15 +172,15 @@ class AdminStoriesController extends BaseController {
             if($story->save())
             {
                 // Redirect to the new story page
-                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.update.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.update.success'));
             }
 
             // Redirect to the blogs story management page
-            return Redirect::to('admin/stories/' . $story->id . '/edit')->with('error', Lang::get('admin/stories/messages.update.error'));
+            return Redirect::to('account/stories/' . $story->id . '/edit')->with('error', Lang::get('admin/stories/messages.update.error'));
         }
 
         // Form validation failed
-        return Redirect::to('admin/stories/' . $story->id . '/edit')->withInput()->withErrors($validator);
+        return Redirect::to('account/stories/' . $story->id . '/edit')->withInput()->withErrors($validator);
 	}
 
 
@@ -183,7 +196,7 @@ class AdminStoriesController extends BaseController {
         $title = Lang::get('admin/stories/title.story_delete');
 
         // Show the page
-        return View::make('admin/stories/delete', compact('story', 'title'));
+        return View::make('account/stories/delete', compact('story', 'title'));
     }
 
     /**
@@ -216,11 +229,11 @@ class AdminStoriesController extends BaseController {
             if(empty($story))
             {
                 // Redirect to the stories management page
-                return Redirect::to('admin/stories')->with('success', Lang::get('admin/stories/messages.delete.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.delete.success'));
             }
         }
         // There was a problem deleting the story
-        return Redirect::to('admin/stories')->with('error', Lang::get('admin/stories/messages.delete.error'));
+        return Redirect::to('account/stories')->with('error', Lang::get('admin/stories/messages.delete.error'));
     }
 
 }

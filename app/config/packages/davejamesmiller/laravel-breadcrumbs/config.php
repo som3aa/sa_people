@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'view' => 'site.layouts.breadcrumbs',
+    'view' => 'layouts.components.breadcrumbs',
 );
