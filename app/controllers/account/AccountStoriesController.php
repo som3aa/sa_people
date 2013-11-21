@@ -79,8 +79,8 @@ class AccountStoriesController extends BaseController {
             $this->story->slug             = String::slug(Input::get('title'));
             $this->story->content          = Input::get('content');
             $this->story->image            = $image;
-            $this->story->meta_title       = 'test';
-            $this->story->meta_description = 'test';
+            $this->story->meta_title       = 'سوداكتف -'.Input::get('title');
+            $this->story->meta_description = Str::limit(Input::get('content'), 200);
             $this->story->category_id      = Input::get('category_id');
             $this->story->user_id          = $user->id;
 
@@ -156,8 +156,8 @@ class AccountStoriesController extends BaseController {
             $story->title            = Input::get('title');
             $story->slug             = String::slug(Input::get('title'));
             $story->content          = Input::get('content');
-            $story->meta_title       = 'test';
-            $story->meta_description = 'test';
+            $story->meta_title       = 'سوداكتف -'.Input::get('title');
+            $story->meta_description =  Str::limit(Input::get('content'), 200);
             $story->category_id      = Input::get('category_id');
             if(is_file(Input::file('image'))) {
                 //upload the new image
