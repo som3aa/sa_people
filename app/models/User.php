@@ -26,6 +26,16 @@ class User extends ConfideUser {
     }
 
     /**
+     * Get the URL to the post.
+     *
+     * @return string
+     */
+    public function url()
+    {
+        return URL::to('user/profile/'.$this->username);
+    }
+
+    /**
      * Get the date the user was created.
      *
      * @return string

@@ -13,16 +13,6 @@ class Comment extends Eloquent {
 	}
 
 	/**
-	 * Get the comment's author.
-	 *
-	 * @return User
-	 */
-	public function author()
-	{
-		return $this->belongsTo('User', 'user_id');
-	}
-
-	/**
 	 * Get the comment's story's.
 	 *
 	 * @return Blog\story

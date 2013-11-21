@@ -126,6 +126,63 @@ h1.logo {
 	margin: 0.5em 0 1.5em 0;
 }
 
+
+.birthday {
+	float: right;
+	width: 100px;
+	margin-left: 5px;
+}
+
+
+.top_meta {
+	font-size: 12px;
+	color: #a3a3a3;
+	margin-top: 7px ;
+	direction: ltr;
+}
+
+.top_meta .date , .top_meta .comments {
+	display: block;
+	margin: 3px 0;
+}
+
+.top_meta .comments a {
+	color: #a3a3a3;
+	text-decoration: underline;
+}
+
+
+/* Comments */
+#comment {
+	height: 150px;
+}
+
+.comment {
+	padding: 15px 0;
+}
+
+.comment .meta {
+	margin: 0;
+	height: 22px;
+}
+
+.comment span.username a {
+	float: right;
+	line-height: 22px;
+}
+
+.comment span.date {
+	float: left;
+	direction: ltr;
+	line-height: 22px;
+}
+
+.comment p.content {
+	padding: 10px;
+	background: #F1F1F1;
+}
+
+
 /* sidebar */
 .sidebar section {
 	border-bottom: 1px solid #f3f3f3;
@@ -156,6 +213,10 @@ h1.logo {
 }
 .alert-box {
 	line-height: 1.7;
+}
+.alert-box ul {
+	list-style: none;
+	margin: 0;
 }
 
 ul.breadcrumbs {
@@ -191,14 +252,6 @@ textarea {
     font-size: 14px;
     line-height: 23px;
 }
-
-
-#comment {
-	width: 75%;
-	height: 150px;
-	margin-bottom: 10px;
-}
-
 
 
 #login_bar .f-dropdown  {
@@ -263,27 +316,3 @@ textarea {
 
 
 
-
-.birthday {
-	float: right;
-	width: 100px;
-	margin-left: 5px;
-}
-
-
-.top_meta {
-	font-size: 12px;
-	color: #a3a3a3;
-	margin-top: 7px ;
-	direction: ltr;
-}
-
-.top_meta .date , .top_meta .comments {
-	display: block;
-	margin: 3px 0;
-}
-
-.top_meta .comments a {
-	color: #a3a3a3;
-	text-decoration: underline;
-}

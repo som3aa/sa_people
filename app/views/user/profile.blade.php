@@ -30,6 +30,10 @@
     @endif
   </ul>
 
+  <h4>{{{ $user->profile->name }}}</h4>
+
+  <hr />
+
   {{-- Profile Sections --}}
   <h5>عن {{ $user->profile->name}} :</h5>
   <p>{{ $user->profile->bio }}</p>

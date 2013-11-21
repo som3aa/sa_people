@@ -168,7 +168,7 @@ class StoryController extends BaseController {
 		}
 
 		// Redirect to this story page
-		return Redirect::to($slug)->withInput()->withErrors($validator);
+		return Redirect::to($slug . '#comments')->withInput()->withErrors($validator);
 	}
 
 }

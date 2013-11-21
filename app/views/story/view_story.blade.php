@@ -59,55 +59,59 @@
   <a id="comments"></a>
   <h4>{{{ $comments->count() }}} تعليق</h4>
 
-  @if ($comments->count())
+  {{-- View Comments --}}
   @foreach ($comments as $comment)
-  <div class="row">
+  <div class="row comment">
     <div class="large-2 columns">
-      <img class="th" src="http://placehold.it/60x60" alt="">
+      @if (!empty($comment->user->profile->avatar))
+        <a href="{{ $comment->user->url() }}">{{ HTML::image($comment->user->profile->avatar,$comment->user->profile->name,array('class'=>'th')) }}</a>
+      @else
+        {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
+      @endif
     </div>
     <div class="large-10 columns">
-      <div class="row">
-        <div class="large-12 columns">
-          <div>{{{ $comment->author->username }}}</div>
-          <hr />
-        </div>
-        <div class="large-12 columns">
-          {{{ $comment->content() }}}
-        </div>
+      <div class="meta">
+        <span class="username">{{ link_to($comment->user->url(),$comment->user->profile->name) }}</span>
+        <span class="date">{{{ $comment->date() }}}</span>
       </div>
+      <p class="content">{{ $comment->content() }}</p>
     </div>
   </div>
-  <hr />
   @endforeach
-  @else
-  <hr />
-  @endif
 
-  @if ( ! Auth::check())
+  {{-- Post Comment --}}
+  @if (!Auth::check())
     اذا اردت ان تضيف تعليق يجب عليك تسجيل الدخول اولا<br /><br />
     اضغط <a href="{{{ URL::to('user/login') }}}">هنا</a> لتسجيل الدخول.
-  @elseif ( ! $canComment )
-    You don't have the correct permissions to add comments.
+  @elseif (!$canComment )
+    ليس لديك صلاحيات لاضاف تعليق هنا
   @else
 
-    @if($errors->has())
-    <div class="alert-box alert">
-      <ul>
-        @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
+  <h4>اضف تعليقك</h4>
+
+  <div class="row comment">
+    <div class="large-2 columns">
+      @if (!empty(Auth::user()->profile->avatar))
+        {{ HTML::image(Auth::user()->profile->avatar,Auth::user()->profile->name,array('class'=>'th')) }}
+      @else
+        {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
+      @endif 
     </div>
-    @endif
+    <div class="large-10 columns">
+      <form  method="post" action="{{{ URL::to($story->slug) }}}">
+        <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
 
-    <h4>اضف تعليقك</h4>
-    <form  method="post" action="{{{ URL::to($story->slug) }}}">
-      <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
+        <p>
+        {{ Form::textarea('comment',Input::old('comment'),array('class' => $errors->has('comment') ? 'error' : '','id'=>'comment')) }}
+        {{ $errors->first('comment', '<small class="error">:message</small>') }}
+        </p>
+        
+        <input type="submit" id="submit" value="ارسال" class="button small secondary" />
+      </form>
+    </div>
+  </div>
 
-      <textarea rows="4" name="comment" id="comment">{{{ Request::old('comment') }}}</textarea>
 
-      <input type="submit" id="submit" value="ارسال" class="button small secondary" />
-    </form>
   @endif
 
 </div>
