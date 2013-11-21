@@ -25,10 +25,10 @@
 <table>
   <thead>
     <tr>
-      <th class="large-4">{{{ Lang::get('admin/stories/table.title') }}}</th>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.category') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.user') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.created_at') }}}</td>
+      <th class="large-4">اسم الشخصية</th>
+      <td class="large-2">التصنيف</td>
+      <td class="large-2">مساهمة</td>
+      <td class="large-2">اضيفت في</td>
       <td class="large-2">اوامر</td>
     </tr>
   </thead>

@@ -25,18 +25,18 @@
 <table>
   <thead>
     <tr>
-      <th class="large-2">{{{ Lang::get('admin/users/table.username') }}}</th>
-      <td class="large-2">{{{ Lang::get('admin/users/table.email') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/users/table.roles') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/users/table.activated') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/users/table.created_at') }}}</td>
+      <th class="large-2">اسم المستخدم</th>
+      <td class="large-2">الايميل</td>
+      <td class="large-2">الصلاحيات</td>
+      <td class="large-2">مفعل</td>
+      <td class="large-2">ضيفت في</td>
       <td class="large-2">اوامر</td>
     </tr>
   </thead>
   <tbody>
     @foreach ($users as $user)
     <tr>
-      <td>{{{ $user->username.' - '.$user->profile->name }}}</td>
+      <td>{{{ $user->username}}}</td>
       <td>{{{ $user->email }}}</td>
       <td> @foreach($user->roles as $role) {{{ $role->name }}} @endforeach</td>
       <td> @if($user->confirmed) yes @else no @endif </td>

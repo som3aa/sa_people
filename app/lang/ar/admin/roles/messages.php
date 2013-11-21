@@ -2,23 +2,22 @@
 
 return array(
 
-	'already_exists' => 'Role already exists!',
-	'does_not_exist' => 'Role does not exist.',
-	'name_required'  => 'The name field is required',
+	'already_exists' => 'الصلاحية موجودة مسبقا',
+	'does_not_exist' => 'الصلاحية غير موجودة',
 
 	'create' => array(
-		'error'   => 'Role was not created, please try again.',
-		'success' => 'Role created successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم الاضافة بنجاح'
 	),
 
 	'update' => array(
-		'error'   => 'Role was not updated, please try again',
-		'success' => 'Role updated successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم التحديث بنجاح'
 	),
 
 	'delete' => array(
-		'error'   => 'There was an issue deleting the role. Please try again.',
-		'success' => 'The role was deleted successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم الحذف بنجاح'
 	)
 
 );

@@ -118,17 +118,6 @@ class AdminRolesController extends BaseController {
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param $id
-     * @return Response
-     */
-    public function getShow($id)
-    {
-        // redirect to the frontend
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param $role

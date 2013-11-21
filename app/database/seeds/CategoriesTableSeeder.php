@@ -54,8 +54,68 @@ class CategoriesTableSeeder extends Seeder {
                 'slug'       => 'علماء',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
-            ))
-        );
+            ),
+            array(
+                'name'      => 'سياسيون',
+                'slug'       => 'سياسيون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'عسكريون',
+                'slug'       => 'عسكريون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'رياضيون',
+                'slug'       => 'رياضيون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'إقتصاديون',
+                'slug'       => 'إقتصاديون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'رجال أعمال',
+                'slug'       => 'رجال-أعمال',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'أكاديميون',
+                'slug'       => 'أكاديميون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'مؤرخون',
+                'slug'       => 'مؤرخون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'صحفيون',
+                'slug'       => 'صحفيون',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'نقاد',
+                'slug'       => 'نقاد',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'name'      => 'شخصيات تاريخية',
+                'slug'       => 'شخصيات-تاريخية',
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+        ));
     }
 
 }

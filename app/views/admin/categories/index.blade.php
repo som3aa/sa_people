@@ -25,9 +25,9 @@
 <table>
   <thead>
     <tr>
-      <th class="large-2">{{{ Lang::get('admin/categories/table.name') }}}</th>
-      <th class="large-4">{{{ Lang::get('admin/categories/table.slug') }}}</th>
-      <td class="large-2">{{{ Lang::get('admin/categories/table.created_at') }}}</td>
+      <th class="large-2">الاسم</th>
+      <th class="large-4">اسم صديق</th>
+      <td class="large-2">ضيفت في</td>
       <th class="large-2">اوامر</th>
     </tr>
   </thead>

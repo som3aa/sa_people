@@ -25,9 +25,9 @@
 <table>
   <thead>
     <tr>
-      <th class="large-2">{{{ Lang::get('admin/roles/table.name') }}}</th>
-      <td class="large-4">{{{ Lang::get('admin/roles/table.users') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/roles/table.created_at') }}}</td>
+      <th class="large-2">الاسم</th>
+      <td class="large-4">عدد الاعضاء</td>
+      <td class="large-2">اضيفت في</td>
       <td class="large-2">اوامر</td>
     </tr>
   </thead>

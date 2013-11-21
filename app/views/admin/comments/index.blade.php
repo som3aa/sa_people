@@ -23,10 +23,10 @@
 <table>
   <thead>
     <tr>
-      <th class="large-4">{{{ Lang::get('admin/comments/table.title') }}}</th>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.title') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/users/table.username') }}}</td>
-      <td class="large-2">{{{ Lang::get('admin/comments/table.created_at') }}}</td>
+      <th class="large-4">التعليق</th>
+      <td class="large-2">المقال</td>
+      <td class="large-2">العضو</td>
+      <td class="large-2">اضيفت في</td>
       <td class="large-2">اوامر</td>
     </tr>
   </thead>

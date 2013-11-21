@@ -60,7 +60,7 @@ class AccountUserController extends BaseController {
 
         if(empty($error)) {
             return Redirect::to('account/user')
-                ->with( 'success', Lang::get('user/user.user_account_updated') );
+                ->with( 'success','تم التحديث بنجاح' );
         } else {
             return Redirect::to('account/user')
                 ->withInput(Input::except('password','password_confirmation'))

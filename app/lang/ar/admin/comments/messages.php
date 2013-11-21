@@ -2,21 +2,19 @@
 
 return array(
 
-	'does_not_exist' => 'Blog comment does not exist.',
-
 	'create' => array(
-		'error'   => 'Blog comment was not created, please try again.',
-		'success' => 'Blog comment created successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم الاضافة بنجاح'
 	),
 
 	'update' => array(
-		'error'   => 'Blog comment was not updated, please try again',
-		'success' => 'Blog comment updated successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم التحديث بنجاح'
 	),
 
 	'delete' => array(
-		'error'   => 'There was an issue deleting the blog comment. Please try again.',
-		'success' => 'The blog comment was deleted successfully.'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم الحذف بنجاح'
 	)
 
 );

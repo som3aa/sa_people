@@ -8,10 +8,10 @@
 		<div class="large-8 columns">
 
 			<div class="row">
-				<div class="large-9 columns">
+				<div class="large-8 columns">
 					<h4><strong><a href="{{{ $story->url() }}}">{{ $story->title }}</a></strong></h4>
 				</div>
-				<div class="large-3 columns top_meta">
+				<div class="large-4 columns top_meta">
 					<span class='date'>{{{ $story->date() }}}</span>
 					<span class='comments'><a href="{{{ $story->url() }}}#comments">{{$story->comments()->count()}}
 					{{ \Illuminate\Support\Pluralizer::plural('Comment', $story->comments()->count()) }}</span>

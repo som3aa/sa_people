@@ -41,11 +41,11 @@ class AccountProfileController extends BaseController {
             if($profile->save())
             {
                 // Redirect to the new story page
-                return Redirect::to('account/profile')->with('success', Lang::get('admin/stories/messages.create.success'));
+                return Redirect::to('account/profile')->with('success','تم التحديث بنجاح');
             }
 
             // Redirect to the story create page
-            return Redirect::to('account/profile')->with('error', Lang::get('admin/stories/messages.create.error'));
+            return Redirect::to('account/profile')->with('error','حدث خطأ ما الرجاء المحاولة مرة اخرى');
         }
 
         // Form validation failed

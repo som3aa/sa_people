@@ -24,8 +24,8 @@
 <table>
   <thead>
     <tr>
-      <th class="large-5">{{{ Lang::get('admin/stories/table.title') }}}</th>
-      <td class="large-2">{{{ Lang::get('admin/stories/table.category') }}}</td>
+      <th class="large-5">اسم الشخصية</th>
+      <td class="large-2">التصنيف</td>
       <td class="large-3">اوامر</td>
     </tr>
   </thead>

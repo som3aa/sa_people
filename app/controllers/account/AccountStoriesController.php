@@ -27,7 +27,7 @@ class AccountStoriesController extends BaseController {
     public function getIndex()
     {
         // Title
-        $title = Lang::get('admin/stories/title.story_management');
+        $title = Lang::get('account/stories/title.story_management');
 
         // Grab all the stories
         $stories = $this->story->whereUser_id(Auth::user()->id)->orderBy('created_at', 'DESC')->get();
@@ -44,7 +44,7 @@ class AccountStoriesController extends BaseController {
 	public function getCreate()
 	{
         // Title
-        $title = Lang::get('admin/stories/title.create_a_new_story');
+        $title = Lang::get('account/stories/title.create_a_new_story');
 
         // Show the page
         return View::make('account/stories/create', compact('title'));
@@ -88,11 +88,11 @@ class AccountStoriesController extends BaseController {
             if($this->story->save())
             {
                 // Redirect to the new story page
-                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.create.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('account/stories/messages.create.success'));
             }
 
             // Redirect to the story create page
-            return Redirect::to('account/stories/create')->with('error', Lang::get('admin/stories/messages.create.error'));
+            return Redirect::to('account/stories/create')->with('error', Lang::get('account/stories/messages.create.error'));
         }
 
         // Form validation failed
@@ -124,7 +124,7 @@ class AccountStoriesController extends BaseController {
 	public function getEdit($story)
 	{
         // Title
-        $title = Lang::get('admin/stories/title.story_update');
+        $title = Lang::get('account/stories/title.story_update');
 
         // Show the page
         return View::make('account/stories/edit', compact('story', 'title'));
@@ -172,11 +172,11 @@ class AccountStoriesController extends BaseController {
             if($story->save())
             {
                 // Redirect to the new story page
-                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.update.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('account/stories/messages.update.success'));
             }
 
             // Redirect to the blogs story management page
-            return Redirect::to('account/stories/' . $story->id . '/edit')->with('error', Lang::get('admin/stories/messages.update.error'));
+            return Redirect::to('account/stories/' . $story->id . '/edit')->with('error', Lang::get('account/stories/messages.update.error'));
         }
 
         // Form validation failed
@@ -193,7 +193,7 @@ class AccountStoriesController extends BaseController {
     public function getDelete($story)
     {
         // Title
-        $title = Lang::get('admin/stories/title.story_delete');
+        $title = Lang::get('account/stories/title.story_delete');
 
         // Show the page
         return View::make('account/stories/delete', compact('story', 'title'));
@@ -229,11 +229,11 @@ class AccountStoriesController extends BaseController {
             if(empty($story))
             {
                 // Redirect to the stories management page
-                return Redirect::to('account/stories')->with('success', Lang::get('admin/stories/messages.delete.success'));
+                return Redirect::to('account/stories')->with('success', Lang::get('account/stories/messages.delete.success'));
             }
         }
         // There was a problem deleting the story
-        return Redirect::to('account/stories')->with('error', Lang::get('admin/stories/messages.delete.error'));
+        return Redirect::to('account/stories')->with('error', Lang::get('account/stories/messages.delete.error'));
     }
 
 }

@@ -2,16 +2,14 @@
 
 return array(
 
-	'does_not_exist' => 'Blog post does not exist.',
-
 	'create' => array(
 		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
-		'success' => 'تم اضافة المقال بنجاح'
+		'success' => 'تم الاضافة بنجاح'
 	),
 
 	'update' => array(
-		'error'   => 'حدث خطأ اثناء التحديث الرجاء المحاولة مرة اخرى',
-		'success' => 'تم تحديث المقال بنجاح'
+		'error'   => 'حدث خطأ ما الرجاء المحاولة مرة اخرى',
+		'success' => 'تم التحديث بنجاح'
 	),
 
 	'delete' => array(
