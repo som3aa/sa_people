@@ -3,13 +3,13 @@
 {{-- Web site Title --}}
 @section('title')
 @parent - 
-{{{ Lang::get('user.forgot_password') }}}
+نسيت كلمة المرور
 @stop
 
 {{-- Content --}}
 @section('content')
 
-	<h1>{{{ Lang::get('user.forgot_password') }}}</h1>
+	<h2>نسيت كلمة المرور</h2>
 	
 	<form method="POST" action="{{{ (Confide::checkAction('UserController@do_reset_password'))    ?: URL::to('/user/reset') }}}" accept-charset="UTF-8">
 	    <input type="hidden" name="token" value="{{{ $token }}}">

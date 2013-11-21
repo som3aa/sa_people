@@ -30,9 +30,9 @@
 		<!-- join us call -->
 		@if( !Auth::check() )
 		<section>
-			<p>{{{ Lang::get('site.sidebar.join_call') }}}</p>
+			<p>اذا رغبت ان تكون عضوا في سوداكتف ما عليك الا التسجيل حتى تستطيع المساهمة بمقالاتك</p>
 			<div class="get_in">
-				<a href="/../user/create" class="button small">{{{ Lang::get('site.sidebar.join_now') }}}</a>
+				<a href="/../user/create" class="button small">انضم الان</a>
 			</div>
 		</section>
 		@endif

@@ -3,13 +3,13 @@
 {{-- Web site Title --}}
 @section('title')
 @parent - 
-{{{ Lang::get('user.register') }}}
+التسجيل
 @stop
 
 {{-- Content --}}
 @section('content')
 
-	<h1>{{{ Lang::get('user.register') }}}</h1>
+	<h2>التسجيل</h2>
 	
 	<form method="POST" action="{{{ (Confide::checkAction('UserController@store')) ?: URL::to('user')  }}}" accept-charset="UTF-8">
 	    <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
@@ -69,7 +69,7 @@
 		    <p>
 		    <label for="bio">عن نفسك<small> ( يمكنك تركه فارغا )</small></label>
 		    {{ Form::textarea('bio',Input::old('bio'),array('class' => $errors->has('bio') ? 'error' : '',
-		    		'style'=> 'height:150px')) }}
+		    		'style'=> 'height:150px','placeholder'=>'عن نفسك')) }}
 		    {{ $errors->first('bio', '<small class="error">:message</small>') }}
 		    </p>
 

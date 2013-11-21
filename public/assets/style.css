@@ -193,6 +193,10 @@ h1.logo {
 	box-shadow: 0 2px 3px #d6d3cb;
 }
 
+.sidebar .side-nav {
+	padding: 0;
+}
+
 
 /* footer */
 .footer{

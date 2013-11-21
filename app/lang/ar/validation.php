@@ -103,7 +103,9 @@ return array(
 		'email' => 'الايميل',
 		'password' => 'كلمة مرور',
 		'username' => 'اسم المستخدم',
-		'text' => 'الرسالة'
+		'text' => 'الرسالة',
+		'location' => 'المكان',
+		'gender' => 'الجنس'
 		),
 
 );

@@ -3,13 +3,13 @@
 {{-- Web site Title --}}
 @section('title')
 @parent - 
-{{{ Lang::get('user.login') }}}
+الدخول
 @stop
 
 {{-- Content --}}
 @section('content')
 
-	<h1>{{{ Lang::get('user.login') }}}</h1>
+	<h2>الدخول</h2>
 
     <form method="POST" action="{{ URL::to('user/login') }}" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

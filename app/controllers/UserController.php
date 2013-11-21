@@ -83,7 +83,7 @@ class UserController extends BaseController {
                     // Redirect to the new user page
                     return Redirect::to('user/create')
                         ->withInput(Input::except('password','password_confirmation'))
-                        ->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+                        ->with('error', Lang::get('user.password_does_not_match'));
                 }
             } else {
                 unset($this->user->password);
@@ -95,7 +95,7 @@ class UserController extends BaseController {
                 // Redirect to the new user page
                 return Redirect::to('user/create')
                     ->withInput(Input::except('password','password_confirmation'))
-                    ->with('error', Lang::get('الرجاء ادخال تاريخ الميلاد بصورة صحيحة'));
+                    ->with('error', Lang::get('user.correct_birthday'));
             }
 
             // Save if valid. Password field will be hashed before save
@@ -117,7 +117,7 @@ class UserController extends BaseController {
 
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')
-                ->with( 'success', Lang::get('user.user_account_created') );
+                ->with( 'success', Lang::get('user.account_created') );
         }
 
         // Form validation failed

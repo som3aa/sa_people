@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-@parent - {{{ Lang::get('site.search_result') }}} 
+@parent - نتائج بحث 
 {{{ $keyword }}}
 @stop
 

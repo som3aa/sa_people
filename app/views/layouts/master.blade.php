@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<title>
 		@section('title')
-		{{{ Lang::get('site.sudactive')}}}
+		سوداكتف
 		@show
 	</title>
 	<meta name="keywords" content="شخصيات,سودانية,سودان,سوداني,سودانين,سوداكتف,sudactive,sudan,sudanese" />
@@ -67,7 +67,7 @@
 			        </ul>
 				</span>
 			@else 
-				<a href="/../user/login">{{{ Lang::get('user.login') }}}</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">{{{ Lang::get('user.register') }}}</a>
+				<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
 			@endif
 			</div>
 		</div>
@@ -79,12 +79,12 @@
 		<!-- Slider slagan -->
 		<div class="large-5 columns">
 			<div class="slogan">
-				<h2><a href="/">{{{ Lang::get('site.slogan')}}}</a></h2>
+				<h2><a href="/">شخصيات سودانية</a></h2>
 				 <!-- search bar -->
 				  <div class="row">
 				      <div class="large-10 columns">
 				          	<form method="get" action="/../search/" class="search">
-				              <input type="text" name="keyword" placeholder="{{{ Lang::get('site.search') }}}">
+				              <input type="text" name="keyword" placeholder="بحث عن اي اسم ... عمر الامين مثلا">
 				              <img src="/../img/search.png" />
 				        	</form>
 				      </div>
@@ -115,14 +115,14 @@
 		  
 		  <div class="row">
 		    <div class="large-6 columns">
-		    	<p>{{{ Lang::get('site.copyrights') }}}</p>
+		    	<p>جميع الحقوق محفوظة لشبكة سوداكتف 2013 &copy;</p>
 		    </div>
 
 		    <div class="large-6 columns">
 			    <ul class="inline-list left">
-			        <li><a href="/../about/">{{{ Lang::get('site.about') }}}</a></li>
-			        <li><a href="/../policy">{{{ Lang::get('site.policy') }}}</a></li>
-			        <li><a href="/../contact">{{{ Lang::get('site.contact') }}}</a></li>
+			        <li><a href="/../about/">عن سوداكتف</a></li>
+			        <li><a href="/../policy">سياسة الموقع</a></li>
+			        <li><a href="/../contact">اتصل بنا</a></li>
 			    </ul>
 		    </div>
 		  </div>

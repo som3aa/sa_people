@@ -14,7 +14,7 @@
 {{-- Web site Title --}}
 @section('title')
 @parent - 
-{{{ Lang::get('site.title') }}}
+شخصيات سودانية
 @stop
 
 {{-- Content --}}
