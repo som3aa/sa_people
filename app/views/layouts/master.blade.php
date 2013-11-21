@@ -121,7 +121,6 @@
 		    <div class="large-6 columns">
 			    <ul class="inline-list left">
 			        <li><a href="/../about/">{{{ Lang::get('site.about') }}}</a></li>
-			        <li><a href="/../join-us/">{{{ Lang::get('site.join-us') }}}</a></li>
 			        <li><a href="/../policy">{{{ Lang::get('site.policy') }}}</a></li>
 			        <li><a href="/../contact">{{{ Lang::get('site.contact') }}}</a></li>
 			    </ul>

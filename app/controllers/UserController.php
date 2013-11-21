@@ -90,6 +90,14 @@ class UserController extends BaseController {
                 unset($this->user->password_confirmation);
             }
 
+            // check birthday
+            if(Input::get('year') == '2014') {
+                // Redirect to the new user page
+                return Redirect::to('user/create')
+                    ->withInput(Input::except('password','password_confirmation'))
+                    ->with('error', Lang::get('الرجاء ادخال تاريخ الميلاد بصورة صحيحة'));
+            }
+
             // Save if valid. Password field will be hashed before save
             $this->user->save();
 

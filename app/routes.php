@@ -151,6 +151,43 @@ Route::controller('user', 'UserController');
 
 
 /** ------------------------------------------
+ *  Pages Routes
+ *  ------------------------------------------
+ */
+
+Route::get('/about', function(){
+    return View::make('story.pages.about');
+});
+Route::get('/policy', function(){
+    return View::make('story.pages.policy');
+});
+Route::get('/contact', function(){
+    return View::make('story.pages.contact');
+});
+Route::post('/contact', function(){
+    
+    $rules =   array(
+        'name' => 'required',
+        'email' => 'required|email',
+        'text' => 'required',
+    );
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    if ($validator->fails()) {
+        return Redirect::to('/contact')->withErrors($validator);
+    }
+
+    Mail::send('pages.emails.contact', Input::all() , function($message)
+    {
+        $message->to('mr2all@hotmail.com', 'mohammed adil')->subject('رسالة من سوداكتف - اتصل بنا');
+    });
+    
+    return Redirect::to('/contact')->with('success','تم ارسال الرسالة بنجاح, سيتم الرد عليك في اقرب فرصة');
+});
+
+
+/** ------------------------------------------
  *  Frontend Story Routes
  *  ------------------------------------------
  */

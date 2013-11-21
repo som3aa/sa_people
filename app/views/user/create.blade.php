@@ -39,26 +39,26 @@
 	        <h4>معلومات البروفايل</h4>
 
 		    {{-- name --}}
-	        <label for="name">الاسم<small> ( بالنجليزي فقط )</small></label>
+	        <label for="name">الاسم<small> ( بالعربي أو الانجليزي )</small></label>
 	        <input placeholder="الاسم" type="text" name="name" id="name" value="{{{ Input::old('name') }}}"
 	       	class="{{{ $errors->has('name') ? 'error' : '' }}}">{{ $errors->first('name', '<small class="error">:message</small>') }}
 
 		    {{-- location --}}
-	        <label for="location">مكان الاقامة<small> ( بالنجليزي فقط )</small></label>
+	        <label for="location">مكان الاقامة<small> ( مثلا السودان - الخرطوم )</small></label>
 	        <input placeholder="مكان الاقامة" type="text" name="location" id="location" value="{{{ Input::old('location') }}}"
 	       	class="{{{ $errors->has('location') ? 'error' : '' }}}">{{ $errors->first('location', '<small class="error">:message</small>') }}
 
 		    {{-- Gender --}}
 		    {{ Form::label('gender_label', 'الجنس') }}
-		    <span><input style="display:inline" type="radio" name="gender" value="1" id="male">
+		    <span><input style="display:inline" type="radio" name="gender" value="1" id="male" @if(Input::old('gender') == 1) checked @endif>
 		          <label style="display:inline" for="male" >ذكر</label></span>
-		     <span><input style="display:inline; margin-right:10px;" type="radio" name="gender" value="2" id="female">
+		     <span><input style="display:inline; margin-right:10px;" type="radio" name="gender" value="2" id="female" @if(Input::old('gender') == 2) checked @endif>
 		          <label style="display:inline" for="female">انثى</label></span>
 		    {{ $errors->first('gender', '<small class="error">:message</small>') }}
 
 		    {{-- BirthDay --}}
 		    <p>
-		    {{ Form::label('BirthDay', 'تاريخ الميلاد') }}
+		    <label for="birthday">تاريخ الميلاد<small> ( لم يتم نشره)</small></label>
 		     {{ Form::selectRange('day', 1, 31,Input::old('day'),array('class'=>'birthday')) }}
 		     {{ Form::selectMonth('month',Input::old('month'),array('class'=>'birthday')); }}
 		     {{ Form::selectRange('year', 2014,1920,Input::old('year'),array('class'=>'birthday')) }}
@@ -67,7 +67,7 @@
 		    <br/>
 		    {{-- Bio --}}
 		    <p>
-		    {{ Form::label('bio', 'عن نفسك') }}
+		    <label for="bio">عن نفسك<small> ( يمكنك تركه فارغا )</small></label>
 		    {{ Form::textarea('bio',Input::old('bio'),array('class' => $errors->has('bio') ? 'error' : '',
 		    		'style'=> 'height:150px')) }}
 		    {{ $errors->first('bio', '<small class="error">:message</small>') }}
