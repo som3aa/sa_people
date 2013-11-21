@@ -13,8 +13,8 @@ class PermissionsTableSeeder extends Seeder {
                 'display_name'      => 'manage stories'
             ),
             array(
-                'name'      => 'manage_posts',
-                'display_name'      => 'manage posts'
+                'name'      => 'manage_categories',
+                'display_name'      => 'manage categories'
             ),
             array(
                 'name'      => 'manage_comments',
@@ -32,6 +32,18 @@ class PermissionsTableSeeder extends Seeder {
                 'name'      => 'post_comment',
                 'display_name'      => 'post comment'
             ),
+            array(
+                'name'      => 'manage_his_profile',
+                'display_name'      => 'edit his profile'
+            ),
+            array(
+                'name'      => 'manage_hist_stories',
+                'display_name'      => 'create edit delete own stories'
+            ),
+            array(
+                'name'      => 'manage_his_user',
+                'display_name'      => 'edit his user info'
+            )
         );
 
         DB::table('permissions')->insert( $permissions );
@@ -64,8 +76,32 @@ class PermissionsTableSeeder extends Seeder {
                 'permission_id' => 6
             ),
             array(
+                'role_id'      => 1,
+                'permission_id' => 7
+            ),
+            array(
+                'role_id'      => 1,
+                'permission_id' => 8
+            ),
+            array(
+                'role_id'      => 1,
+                'permission_id' => 9
+            ),
+            array(
                 'role_id'      => 2,
                 'permission_id' => 6
+            ),
+            array(
+                'role_id'      => 2,
+                'permission_id' => 7
+            ),
+            array(
+                'role_id'      => 2,
+                'permission_id' => 8
+            ),
+            array(
+                'role_id'      => 2,
+                'permission_id' => 9
             ),
         );
 

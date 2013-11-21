@@ -115,3 +115,8 @@ Route::filter('account-auth', function()
     list($user,$redirect) = User::checkAuthAndRedirect('user');
     if($redirect){return $redirect;}
 });
+
+// Check for permissions on admin actions
+Entrust::routeNeedsPermission( 'account/profile*', 'manage_his_profile', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'account/stories*', 'manage_hist_stories', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'account/user*', 'manage_his_user', Redirect::to('/') );

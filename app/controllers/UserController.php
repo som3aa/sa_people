@@ -15,15 +15,23 @@ class UserController extends BaseController {
     protected $user;
 
     /**
+     * Role Model
+     * @var Role
+     */
+    protected $role;
+
+
+    /**
      * Inject the models.
      * @param User $user
      * @param Profile $profile
      */
-    public function __construct(User $user, Profile $profile)
+    public function __construct(User $user, Profile $profile,Role $role)
     {
         parent::__construct();
         $this->user = $user;
         $this->profile = $profile;
+        $this->role = $role;
     }
 
     /**
@@ -94,6 +102,10 @@ class UserController extends BaseController {
 
             // Was the story created?
             $this->profile->save();
+
+            // attach subscriber Role
+            $subscriberRole = $this->role->where('name','=','subscriber')->first();
+            $this->user->attachRole($subscriberRole);
 
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
             return Redirect::to('user/login')

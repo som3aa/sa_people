@@ -9,8 +9,8 @@ class UsersTableSeeder extends Seeder {
 
         $users = array(
             array(
-                'username'      => 'admin',
-                'email'      => 'admin@example.org',
+                'username'      => 'mr2all',
+                'email'      => 'mr2all@hotmail.com',
                 'password'   => Hash::make('admin'),
                 'confirmed'   => 1,
                 'confirmation_code' => md5(microtime().Config::get('app.key')),

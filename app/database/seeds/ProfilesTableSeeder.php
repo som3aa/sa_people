@@ -11,9 +11,9 @@ class ProfilesTableSeeder extends Seeder {
         DB::table('profiles')->insert( array(
             array(
                 'user_id'        => 1,
-                'name'      => 'مدير الموقع',
-                'location'       => 'الخرطوم - السودان',
-                'birthday'    => new DateTime('1979-03-14'),
+                'name'      => 'محمد عادل',
+                'location'       => 'قطر - الدوحة',
+                'birthday'    => new DateTime('1991-10-01'),
                 'avatar'    => '',
                 'bio'    => $this->bio,
                 'gender'    => 1,
@@ -22,7 +22,7 @@ class ProfilesTableSeeder extends Seeder {
             ),
             array(
                 'user_id'        => 2,
-                'name'      => 'محمد عادل',
+                'name'      => 'تجريبي',
                 'location'       => 'Doha - Qatar',
                 'birthday'    => new DateTime,
                 'avatar'    => 'http://placehold.it/400x400',
