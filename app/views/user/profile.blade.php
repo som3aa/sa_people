@@ -30,9 +30,7 @@
     @endif
   </ul>
 
-  <h4>{{{ $user->profile->name }}}</h4>
-
-  <hr />
+  <h4 style="margin-bottom:20px">{{{ $user->profile->name }}}</h4>
 
   {{-- Profile Sections --}}
   <h5>عن {{ $user->profile->name}} :</h5>
