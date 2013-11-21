@@ -178,7 +178,7 @@ Route::post('/contact', function(){
         return Redirect::to('/contact')->withErrors($validator);
     }
 
-    Mail::send('pages.emails.contact', Input::all() , function($message)
+    Mail::send('story.pages.emails.contact', Input::all() , function($message)
     {
         $message->to('mr2all@hotmail.com', 'mohammed adil')->subject('رسالة من سوداكتف - اتصل بنا');
     });
