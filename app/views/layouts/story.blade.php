@@ -17,6 +17,16 @@
 	<!-- Sidebar -->
 	<aside class="large-3 columns sidebar">
 
+		<!-- join us call -->
+		@if( Auth::check() )
+		<section>
+			<p>ساهم في انماء المحتوى السوداني</p>
+			<div class="get_in">
+				<a href="{{{ URL::to('account/stories/create') }}}" class="button small">اكتب عن شخصية</a>
+			</div>
+		</section>
+		@endif
+
 		<!-- categories list -->
 		<section>
 			<h4>التصنيفات</h4>

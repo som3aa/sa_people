@@ -33,7 +33,9 @@
   		</p>
     </div>
     <div class="large-3 columns">
-      <a style="margin-top:15px" href="{{{ URL::to('account/stories/create') }}}" class="button small">اكتب عن شخصية</a>
+      @if( !Auth::check() )
+        <a style="margin-top:15px" href="{{{ URL::to('account/stories/create') }}}" class="button small">اكتب عن شخصية</a>
+      @endif
     </div>
   </div>
   <!-- ./ Story header -->
