@@ -25,12 +25,15 @@
 <div class="post" itemscope itemtype="http://schema.org/Person">
   <!-- Story header -->
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-9 columns">
       <h4 itemprop="name">{{ $story->title }}</h4>
   		<p class="meta">
   	    في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
         مساهمة {{ link_to('/user/profile/'.$story->user->username,$story->user->profile->name) }}
   		</p>
+    </div>
+    <div class="large-3 columns">
+      <a style="margin-top:15px" href="{{{ URL::to('account/stories/create') }}}" class="button small">اكتب عن شخصية</a>
     </div>
   </div>
   <!-- ./ Story header -->
