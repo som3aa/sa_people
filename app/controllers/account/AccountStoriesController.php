@@ -109,7 +109,7 @@ class AccountStoriesController extends BaseController {
     public function getShow($story)
     {
         // Title
-        $title = Lang::get('account/stories/title.story_update');
+        $title = Lang::get('account/stories/title.story_show');
 
         // Show the page
         return View::make('account/stories/show', compact('story', 'title'));

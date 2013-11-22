@@ -101,6 +101,21 @@ class AdminStoriesController extends BaseController {
 	}
 
     /**
+     * Show specified resource.
+     *
+     * @param $story
+     * @return Response
+     */
+    public function getShow($story)
+    {
+        // Title
+        $title = Lang::get('admin/stories/title.story_show');
+
+        // Show the page
+        return View::make('admin/stories/show', compact('story', 'title'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param $post

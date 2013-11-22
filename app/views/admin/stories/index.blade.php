@@ -26,16 +26,16 @@
   <thead>
     <tr>
       <th class="large-4">اسم الشخصية</th>
-      <td class="large-2">التصنيف</td>
-      <td class="large-2">مساهمة</td>
-      <td class="large-2">اضيفت في</td>
-      <td class="large-2">اوامر</td>
+      <th class="large-2">التصنيف</th>
+      <th class="large-2">مساهمة</th>
+      <th class="large-2">اضيفت في</th>
+      <th class="large-2">اوامر</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($stories as $story)
     <tr>
-      <td>@if (!$story->status) {{ '!' }} @endif {{ link_to($story->slug,$story->title) }}</td>
+      <td>@if (!$story->status) {{ '!' }} @endif {{ link_to('admin/stories/'.$story->id.'/show',$story->title) }}</td>
       <td>{{{ $story->category->name }}}</td>
       <td>{{{ $story->user->profile->name }}}</td>
       <td>{{{ $story->date() }}}</td>
