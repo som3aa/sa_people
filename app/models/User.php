@@ -102,8 +102,7 @@ class User extends ConfideUser {
         if(empty($user->id) && ! $ifValid) // Not logged in redirect, set session.
         {
             Session::put('loginRedirect', $redirect);
-            $redirectTo = Redirect::to('user/login')
-                ->with( 'notice', Lang::get('user/user.login_first') );
+            $redirectTo = Redirect::to('user/login')->with( 'notice', 'يجب عليك تسجيل الدخول اولا' );
         }
         elseif(!empty($user->id) && $ifValid) // Valid user, we want to redirect.
         {

@@ -40,6 +40,11 @@ class UserController extends BaseController {
      */
     public function getCreate()
     {
+        $user = Auth::user();
+        if(!empty($user->id)){
+            return Redirect::to('/');
+        }
+
         return View::make('user/create');
     }
 

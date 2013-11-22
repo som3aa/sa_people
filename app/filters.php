@@ -37,13 +37,8 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) {
         Session::put('loginRedirect', Request::url());
-        return Redirect::to('user/login/');
+        return Redirect::to('user/login/')->with( 'notice', 'يجب عليك تسجيل الدخول اولا' );
     }
-});
-
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
 });
 
 /*
@@ -91,9 +86,6 @@ Route::filter('csrf', function()
 |
 */
 
-// Check for role on all admin routes
-Entrust::routeNeedsRole( 'admin*', array('admin','reviewer'), Redirect::to('/') , false );
-
 // Check for permissions on admin actions
 Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirect::to('/') );
@@ -113,11 +105,11 @@ Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/')
 
 Route::filter('account-auth', function()
 {
-    list($user,$redirect) = User::checkAuthAndRedirect('user');
+    list($user,$redirect) = User::checkAuthAndRedirect(Request::url());
     if($redirect){return $redirect;}
 });
 
-// Check for permissions on admin actions
+// Check for permissions on account actions
 Entrust::routeNeedsPermission( 'account/profile*', 'manage_his_profile', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'account/stories*', 'manage_hist_stories', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'account/user*', 'manage_his_user', Redirect::to('/') );

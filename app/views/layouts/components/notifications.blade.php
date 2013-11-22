@@ -23,3 +23,7 @@
     @endif
 </div>
 @endif
+
+@if ( Session::get('notice') )
+<div class="alert-box"><a href="" class="close">&times;</a>{{ Session::get('notice') }}</div>
+@endif
