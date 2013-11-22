@@ -24,7 +24,7 @@
 			</p>
 
 			<p>
-				{{ Str::limit($story->content, 100) }}
+				{{ Str::limit($story->content, 120) }}
 			</p>
 
 			<a class="button small" href="{{{ $story->url() }}}">اقراء المزيد</a>
