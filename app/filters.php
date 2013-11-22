@@ -92,10 +92,11 @@ Route::filter('csrf', function()
 */
 
 // Check for role on all admin routes
-Entrust::routeNeedsRole( 'admin*', array('admin'), Redirect::to('/') );
+Entrust::routeNeedsRole( 'admin*', array('admin','reviewer'), Redirect::to('/') , false );
 
 // Check for permissions on admin actions
 Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/comments*', 'manage_comments', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );

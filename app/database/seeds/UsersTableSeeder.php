@@ -9,9 +9,18 @@ class UsersTableSeeder extends Seeder {
 
         $users = array(
             array(
-                'username'      => 'mr2all',
+                'username'      => 'admin',
                 'email'      => 'mr2all@hotmail.com',
                 'password'   => Hash::make('admin'),
+                'confirmed'   => 1,
+                'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+            ),
+            array(
+                'username'      => 'reviewer',
+                'email'      => 'reviewer@hotmail.com',
+                'password'   => Hash::make('reviewer'),
                 'confirmed'   => 1,
                 'confirmation_code' => md5(microtime().Config::get('app.key')),
                 'created_at' => new DateTime,

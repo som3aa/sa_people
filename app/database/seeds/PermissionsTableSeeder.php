@@ -89,6 +89,14 @@ class PermissionsTableSeeder extends Seeder {
             ),
             array(
                 'role_id'      => 2,
+                'permission_id' => 1
+            ),
+            array(
+                'role_id'      => 2,
+                'permission_id' => 3
+            ),
+            array(
+                'role_id'      => 2,
                 'permission_id' => 6
             ),
             array(
@@ -101,6 +109,22 @@ class PermissionsTableSeeder extends Seeder {
             ),
             array(
                 'role_id'      => 2,
+                'permission_id' => 9
+            ),
+            array(
+                'role_id'      => 3,
+                'permission_id' => 6
+            ),
+            array(
+                'role_id'      => 3,
+                'permission_id' => 7
+            ),
+            array(
+                'role_id'      => 3,
+                'permission_id' => 8
+            ),
+            array(
+                'role_id'      => 3,
                 'permission_id' => 9
             ),
         );

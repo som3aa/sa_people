@@ -44,12 +44,11 @@ class StoriesTableSeeder extends Seeder {
     {
         DB::table('stories')->delete();
 
-        $user_id = 1;
         $category_id = 1;
 
         DB::table('stories')->insert( array(
             array(
-                'user_id'        => $user_id,
+                'user_id'        => 1,
                 'category_id'    => $category_id,
                 'title'      => 'د. بلقيس محمد الحسن',
                 'slug'       => 'د-بلقيس-محمد-الحسن',
@@ -62,7 +61,7 @@ class StoriesTableSeeder extends Seeder {
                 'updated_at' => new DateTime,
             ),
             array(
-                'user_id'        => $user_id,
+                'user_id'        => 3,
                 'category_id'    => $category_id +1,
                 'title'      => 'الطيب صالح',
                 'slug'       => 'الطيب-صالح',
@@ -75,7 +74,7 @@ class StoriesTableSeeder extends Seeder {
                 'updated_at' => new DateTime,
             ),
             array(
-                'user_id'        => $user_id +1,
+                'user_id'        => 1,
                 'category_id'    => $category_id,
                 'title'      => 'محمد عادل عبد الله',
                 'slug'       => 'محمد-عادل-عبد-الله',

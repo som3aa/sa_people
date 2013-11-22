@@ -58,7 +58,7 @@
 		              {{ HTML::image('img/avatar.jpg') }}
 		            @endif </a>
 			        <ul id="drop" data-dropdown-content class="f-dropdown tiny">
-						@if(Entrust::hasRole('admin')) <li><a href="/../admin/stories">لوحة التحكم</a></li> @endif
+						@if(Entrust::hasRole('admin') or Entrust::hasRole('reviewer')) <li><a href="/../admin/stories">لوحة التحكم</a></li> @endif
 			       	 	<li><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
 			       	 	<li><a href="/../account/stories">ادارة المقالات</a></li>
 						<li style="border-bottom:1px solid #cecece;padding-bottom:2"><a href="/../account/user">اعدادات الحساب</a></li>
