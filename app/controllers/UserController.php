@@ -63,7 +63,8 @@ class UserController extends BaseController {
             'password_confirmation' => 'between:4,11',
             'name'   => 'required',
             'location' => 'required',
-            'gender'  => 'required'
+            'gender'  => 'required',
+            'policy'  => 'accepted'
         );
 
         // Validate the inputs

@@ -65,6 +65,7 @@
 		    </p>
 
 		    <br/>
+
 		    {{-- Bio --}}
 		    <p>
 		    <label for="bio">عن نفسك<small> ( يمكنك تركه فارغا )</small></label>
@@ -72,6 +73,13 @@
 		    		'style'=> 'height:150px','placeholder'=>'عن نفسك')) }}
 		    {{ $errors->first('bio', '<small class="error">:message</small>') }}
 		    </p>
+
+			{{-- site policy --}}
+			<p>
+				{{ Form::checkbox('policy', true, false);}}
+				<span for="policy" style='margin-right:5px'>موافق على شروط و سياسة الموقع <a href="/../policy" >سياسة الموقع</a>.</span>
+				{{ $errors->first('policy', '<small class="error">:message</small>') }}
+			</p>
 
 	        <button type="submit" class="button small">{{{ Lang::get('confide::confide.signup.submit') }}}</button>
 	</form>

@@ -105,7 +105,8 @@ return array(
 		'username' => 'اسم المستخدم',
 		'text' => 'الرسالة',
 		'location' => 'المكان',
-		'gender' => 'الجنس'
+		'gender' => 'الجنس',
+		'policy' => 'الشروط'
 		),
 
 );
