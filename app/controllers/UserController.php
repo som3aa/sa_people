@@ -375,7 +375,12 @@ class UserController extends BaseController {
      
         Auth::login($user);
      
-        return Redirect::to('/');
+        Redirect::to('/');
+
+        return '<script type="text/javascript">
+        opener.location.reload();
+        window.close();
+        </script>';
     }
 
 }
