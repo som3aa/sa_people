@@ -317,7 +317,8 @@ class UserController extends BaseController {
         $facebook = new Facebook(Config::get('facebook'));
         $params = array(
             'redirect_uri' => url('/user/fbcallback'),
-            'scope' => 'email,user_birthday,user_location',
+            'scope' => 'email',
+            'display' => 'popup'
         );
         return Redirect::to($facebook->getLoginUrl($params));
     }
@@ -329,7 +330,7 @@ class UserController extends BaseController {
      * @return mixed
      */
     public function getFbcallback() {
-        $code = Input::get('code');
+      $code = Input::get('code');
         if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
      
         $facebook = new Facebook(Config::get('facebook'));
@@ -375,12 +376,10 @@ class UserController extends BaseController {
      
         Auth::login($user);
      
-        Redirect::to('/');
-
         return '<script type="text/javascript">
-        opener.location.reload();
-        window.close();
-        </script>';
+                opener.location.reload();
+                window.close();
+            </script>';
     }
 
 }

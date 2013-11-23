@@ -4,5 +4,5 @@
 // Facebook app Config 
 return array(
         'appId' => '363335887072007',
-        'secret' => 'm51f3e05236704fe8ba7273191612a4af'
+        'secret' => '73d8bd6381f7864c25594b587704082f'
     );
