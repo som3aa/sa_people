@@ -80,7 +80,7 @@ class AdminStoriesController extends BaseController {
             $this->story->content          = Input::get('content');
             $this->story->image            = $image;
             $this->story->status           = Input::get('status') ? 1 : 0;
-            $this->story->meta_title       = 'سوداكتف -'.Input::get('title');
+            $this->story->meta_title       = 'سوداكتف - '.Input::get('title');
             $this->story->meta_description = Str::limit(Input::get('content'), 200);
             $this->story->category_id      = Input::get('category_id');
             $this->story->user_id          = $user->id;
@@ -157,7 +157,7 @@ class AdminStoriesController extends BaseController {
             $story->slug             = String::slug(Input::get('title'));
             $story->content          = Input::get('content');
             $story->status           = Input::get('status') ? 1 : 0;
-            $story->meta_title       = 'سوداكتف -'.Input::get('title');
+            $story->meta_title       = 'سوداكتف - '.Input::get('title');
             $story->meta_description = Str::limit(Input::get('content'), 200);
             $story->category_id      = Input::get('category_id');
             $story->user_id          = Input::get('user_id');
