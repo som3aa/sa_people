@@ -20,7 +20,7 @@
 		<!-- join us call -->
 		@if( Auth::check() )
 		<section>
-			<p>ساهم في انماء المحتوى السوداني</p>
+			<p>ساهم في تنمية المحتوى السوداني</p>
 			<div class="get_in">
 				<a href="{{{ URL::to('account/stories/create') }}}" class="button small">اكتب عن شخصية</a>
 			</div>
