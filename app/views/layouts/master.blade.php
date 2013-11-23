@@ -79,6 +79,7 @@
 				</span>
 			@else 
 				<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
+				<a href="/../user/fb" class="popup" onclick="facebookPopup(this.href); return false">here</a>
 			@endif
 			</div>
 		</div>
@@ -155,6 +156,21 @@
 
 	<script>
 		$(document).foundation();
+	</script>
+
+	{{-- facebook login script --}}
+	<script type="text/javascript">
+		function facebookPopup (url) {
+		    popup = window.open(url, "facebook_popup",
+		"width=620,height=400,status=no,scrollbars=no,resizable=no");
+		    popup.focus();
+		        }
+
+		function CloseAndRefresh() 
+	    {
+	        window.opener.location.href = window.opener.location.href;
+	        window.close();
+	    }
 	</script>
 
 	@section('javascripts')
