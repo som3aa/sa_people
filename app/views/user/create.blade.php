@@ -9,6 +9,11 @@
 {{-- Content --}}
 @section('content')
 
+    <p>سجل هنا بضغطة زر واحدة فقط عن طريق االفيسبوك</p>
+    <p><a class="btn-auth btn-facebook" onclick="login();return false;" href="#button">التسجيل عن طريق <b>الفيسبوك</b></a></p>
+
+    <hr />
+
 	<h2>التسجيل</h2>
 	
 	<form method="POST" action="{{{ (Confide::checkAction('UserController@store')) ?: URL::to('user')  }}}" accept-charset="UTF-8">

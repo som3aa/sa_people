@@ -8,6 +8,11 @@
 
 {{-- Content --}}
 @section('content')
+    
+    <p>سجل دخولك بسرعة عن طريق الفيسبوك</p>
+    <p><a class="btn-auth btn-facebook" onclick="login();return false;" href="#button">الدخول عن طريق <b>الفيسبوك</b></a></p>
+
+    <hr />
 
 	<h2>الدخول</h2>
 

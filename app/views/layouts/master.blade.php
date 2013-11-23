@@ -24,6 +24,7 @@
 	{{ HTML::style('assets/foundation/css/foundation.min.css') }}
 	{{ HTML::style('assets/foundation/css/normalize.css') }}
 	{{ HTML::style('assets/style.css') }}
+	{{ HTML::style('assets/auth-buttons.css') }}
 
 	<!-- javascript
 	================================================== -->
@@ -78,8 +79,8 @@
 			        </ul>
 				</span>
 			@else 
-				<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
-				<a href="#" onclick="login();return false;"><img src="http://static.ak.fbcdn.net/rsrc.php/zB6N8/hash/4li2k73z.gif" border="0"></a>
+				<div style="margin-bottom:6px;"><a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a></div>
+				<div><a class="btn-auth btn-facebook" onclick="login();return false;" href="#button">سجل الان</a></div>
 			@endif
 			</div>
 		</div>
