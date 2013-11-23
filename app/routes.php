@@ -31,7 +31,33 @@ Route::get('login/fb/callback', function() {
  
     $me = $facebook->api('/me');
  
-    dd($me);
+    $profile = Profile::whereUid($uid)->first();
+    if (empty($profile)) {
+ 
+        $user = new User;
+        $user->username = $me['username'];
+        $user->email = $me['email'];
+ 
+        $user->save();
+ 
+        $profile = new Profile();
+        $profile->uid = $uid;
+        $profile->name = $me['name'];
+        $profile->location = $me['location'];
+        $profile->birthday =  new DateTime($me['birthday']);
+        $profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;
+        $profile->avatar = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+        $profile = $user->profiles()->save($profile);
+    }
+ 
+    $profile->access_token = $facebook->getAccessToken();
+    $profile->save();
+ 
+    $user = $profile->user;
+ 
+    Auth::login($user);
+ 
+    return Redirect::to('/');
 });
 
 /** ------------------------------------------

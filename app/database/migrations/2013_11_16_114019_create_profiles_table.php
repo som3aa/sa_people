@@ -22,6 +22,9 @@ class CreateProfilesTable extends Migration {
 			$table->date('birthday');
             $table->string('avatar');
 			$table->text('bio');
+			$table->biginteger('uid')->unsigned();
+            $table->string('access_token');
+            $table->string('access_token_secret');
 			$table->timestamps();
 		});
 	}
