@@ -12,7 +12,7 @@
   <meta name="description" content="{{{ strip_tags($story->meta_description) }}}" />
   <meta property="og:image" content="{{{ URL::to($story->image) }}}" />
   <meta property="og:title" content="{{{ $story->meta_title }}}" />
-  <meta property="og:description" content="strip_tags($story->meta_description)" />
+  <meta property="og:description" content="{{{ strip_tags($story->meta_description) }}}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{{ $story->url() }}}" />
 @stop
