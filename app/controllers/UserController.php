@@ -323,7 +323,7 @@ class UserController extends BaseController {
     public function getFb() {
         $facebook = new Facebook(Config::get('facebook'));
         $params = array(
-            'redirect_uri' => url('/user/fb_callback'),
+            'redirect_uri' => url('/user/fbcallback'),
             'scope' => 'email,user_birthday,user_location',
         );
         return Redirect::to($facebook->getLoginUrl($params));
@@ -335,7 +335,7 @@ class UserController extends BaseController {
      * @param $username
      * @return mixed
      */
-    public function getFb_callback() {
+    public function getFbcallback() {
         $code = Input::get('code');
         if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
      
@@ -348,26 +348,31 @@ class UserController extends BaseController {
         
         $profile = Profile::whereUid($uid)->first();
         if (empty($profile)) {
-     
-            $this->user->username = $me['username'];
+
+            $this->user->username = String::slug($me['username']);
             $this->user->email = $me['email'];
-            $this->user->password = 'admin';
-            $this->user->password_confirmation = 'sdf';
-     
-            $this->user->save();
+            $password = str_random(8) ;
+            $this->user->password = $password;
+            $this->user->password_confirmation = $password;
+            $this->user->confirmed = 1 ;
             
-            dd($this->user->id);
+            $this->user->save();
+
+            // attach subscriber Role
+            $subscriberRole = $this->role->where('name','=','subscriber')->first();
+            $this->user->attachRole($subscriberRole);
             
             $profile = new Profile();
             $profile->uid = $uid;
-            $profile->user_id = $user->id;
             $profile->name = $me['name'];
-            $profile->location = $me['location']['name'];
-            $profile->birthday =  new DateTime($me['birthday']);
-            $profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;
+            if(!empty($me['location']['name'])) { $profile->location = $me['location']['name']; }
+            if(!empty($me['birthday'])) {$profile->birthday =  new DateTime($me['birthday']);}
+            if(!empty($me['gender'])) {$profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;}
             $profile->avatar = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
-            $profile->bio = $me['bio'];
-            $profile->save();
+            if(!empty($me['bio'])) { $profile->bio = $me['bio']; }
+
+            $profile = $this->user->profile()->save($profile);
+
         }
      
         $profile->access_token = $facebook->getAccessToken();
