@@ -39,9 +39,7 @@
   {{ Form::label('content', 'النص') }}
   <div id="toolbar" style="display: none;">
     <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
-    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
-    <a data-wysihtml5-command="justifyCenter">align center</a> |
-    <a data-wysihtml5-command="insertUnorderedList">insert unordered list</a>
+    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a>
     <a data-wysihtml5-action="change_view">switch to html view</a>
   </div>
   {{ Form::textarea('content','',array('class' => $errors->has('content') ? 'error' : '','id' => 'textarea')) }}
