@@ -10,7 +10,7 @@
 @section('meta_data')
   <link href="{{{ $story->url() }}}" rel="canonical" />
   <meta name="description" content="{{{ $story->meta_description }}}" />
-  <meta property="og:image" content="{{{ $story->image }}}" />
+  <meta property="og:image" content="{{{ URL::to($story->image) }}}" />
   <meta property="og:title" content="{{{ $story->meta_title }}}" />
   <meta property="og:description" content="{{{ $story->meta_description }}}" />
   <meta property="og:type" content="article" />
