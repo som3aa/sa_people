@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('login/fb', function() {
+    $facebook = new Facebook(Config::get('facebook'));
+    $params = array(
+        'redirect_uri' => url('/login/fb/callback'),
+        'scope' => 'email',
+    );
+    return Redirect::to($facebook->getLoginUrl($params));
+});
 
 /** ------------------------------------------
  *  Route model binding

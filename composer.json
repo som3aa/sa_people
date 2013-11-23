@@ -8,7 +8,8 @@
 		"davejamesmiller/laravel-breadcrumbs": "~2.1.0",
 		"zizaco/confide": "2.0.x",
 		"zizaco/entrust": "dev-master",
-		"nesbot/Carbon": "*"
+		"nesbot/Carbon": "*",
+		"facebook/php-sdk": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
