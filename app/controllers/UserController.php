@@ -306,4 +306,78 @@ class UserController extends BaseController {
 
         return View::make('user/profile', compact('user','stories'));
     }
+
+
+
+
+
+
+
+
+
+   /**
+     * Get user's profile
+     * @param $username
+     * @return mixed
+     */
+    public function getFb() {
+        $facebook = new Facebook(Config::get('facebook'));
+        $params = array(
+            'redirect_uri' => url('/user/fb_callback'),
+            'scope' => 'email,user_birthday,user_location',
+        );
+        return Redirect::to($facebook->getLoginUrl($params));
+    }
+
+
+   /**
+     * Get user's profile
+     * @param $username
+     * @return mixed
+     */
+    public function getFb_callback() {
+        $code = Input::get('code');
+        if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
+     
+        $facebook = new Facebook(Config::get('facebook'));
+        $uid = $facebook->getUser();
+     
+        if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
+     
+        $me = $facebook->api('/me');
+        
+        $profile = Profile::whereUid($uid)->first();
+        if (empty($profile)) {
+     
+            $this->user->username = $me['username'];
+            $this->user->email = $me['email'];
+            $this->user->password = 'admin';
+            $this->user->password_confirmation = 'sdf';
+     
+            $this->user->save();
+            
+            dd($this->user->id);
+            
+            $profile = new Profile();
+            $profile->uid = $uid;
+            $profile->user_id = $user->id;
+            $profile->name = $me['name'];
+            $profile->location = $me['location']['name'];
+            $profile->birthday =  new DateTime($me['birthday']);
+            $profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;
+            $profile->avatar = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+            $profile->bio = $me['bio'];
+            $profile->save();
+        }
+     
+        $profile->access_token = $facebook->getAccessToken();
+        $profile->save();
+     
+        $user = $profile->user;
+     
+        Auth::login($user);
+     
+        return Redirect::to('/');
+    }
+
 }
