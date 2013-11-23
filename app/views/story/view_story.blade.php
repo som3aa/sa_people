@@ -57,6 +57,7 @@
       <!-- facebook shear butoon -->
       <div class="fb-share-button" data-href="{{{ $story->url() }}}" data-type="box_count"></div>
     </div>
+  </div>
 
   <br/><br/>
 
