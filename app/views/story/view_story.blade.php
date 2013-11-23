@@ -25,7 +25,7 @@
 <div class="post" itemscope itemtype="http://schema.org/Person">
   <!-- Story header -->
   <div class="row">
-    <div class="large-9 columns">
+    <div class="large-7 columns">
       <h4 itemprop="name">{{ $story->title }}</h4>
   		<p class="meta">
   	    في {{ link_to('category/'.$story->category->slug,$story->category->name) }} ,
@@ -54,6 +54,8 @@
   <div class="row">
     <div class="large-12 columns">
       <p>{{ $story->content }}</p>
+
+      <div class="fb-share-button" data-href="{{{ $story->url() }}}" data-type="box_count"></div>
     </div>
   </div>
   <!-- ./ Story content -->
@@ -120,5 +122,19 @@
   @endif
 
 </div>
+
+@stop
+
+@section('javascripts')
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=363335887072007";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
 @stop
