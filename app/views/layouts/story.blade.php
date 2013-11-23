@@ -17,6 +17,10 @@
 	<!-- Sidebar -->
 	<aside class="large-3 columns sidebar">
 
+		@if( !Auth::check() )
+			<div class="fb-like-box" style="margin-bottom:0.5em" data-href="https://www.facebook.com/Sudactive.network?" data-width="230" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+		@endif
+		
 		<!-- join us call -->
 		@if( Auth::check() )
 		<section>
@@ -59,5 +63,19 @@
 	</aside>
 
 </div>
+
+@stop
+
+@section('javascripts')
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=363335887072007";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 @stop
