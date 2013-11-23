@@ -159,6 +159,7 @@ class AccountStoriesController extends BaseController {
             $story->meta_title       = 'سوداكتف -'.Input::get('title');
             $story->meta_description =  Str::limit(Input::get('content'), 200);
             $story->category_id      = Input::get('category_id');
+            $story->status            = 0;
             if(is_file(Input::file('image'))) {
                 //upload the new image
                 $image = $this->story->upload(Input::file('image')) ;
