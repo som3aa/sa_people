@@ -280,6 +280,8 @@ textarea {
 	line-height: inherit;
 }
 
+
+
 .tabes {
 	float: right;
 	width: 100%;
@@ -316,6 +318,12 @@ textarea {
 }
 
 
+
+
+.jcrop-holder #preview-pane {
+	top: -133px !important;
+	right: -257px !important;
+}
 
 
 
