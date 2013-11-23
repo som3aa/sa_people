@@ -17,6 +17,7 @@
 	<!-- Sidebar -->
 	<aside class="large-3 columns sidebar">
 
+		<!-- Facebook Like Box -->
 		@if( !Auth::check() )
 			<div class="fb-like-box" style="margin-bottom:0.5em" data-href="https://www.facebook.com/Sudactive.network?" data-width="230" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
 		@endif
@@ -67,7 +68,8 @@
 @stop
 
 @section('javascripts')
-
+	
+	{{-- Facebook Like Box --}}
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];

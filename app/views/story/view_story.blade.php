@@ -23,6 +23,7 @@
 {{-- Content --}}
 @section('content')
 <div class="post" itemscope itemtype="http://schema.org/Person">
+
   <!-- Story header -->
   <div class="row">
     <div class="large-7 columns">
@@ -38,7 +39,6 @@
       @endif
     </div>
   </div>
-  <!-- ./ Story header -->
 
 	<!-- Story image -->
   <div class="row">
@@ -48,17 +48,15 @@
       </div>
     </div>
   </div>
-  <!-- ./ Story image -->
 
 	<!-- Story content -->
   <div class="row">
     <div class="large-12 columns">
       <p>{{ $story->content }}</p>
 
+      <!-- facebook shear butoon -->
       <div class="fb-share-button" data-href="{{{ $story->url() }}}" data-type="box_count"></div>
     </div>
-  </div>
-  <!-- ./ Story content -->
 
   <br/><br/>
 

@@ -314,10 +314,7 @@ class UserController extends BaseController {
      * @return mixed
      */
     public function getFb() {
-        $facebook = new Facebook(array(
-            'appId' => '363335887072007',
-            'secret' => '51f3e05236704fe8ba7273191612a4af'
-        ));
+        $facebook = new Facebook(Config::get('facebook'));
         $params = array(
             'redirect_uri' => url('/user/fbcallback'),
             'scope' => 'email,user_birthday,user_location',

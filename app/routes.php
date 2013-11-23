@@ -11,54 +11,6 @@
 |
 */
 
-Route::get('login/fb', function() {
-    $facebook = new Facebook(Config::get('facebook'));
-    $params = array(
-        'redirect_uri' => url('/login/fb/callback'),
-        'scope' => 'email,user_birthday,user_location',
-    );
-    return Redirect::to($facebook->getLoginUrl($params));
-});
-
-Route::get('login/fb/callback', function() {
-    $code = Input::get('code');
-    if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
- 
-    $facebook = new Facebook(Config::get('facebook'));
-    $uid = $facebook->getUser();
- 
-    if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
- 
-    $me = $facebook->api('/me');
- 
-    $profile = Profile::whereUid($uid)->first();
-    if (empty($profile)) {
- 
-        $user = new User;
-        $user->username = $me['username'];
-        $user->email = $me['email'];
- 
-        $user->save();
- 
-        $profile = new Profile();
-        $profile->uid = $uid;
-        $profile->name = $me['name'];
-        $profile->location = $me['location'];
-        $profile->birthday =  new DateTime($me['birthday']);
-        $profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;
-        $profile->avatar = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
-        $profile = $user->profiles()->save($profile);
-    }
- 
-    $profile->access_token = $facebook->getAccessToken();
-    $profile->save();
- 
-    $user = $profile->user;
- 
-    Auth::login($user);
- 
-    return Redirect::to('/');
-});
 
 /** ------------------------------------------
  *  Route model binding
