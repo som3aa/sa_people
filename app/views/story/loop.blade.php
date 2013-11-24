@@ -14,7 +14,7 @@
 				<div class="large-4 columns top_meta">
 					<span class='date'>{{{ $story->date() }}}</span>
 					<span class='comments'><a href="{{{ $story->url() }}}#comments">{{$story->comments()->count()}}
-					{{ \Illuminate\Support\Pluralizer::plural('Comment', $story->comments()->count()) }}</span>
+					{{ \Illuminate\Support\Pluralizer::plural('Comment', $story->comments()->count()) }}</a></span>
 				</div>
 			</div>
 

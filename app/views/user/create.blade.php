@@ -90,3 +90,35 @@
 	</form>
 		
 @stop
+
+
+@section('javascripts')
+
+    <!-- Facebook login button -->
+    <script type="text/javascript">
+        var newwindow;
+        var intId;
+        function login(){
+            var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft,
+            screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop,
+            outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth,
+            outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22),
+            width    = 500,
+            height   = 270,
+            left     = parseInt(screenX + ((outerWidth - width) / 2), 10),
+            top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10),
+            features = (
+                'width=' + width +
+                ',height=' + height +
+                ',left=' + left +
+                ',top=' + top
+            );
+         
+        newwindow=window.open('/../user/fb','Login_by_facebook',features);
+
+        if (window.focus) {newwindow.focus()}
+            return false;
+        }
+    </script>
+
+@stop

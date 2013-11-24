@@ -85,6 +85,8 @@
   </div>
   @endforeach
 
+  <br />
+  
   {{-- Post Comment --}}
   @if (!Auth::check())
     اذا اردت ان تضيف تعليق يجب عليك تسجيل الدخول اولا<br /><br />
