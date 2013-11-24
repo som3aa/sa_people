@@ -50,7 +50,25 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    $pathInfo = Request::getPathInfo();
+    $message = $exception->getMessage() ?: 'Exception';
+    Log::error("$code - $message @ $pathInfo\r\n$exception");
+    
+    if (Config::get('app.debug')) {
+    	return;
+    }
+
+    switch ($code)
+    {
+        case 403:
+            return Response::view('story/pages/404', array(), 403);
+
+        case 500:
+            return Response::view('story/pages/404', array(), 500);
+
+        default:
+            return Response::view('story/pages/404', array(), 404);
+    }
 });
 
 /*
