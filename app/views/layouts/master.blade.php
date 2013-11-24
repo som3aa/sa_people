@@ -107,10 +107,10 @@
 		<!-- Account Tob Bar  -->
 		<div class="large-7 columns">
 			<div class="slider">
-				<a href="/../pt/1/p/1"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
-				<a href="/../pt/1/p/2"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
-				<a href="/../pt/1/p/2"><img src="/img/p3.png" class="person" style="left:240px; bottom:4px ; z-index:4"></a>
-				<a href="/../pt/1/p/1"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
+				<a href="/../مصطفى-عبدالله-صالح"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
+				<a href="/../الطيب-صالح"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
+				<a href="/../د-بلقيس-محمد-الحسن"><img src="/img/p5.png" class="person" style="left:250px; bottom:4px ; z-index:4"></a>
+				<a href="/../الطيب-صالح"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
 				<img src="/img/curve.png" class="curve" />	
 			</div>
 		</div>
