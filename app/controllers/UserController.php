@@ -317,7 +317,7 @@ class UserController extends BaseController {
         $facebook = new Facebook(Config::get('facebook'));
         $params = array(
             'redirect_uri' => url('/user/fbcallback'),
-            'scope' => 'email',
+            'scope' => 'email,user_birthday,user_location',
             'display' => 'popup'
         );
         return Redirect::to($facebook->getLoginUrl($params));
