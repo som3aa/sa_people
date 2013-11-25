@@ -26,6 +26,22 @@ class User extends ConfideUser {
     }
 
     /**
+     * delete related profile & roles with the user
+     * 
+     */
+    public function delete()
+    {
+        //Delete related profile 
+        $this->profile->delete();
+
+        //Delete all related roles
+        $this->detachRoles($this->roles);
+
+        // delete the user
+        return parent::delete();
+    }
+
+    /**
      * Get the URL to the post.
      *
      * @return string

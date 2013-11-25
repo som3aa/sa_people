@@ -223,9 +223,6 @@ class AdminStoriesController extends BaseController {
             $id = $story->id;
             $story->delete();
 
-            //Delete attached image
-            File::delete($story->image);
-
             // Was the story deleted?
             $story = Story::find($id);
             if(empty($story))

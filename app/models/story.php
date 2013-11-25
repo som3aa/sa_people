@@ -87,6 +87,25 @@ class Story extends Eloquent {
 	}
 
 	/**
+	 * delete all assosiated comments & files
+	 * 
+	 */
+	public function delete()
+    {
+        //Delete all related comments 
+        foreach($this->comments as $comment)
+        {
+            $comment->delete();
+        }
+
+        //Delete attached image
+        File::delete($this->image);
+
+        // delete the user
+        return parent::delete();
+    }
+
+	/**
 	 * Upload story image
 	 *
 	 * @return string

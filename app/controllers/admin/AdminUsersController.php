@@ -220,8 +220,6 @@ class AdminUsersController extends BaseController {
             return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.delete.impossible'));
         }
 
-        AssignedRoles::where('user_id', $user->id)->delete();
-
         $id = $user->id;
         $user->delete();
 
