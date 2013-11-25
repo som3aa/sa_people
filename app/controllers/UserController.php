@@ -343,7 +343,8 @@ class UserController extends BaseController {
         $profile = Profile::whereUid($uid)->first();
         if (empty($profile)) {
 
-            $this->user->username = String::slug($me['username']);
+            //create user info
+            $this->user->username = empty($me['username']) ? $me['id'] : String::slug($me['username']); 
             $this->user->email = $me['email'];
             $password = str_random(8) ;
             $this->user->password = $password;
@@ -351,21 +352,22 @@ class UserController extends BaseController {
             $this->user->confirmed = 1 ;
             
             $this->user->save();
+            
+            // create there related profile
+            $profile = new Profile();
+            $profile->uid = $uid;
+            $profile->name = empty($me['name']) ? '' : $me['name'];
+            $profile->location = empty($me['location']['name']) ? '' : $me['location']['name'];
+            $profile->birthday = empty($me['birthday']) ? '' : new DateTime($me['birthday']);
+            $profile->gender =  empty($me['gender']) ? '' : ($me['gender'] == 'male') ? 1  : 2 ;
+            $profile->avatar = empty($me['username']) ? '' : 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+            $profile->bio = empty($me['bio']) ? '' : $me['bio']; 
+
+            $profile = $this->user->profile()->save($profile);
 
             // attach subscriber Role
             $subscriberRole = $this->role->where('name','=','subscriber')->first();
             $this->user->attachRole($subscriberRole);
-            
-            $profile = new Profile();
-            $profile->uid = $uid;
-            $profile->name = $me['name'];
-            if(!empty($me['location']['name'])) { $profile->location = $me['location']['name']; }
-            if(!empty($me['birthday'])) {$profile->birthday =  new DateTime($me['birthday']);}
-            if(!empty($me['gender'])) {$profile->gender = ($me['gender'] == 'female') ? 2  : 1 ;}
-            $profile->avatar = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
-            if(!empty($me['bio'])) { $profile->bio = $me['bio']; }
-
-            $profile = $this->user->profile()->save($profile);
 
         }
      
@@ -377,9 +379,9 @@ class UserController extends BaseController {
         Auth::login($user);
      
         return '<script type="text/javascript">
-                opener.location.reload();
-                window.close();
-            </script>';
+                    opener.location.reload();
+                    window.close();
+                </script>';
     }
 
 }
