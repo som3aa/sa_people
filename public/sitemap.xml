@@ -22,7 +22,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/د-بلقيس-محمد-الحسن</loc>
+  <loc>http://sudactive.com/بلقيس-محمد-الحسن</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/مصطفى-عبدالله-صالح</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>

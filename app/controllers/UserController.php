@@ -302,7 +302,7 @@ class UserController extends BaseController {
         }
 
         // Gram user stories
-        $stories = $user->story()->whereStatus('1')->paginate(10);
+        $stories = $user->stories()->whereStatus('1')->paginate(10);
 
         return View::make('user/profile', compact('user','stories'));
     }

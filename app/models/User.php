@@ -12,7 +12,7 @@ class User extends ConfideUser {
 	/**
 	 * story relationship
 	 */
-	public function story()
+	public function stories()
 	{
 	    return $this->hasMany('Story');
 	}
@@ -26,6 +26,16 @@ class User extends ConfideUser {
     }
 
     /**
+     * Get the story's comments.
+     *
+     * @return array
+     */
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
+
+    /**
      * delete related profile & roles with the user
      * 
      */
@@ -36,6 +46,18 @@ class User extends ConfideUser {
 
         //Delete all related roles
         $this->detachRoles($this->roles);
+
+        //Delete all related comments 
+        foreach($this->comments as $comment)
+        {
+            $comment->delete();
+        }
+
+        //Delete all related stories 
+        foreach($this->stories as $story)
+        {
+            $story->delete();
+        }
 
         // delete the user
         return parent::delete();
