@@ -14,7 +14,7 @@ h1.logo {
 	margin: 10px 0 15px 0 ;
 }
 
-#login_bar {
+.login_bar {
 	background: #e07051; 
 	color: #ffffff ;
 	float: left;
@@ -23,15 +23,37 @@ h1.logo {
 	margin-bottom: 40px;
 }
 
-#login_bar a {
+.login_bar a {
 	color: #ffffff;
 	font-weight: bold;
 }
 
-#login_bar img {
+.login_bar img {
 	margin: -3px 2px 0; ;
 	width: 23px;
 	height: 23px;
+}
+
+.login_bar .f-dropdown  {
+	padding: 7px;
+	float: left!important;
+	left: 15px!important;
+	margin-top: 17px;
+}
+
+.login_bar .f-dropdown.right:before {
+	right: 166px;
+}
+
+.login_bar .f-dropdown.right:after {
+	right: 165px;
+}
+
+.login_bar .f-dropdown a {
+	font-weight: normal;
+	display: block;
+	color: #e07051;
+	line-height: inherit;
 }
 
 /* Sub-header */
@@ -50,16 +72,16 @@ h1.logo {
 	margin-bottom: 2.1em;
 }
 
-.sub-header div.slogan {
+.sub-header .slogan {
 	margin: 45px 40px 0 10px;
 	color: #555555 ;
 }
 
-.sub-header div.slogan h2 {
+.sub-header .slogan h2 {
 	margin-bottom: 0px;
 }
 
-.sub-header div.slogan h2 a {
+.sub-header .slogan h2 a {
 	color: #555555 ;
 	margin-bottom: 0px;
 }
@@ -114,7 +136,6 @@ h1.logo {
 }
 
 .post h4 {
-	color: #777;
 	margin-bottom: 0.2em;
 }
 
@@ -126,27 +147,19 @@ h1.logo {
 	margin: 0 0 1.5em 0;
 }
 
-
-.birthday {
-	float: right;
-	width: 100px;
-	margin-left: 5px;
-}
-
-
-.top_meta {
+.post .top_meta {
 	font-size: 12px;
 	color: #a3a3a3;
 	margin-top: 7px ;
 	direction: ltr;
 }
 
-.top_meta .date , .top_meta .comments {
+.post .top_meta .date ,  .post .top_meta .comments {
 	display: block;
 	margin: 3px 0;
 }
 
-.top_meta .comments a {
+.post .top_meta .comments a {
 	color: #a3a3a3;
 	text-decoration: underline;
 }
@@ -197,6 +210,13 @@ h1.logo {
 	padding: 0;
 }
 
+.get_in {
+	text-align: center;
+}
+.get_in .button {
+	width: 100%;
+}
+
 
 /* footer */
 .footer{
@@ -209,12 +229,6 @@ h1.logo {
 
 
 /* misc */
-.get_in {
-	text-align: center;
-}
-.get_in .button.small {
-	width: 100%;
-}
 .alert-box {
 	line-height: 1.7;
 }
@@ -231,13 +245,10 @@ ul.breadcrumbs {
 	font-size: 1.3em ;
 }
 
-div.facebook {
-	height: 148px;
-	width: 100%;
-}
-
-section.fb_section {
-	background-color: #f5f5dc;
+select.birthday {
+	float: right;
+	width: 100px;
+	margin-left: 5px;
 }
 
  
@@ -251,37 +262,20 @@ section.fb_section {
 	font-weight: bold;
 }
 
-textarea {
-	height: 280px;
+textarea[name='content'] {
+	height: 400px;
+    font-size: 14px;
+    line-height: 23px;
+}
+
+textarea[name='bio'] {
+	height: 140px;
     font-size: 14px;
     line-height: 23px;
 }
 
 
-#login_bar .f-dropdown  {
-	padding: 7px;
-	float: left!important;
-	left: 15px!important;
-	margin-top: 17px;
-}
-
-#login_bar .f-dropdown.right:before {
-	right: 166px;
-}
-
-#login_bar .f-dropdown.right:after {
-	right: 165px;
-}
-
-#login_bar .f-dropdown a {
-	font-weight: normal;
-	display: block;
-	color: #e07051;
-	line-height: inherit;
-}
-
-
-
+/* tabes */
 .tabes {
 	float: right;
 	width: 100%;
@@ -318,8 +312,7 @@ textarea {
 }
 
 
-
-
+/* jcrop */
 .jcrop-holder #preview-pane {
 	top: -133px !important;
 	right: -257px !important;

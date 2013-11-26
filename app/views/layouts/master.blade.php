@@ -60,7 +60,7 @@
 
 		<!-- Account Tob Bar  -->
 		<div class="large-7 columns">
-			<div id="login_bar">
+			<div class="login_bar">
 			@if( Auth::check())
 				<span>
 					<a href="#" data-dropdown="drop" class="dropdown">
