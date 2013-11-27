@@ -9,12 +9,18 @@
 		{{-- avatar --}}
 		<section>
 			<div class="th radius">
-				@if (!empty($user->profile->avatar))
-					{{ HTML::image($user->profile->avatar,$user->profile->name) }}
-				@elseif (!empty(Auth::user()->profile->avatar))
-					{{ HTML::image(Auth::user()->profile->avatar,Auth::user()->profile->name) }}
+				@if (!empty($user))
+					@if(!empty($user->profile->avatar ))
+						{{ HTML::image($user->profile->avatar,$user->profile->name) }}
+					@else
+						{{ HTML::image('img/avatar.jpg') }}
+					@endif
 				@else
-					{{ HTML::image('img/avatar.jpg') }}
+					@if (!empty(Auth::user()->profile->avatar))
+						{{ HTML::image(Auth::user()->profile->avatar,Auth::user()->profile->name) }}
+					@else 
+						{{ HTML::image('img/avatar.jpg') }}
+					@endif
 				@endif
 			</div>
 		</section>
