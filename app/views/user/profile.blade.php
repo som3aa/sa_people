@@ -33,8 +33,10 @@
   <h4 style="margin-bottom:20px">{{{ $user->profile->name }}}</h4>
 
   {{-- Profile Sections --}}
-  <h5>عن {{ $user->profile->name}} :</h5>
-  <p>{{ $user->profile->bio }}</p>
+  @if(!empty($user->profile->bio))
+    <h5>عن {{ $user->profile->name}} :</h5>
+    <p>{{ $user->profile->bio }}</p>
+  @endif
 
   <hr />
 

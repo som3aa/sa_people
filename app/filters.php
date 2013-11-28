@@ -92,6 +92,7 @@ Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirec
 Entrust::routeNeedsPermission( 'admin/comments*', 'manage_comments', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/profiles*', 'manage_profiles', Redirect::to('/') );
 
 
 /*

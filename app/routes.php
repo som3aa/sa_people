@@ -116,6 +116,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         ->where('user', '[0-9]+');
     Route::controller('users', 'AdminUsersController');
 
+    # Users Management
+    Route::get('profiles/{profile}/edit', 'AdminProfilesController@getEdit')
+        ->where('profile', '[0-9]+');
+    Route::post('profiles/{profile}/edit', 'AdminProfilesController@postEdit')
+        ->where('profile', '[0-9]+');
+    Route::get('profiles/{profile}/delete', 'AdminProfilesController@getDelete')
+        ->where('profile', '[0-9]+');
+    Route::post('profiles/{profile}/delete', 'AdminProfilesController@postDelete')
+        ->where('profile', '[0-9]+');
+    Route::controller('profiles', 'AdminProfilesController');
+
     # User Role Management
     Route::get('roles/{role}/show', 'AdminRolesController@getShow')
         ->where('role', '[0-9]+');

@@ -43,6 +43,10 @@ class PermissionsTableSeeder extends Seeder {
             array(
                 'name'      => 'manage_his_user',
                 'display_name'      => 'edit his user info'
+            ),
+            array(
+                'name'      => 'manage_profiles',
+                'display_name'      => 'manage profiles'
             )
         );
 
@@ -127,6 +131,10 @@ class PermissionsTableSeeder extends Seeder {
                 'role_id'      => 3,
                 'permission_id' => 9
             ),
+            array(
+                'role_id'      => 1,
+                'permission_id' => 10
+            )
         );
 
         DB::table('permission_role')->insert( $permissions );
