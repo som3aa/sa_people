@@ -9,6 +9,11 @@ p , a {
 	font-size: 0.95em;
 }
 
+.side-nav,.breadcrumbs > * ,.button {
+	font-family: Tahoma,Arial,Verdana,sans-serif;
+	font-size: 0.95em;
+}
+
 /* header */
 h1.logo {
 	margin: 10px 0 15px 0 ;
@@ -242,7 +247,6 @@ ul.breadcrumbs {
 	background: none;
 	background: #fff;
 	margin-bottom: 20px;
-	font-size: 1.3em ;
 }
 
 select.birthday {

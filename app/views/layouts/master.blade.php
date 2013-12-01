@@ -17,12 +17,12 @@
 
 	<!-- Mobile Specific Metas
 	================================================== -->
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- CSS
 	================================================== -->
-	{{ HTML::style('assets/foundation/css/foundation.min.css') }}
 	{{ HTML::style('assets/foundation/css/normalize.css') }}
+	{{ HTML::style('assets/foundation/css/foundation.css') }}
 	{{ HTML::style('assets/style.css') }}
 	{{ HTML::style('assets/auth-buttons.css') }}
 
@@ -145,14 +145,10 @@
 
 	<!-- Javascripts
 	================================================== -->
-	<script>
-		document.write('<script src=/../' +
-		('__proto__' in {} ? 'assets/foundation/js/vendor/zepto' : 'assets/foundation/js/vendor/jquery') +
-		'.js><\/script>')
-	</script>
+	{{ HTML::script('assets/foundation/js/vendor/jquery.js') }}
 
-	{{ HTML::script('assets/foundation/js/foundation.min.js') }}
-	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
+	{{ HTML::script('assets/foundation/js/foundation/foundation.js') }}
+	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
 
 	<script>
 		$(document).foundation();

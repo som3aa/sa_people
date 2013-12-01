@@ -22,27 +22,17 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/بلقيس-محمد-الحسن</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>http://sudactive.com/مصطفى-عبدالله-صالح</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/الصادق-عبد-الله-عبد-المجيد</loc>
+  <loc>http://sudactive.com/بلقيس-محمد-الحسن</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/عبد-الرحيم-البرعي</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://sudactive.com/اسماعيل-حسن</loc>
+  <loc>http://sudactive.com/عز-الدين-الأمين</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -52,27 +42,67 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/user/profile/admin</loc>
+  <loc>http://sudactive.com/user/profile/tota-brido-9</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/الطيب-صالح</loc>
+  <loc>http://sudactive.com/التجاني-الماحي</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/category/شعراء</loc>
+  <loc>http://sudactive.com/category/أطباء</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://sudactive.com/user/profile/user</loc>
+  <loc>http://sudactive.com/عبد-القادر-سالم</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://sudactive.com/category/مغنون</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/user/profile/esmail-qurashe</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/الصادق-عبد-الله-عبد-المجيد</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/category/سياسيون</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/user/profile/amel-salah-7</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/عبد-الرحيم-البرعي</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/category/علماء</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/اسماعيل-حسن</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/category/شعراء</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -88,21 +118,6 @@
 </url>
 <url>
   <loc>http://sudactive.com/category/دراميون</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://sudactive.com/category/أطباء</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://sudactive.com/category/علماء</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://sudactive.com/category/سياسيون</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -168,6 +183,11 @@
 </url>
 <url>
   <loc>http://sudactive.com/user/forgot</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://sudactive.com/user/profile/100006064653124</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>

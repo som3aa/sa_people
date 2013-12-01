@@ -62,14 +62,12 @@
 		    {{ $errors->first('gender', '<small class="error">:message</small>') }}
 
 		    {{-- BirthDay --}}
-		    <p>
+		    <div style="overflow:hidden">
 		    <label for="birthday">تاريخ الميلاد<small> ( لم يتم نشره)</small></label>
 		     {{ Form::selectRange('day', 1, 31,Input::old('day'),array('class'=>'birthday')) }}
 		     {{ Form::selectMonth('month',Input::old('month'),array('class'=>'birthday')); }}
 		     {{ Form::selectRange('year', 2014,1920,Input::old('year'),array('class'=>'birthday')) }}
-		    </p>
-
-		    <br/>
+		    </div>
 
 		    {{-- Bio --}}
 		    <p>
