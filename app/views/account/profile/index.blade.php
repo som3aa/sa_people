@@ -51,7 +51,7 @@
       </p>
 
       {{-- BirthDay --}}
-      <p>
+      <p style="overflow:hidden">
       {{ Form::label('BirthDay', 'تاريخ الميلاد') }}
         <?php $date = new DateTime($profile->birthday); ?>
        {{ Form::selectRange('day', 1, 31,$date->format('d'),array('class'=>'birthday')) }}
@@ -59,7 +59,6 @@
        {{ Form::selectRange('year', 2014,1920,$date->format('Y'),array('class'=>'birthday')) }}
       </p>
 
-      <br/>
       {{-- Bio --}}
       <p>
       {{ Form::label('bio', 'عن نفسك') }}

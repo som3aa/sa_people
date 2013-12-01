@@ -27,7 +27,7 @@
 				{{ Str::limit($story->content, 120) }}
 			</p>
 
-			<a class="button small" href="{{{ $story->url() }}}">اقراء المزيد</a>
+			<a class="button tiny read_more" href="{{{ $story->url() }}}">اقراء المزيد</a>
 		</div>
 	</div>
 	<!-- ./ Story Content -->

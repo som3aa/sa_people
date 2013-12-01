@@ -169,6 +169,10 @@ h1.logo {
 	text-decoration: underline;
 }
 
+.post .read_more {
+	margin-bottom: 0;
+}
+
 
 /* Comments */
 #comment {

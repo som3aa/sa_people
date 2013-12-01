@@ -39,7 +39,7 @@
       <td>{{{ $profile->birthday }}} </td>
       <td>{{{ $profile->avatar }}} </td>
       <td>
-        <a href="{{{ URL::to('admin/profiles/'.$profile->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 
+        <a href="{{{ URL::to('admin/profiles/'.$profile->id.'/edit') }}}" class="button tiny secondary" style="margin:0">تعديل</a> 
       </td>
     </tr>
     @endforeach

@@ -39,8 +39,8 @@
       <td>{{{ DB::table('assigned_roles')->where('role_id','=', $role->id)->count()  }}}</td>
       <td>{{{ $role->created_at }}}</td>
       <td>
-        <a href="{{{ URL::to('admin/roles/'.$role->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 
-        <a href="{{{ URL::to('admin/roles/'.$role->id.'/delete') }}}"  class="button small" style="margin:0">حذف</a>
+        <a href="{{{ URL::to('admin/roles/'.$role->id.'/edit') }}}" class="button tiny secondary" style="margin:0">تعديل</a> 
+        <a href="{{{ URL::to('admin/roles/'.$role->id.'/delete') }}}"  class="button tiny" style="margin:0">حذف</a>
       </td>
     </tr>
     @endforeach

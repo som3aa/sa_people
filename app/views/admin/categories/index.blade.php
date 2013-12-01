@@ -39,8 +39,8 @@
       <td>{{{ $category->slug }}}</td>
       <td>{{{ $category->created_at }}}</td>
       <td>
-        <a href="{{{ URL::to('admin/categories/'.$category->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 
-        <a href="{{{ URL::to('admin/categories/'.$category->id.'/delete') }}}"  class="button small" style="margin:0">حذف</a>
+        <a href="{{{ URL::to('admin/categories/'.$category->id.'/edit') }}}" class="button tiny secondary" style="margin:0">تعديل</a> 
+        <a href="{{{ URL::to('admin/categories/'.$category->id.'/delete') }}}"  class="button tiny" style="margin:0">حذف</a>
       </td>
     </tr>
     @endforeach
