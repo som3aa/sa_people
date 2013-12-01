@@ -149,6 +149,7 @@
 
 	{{ HTML::script('assets/foundation/js/foundation/foundation.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
+	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
 
 	<script>
 		$(document).foundation();
