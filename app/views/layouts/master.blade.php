@@ -50,31 +50,16 @@
 
 <body>
 
-	<!-- Header
-	================================================= -->
+	<!-- header
+	================================================== -->
 	<div class="row header">
-
-		<div class="large-4 columns">
-			<!-- Sudactive Header -->
+		<!-- Sudactive Header -->
+		<div class="large-5 columns">
 			<h1 class="logo"><a href="/">{{ HTML::image('img/sudactive.png') }}</a></h1>
-
-			<!-- Slider slagan -->
-			<div class="slogan">
-				<h2><a href="/">شخصيات سودانية</a></h2>
-				 <!-- search bar -->
-				  <div class="row">
-				      <div class="large-10 columns">
-				          	<form method="get" action="/../search/" class="search">
-				              <input type="text" name="keyword" placeholder="ابحث عن اي شخصية هنا">
-				              <img src="/../img/search.png" />
-				        	</form>
-				      </div>
-				  </div><!-- end search bar -->
-			</div>
 		</div>
 
-		<div class="large-8 columns">
-			<!-- Account Tob Bar  -->
+		<!-- Account Tob Bar  -->
+		<div class="large-7 columns">
 			<div class="login_bar">
 			@if( Auth::check())
 				<span>
@@ -97,17 +82,36 @@
 				<a href="/../user/login">الدخول</a> <span style="color:#eaa494; margin:0 3px;"> او </span><a href="/../user/create">التسجيل</a>
 			@endif
 			</div>
+		</div>
+	</div><!-- End Header -->
 
+	<!-- sub-header
+	================================================= -->
+	<div class="row sub-header">
+		<!-- Slider slagan -->
+		<div class="large-5 columns">
+			<div class="slogan">
+				<h2><a href="/">شخصيات سودانية</a></h2>
+				 <!-- search bar -->
+				  <div class="row">
+				      <div class="large-10 columns">
+				          	<form method="get" action="/../search/" class="search">
+				              <input type="text" name="keyword" placeholder="بحث عن اي اسم ... عمر الامين مثلا">
+				              <img src="/../img/search.png" />
+				        	</form>
+				      </div>
+				  </div><!-- end search bar -->
+			</div>
+		</div>
+
+		<!-- Account Tob Bar  -->
+		<div class="large-7 columns">
 			<div class="slider">
-				<ul class="orbit" data-orbit  data-options="
-					animation:slide;
-					pause_on_hover:false;
-					navigation_arrows:false;
-					slide_number: false;">
-					<li><img src="/../img/slider1.jpg" alt="slide 1" /></li>
-					<li><img src="/../img/slider2.jpg" alt="slide 2" /></li>
-					<li><img src="/../img/slider3.jpg" alt="slide 3" /></li>
-				</ul>
+				<a href="/../مصطفى-عبدالله-صالح"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
+				<a href="/../الطيب-صالح"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
+				<a href="/../بلقيس-محمد-الحسن"><img src="/img/p5.png" class="person" style="left:250px; bottom:4px ; z-index:4"></a>
+				<a href="/../الطيب-صالح"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
+				<img src="/img/curve.png" class="curve" />	
 			</div>
 		</div>
 	</div><!-- End Header -->
@@ -146,7 +150,6 @@
 	{{ HTML::script('assets/foundation/js/foundation/foundation.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
-	{{ HTML::script('assets/foundation/js/foundation/foundation.orbit.js') }}
 
 	<script>
 		$(document).foundation();
