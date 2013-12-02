@@ -114,7 +114,27 @@
 				<img src="/img/curve.png" class="curve" />	
 			</div>
 		</div>
-	</div><!-- End Header -->
+	</div><!-- End sub-header -->
+
+
+	<!-- Orbit Slider
+	================================================= -->
+	@if(Route::getCurrentRoute()->getPath() == '/')
+		<div class="row">
+			<div class="large-10 large-centered columns">
+				<ul class="orbit" data-orbit  data-options="
+					animation:slide;
+					pause_on_hover:false;
+					navigation_arrows:false;
+					slide_number: false;">
+					<li><img src="/../img/orbit-3.jpg" alt="slide 1" /></li>
+					<li><img src="/../img/orbit-1.jpg" alt="slide 2" /></li>
+					<li><img src="/../img/orbit-2.jpg" alt="slide 3" /></li>
+				</ul>	
+			</div>
+		</div>
+	@endif
+	<!-- End Orbit Slider -->
 
 	<!-- Middel Container
 	================================================= -->
