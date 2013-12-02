@@ -24,7 +24,3 @@
 	@include('story.loop')
 
 @stop
-
-@section('javascripts')
-	{{ HTML::script('assets/foundation/js/foundation/foundation.orbit.js') }}
-@stop

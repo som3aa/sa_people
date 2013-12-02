@@ -151,6 +151,10 @@
 	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
 
+	@if(Route::getCurrentRoute()->getPath() == '/')
+	{{ HTML::script('assets/foundation/js/foundation/foundation.orbit.js') }}
+	@endif
+
 	@section('javascripts')
 	@show
 
