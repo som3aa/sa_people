@@ -94,7 +94,7 @@ h1.logo {
 .sub-header .slider {
 	height: 170px;
 	position: relative;
-	margin-bottom: 60px;
+	margin-bottom: 40px;
 }
 
 .sub-header .slider img.curve {
@@ -129,6 +129,13 @@ h1.logo {
        /* transform property (for Safari and Firefox) */ 
 }
 
+.orbit-container {
+	margin-bottom: 20px;
+}
+
+.orbit-container li > img {
+	border:3px solid #ddd;
+}
 
 /* Main Page Content and Sidebar */
 .post {

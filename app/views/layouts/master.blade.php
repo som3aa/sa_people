@@ -151,12 +151,12 @@
 	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
 
+	@section('javascripts')
+	@show
+
 	<script>
 		$(document).foundation();
 	</script>
-
-	@section('javascripts')
-	@show
 
 </body>
 </html>
