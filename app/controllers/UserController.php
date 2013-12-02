@@ -78,24 +78,6 @@ class UserController extends BaseController {
             $password = Input::get( 'password' );
             $passwordConfirmation = Input::get( 'password_confirmation' );
 
-            if(!empty($password)) {
-                if($password === $passwordConfirmation) {
-                    $this->user->password = $password;
-                    // The password confirmation will be removed from model
-                    // before saving. This field will be used in Ardent's
-                    // auto validation.
-                    $this->user->password_confirmation = $passwordConfirmation;
-                } else {
-                    // Redirect to the new user page
-                    return Redirect::to('user/create')
-                        ->withInput(Input::except('password','password_confirmation'))
-                        ->with('error', Lang::get('user.password_does_not_match'));
-                }
-            } else {
-                unset($this->user->password);
-                unset($this->user->password_confirmation);
-            }
-
             // check birthday
             if(Input::get('year') == '2014') {
                 // Redirect to the new user page
@@ -107,6 +89,7 @@ class UserController extends BaseController {
             // Save if valid. Password field will be hashed before save
             $this->user->save();
 
+            // setup the profile for the user
             $this->profile->name = Input::get( 'name' );
             $this->profile->location = Input::get( 'location' );
             $this->profile->bio = Input::get( 'bio' );
@@ -114,7 +97,7 @@ class UserController extends BaseController {
             $this->profile->gender = Input::get( 'gender' );
             $this->profile->user_id = $this->user->id ;
 
-            // Was the story created?
+            // Was the profile created?
             $this->profile->save();
 
             // attach subscriber Role

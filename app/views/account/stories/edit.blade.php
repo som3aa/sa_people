@@ -16,7 +16,9 @@
   <li class="active"><a href="/../account/stories">ادارة المقالات</a></li>
   <li class=""><a href="/../account/user">اعدادات الحساب</a></li>
 </ul>
-  
+
+<a href="{{{ URL::to('account/stories/') }}}" class="button small secondary">رجوع</a>
+
 <h4>{{{ $title }}}</h4>
 
 {{-- Form for The Story --}}

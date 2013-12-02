@@ -24,9 +24,9 @@
 <table>
   <thead>
     <tr>
-      <th class="large-5">اسم الشخصية</th>
+      <th class="large-4">اسم الشخصية</th>
       <td class="large-2">التصنيف</td>
-      <td class="large-3">اوامر</td>
+      <td class="large-4">اوامر</td>
     </tr>
   </thead>
   <tbody>
@@ -35,9 +35,9 @@
       <td>@if (!$story->status) {{ '[قيد المراجعة]' }} @endif {{{ $story->title }}}</td>
       <td>{{{ $story->category->name }}}</td>
       <td>
-        <a href="{{{ URL::to('account/stories/'.$story->id.'/show') }}}" class="button small secondary" style="margin:0">عرض</a> 
-        <a href="{{{ URL::to('account/stories/'.$story->id.'/edit') }}}" class="button small secondary" style="margin:0">تعديل</a> 
-        <a href="{{{ URL::to('account/stories/'.$story->id.'/delete') }}}"  class="button small" style="margin:0">حذف</a>
+        <a href="{{{ URL::to('account/stories/'.$story->id.'/show') }}}" class="button tiny secondary" style="margin:0">عرض</a> 
+        <a href="{{{ URL::to('account/stories/'.$story->id.'/edit') }}}" class="button tiny secondary" style="margin:0">تعديل</a> 
+        <a href="{{{ URL::to('account/stories/'.$story->id.'/delete') }}}"  class="button tiny" style="margin:0">حذف</a>
       </td>
     </tr>
     @endforeach
