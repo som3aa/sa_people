@@ -110,7 +110,7 @@
 				<a href="/../مصطفى-عبدالله-صالح"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
 				<a href="/../الطيب-صالح"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
 				<a href="/../بلقيس-محمد-الحسن"><img src="/img/p5.png" class="person" style="left:250px; bottom:4px ; z-index:4"></a>
-				<a href="/../الطيب-صالح"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
+				<a href="/../عبد-القادر-سالم"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
 				<img src="/img/curve.png" class="curve" />	
 			</div>
 		</div>

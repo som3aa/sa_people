@@ -332,3 +332,36 @@ textarea[name='bio'] {
 	top: -133px !important;
 	right: -257px !important;
 }
+
+
+
+.pagination ul {
+	display: block;
+	height: 1.33333rem;
+	margin-left: -0.27778rem;
+}
+
+.pagination ul li {
+	height: 1.33333rem;
+	color: #222222;
+	font-size: 0.77778rem;
+	margin-left: 0.27778rem;
+	float: right;
+	display: block;
+	list-style: none;
+}
+
+.pagination ul li a , .pagination ul li span{
+display: block;
+padding: 0.05556rem 0.55556rem 0.05556rem;
+color: #999999;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+.pagination ul li.active span {
+	background: #e07051;
+	color: white;
+	font-weight: bold;
+	cursor: default;
+}

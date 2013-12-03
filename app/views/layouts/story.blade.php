@@ -56,7 +56,7 @@
 		<section>
 			<h4>اخر الشخصيات</h4>
 			<ul class="side-nav">
-			@foreach(story::whereStatus('1')->take(10)->get() as $story)
+			@foreach(story::whereStatus('1')->take(10)->orderBy('created_at', 'DESC')->get() as $story)
 				<li>{{ Link_to($story->slug,$story->title) }}</li>
 			@endforeach
 			</ul>
