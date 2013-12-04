@@ -80,7 +80,7 @@
       <div class="large-9 columns">
         <h3>تقوى بريدو</h3>
         <p>محررة ومراجعة</p>
-        <p style="margin-top:40px;color:#bbb"> {{{ @$tota->email }}}</p>
+        <p style="margin-top:-20px;color:#bbb"> {{{ @$tota->email }}}</p>
       </div>
     </div>
 
@@ -106,6 +106,9 @@
     <br />
 
     <h3>كتاب الموقع :</h3>
+
+    <br />
+    
     <div class="row">
       <?php $users = User::has('stories', '>=', 1)->get(); ?>
       @foreach($users as $user)
