@@ -31,7 +31,7 @@
 
     <div class="row">
       <div class="large-3 columns">
-        <?php $mr2all = User::whereUsername('user')->first();  ?>
+        <?php $mr2all = User::whereUsername('mr2all')->first();  ?>
 
         @if (!empty($mr2all->profile->avatar))
           {{ HTML::image($mr2all->profile->avatar,$mr2all->profile->name,array('class'=>'th')) }}
