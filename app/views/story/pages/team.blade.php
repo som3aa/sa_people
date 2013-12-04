@@ -9,10 +9,10 @@
 {{-- SEO - General Meta --}}
 @section('meta_data')
   <link href="{{{ Config::get('app.url') }}}/team" rel="canonical" />
-  <meta name="description" content="اذا كان لديك اي اقتراح او فكرة او شكوى او اذا اردت انا تدعمنا لنواصل في العطاء او اذا اردت ان ترحب بنا فقط ، سنكون سعيدين جدا بالرد عليك في اقرب فرصة، شكرا لك" />
+  <meta name="description" content="القائمين على موقع سوداكتف" />
   <meta property="og:image" content="{{{ Config::get('app.url').'/img/sudactive-logo.jpg' }}}" />
   <meta property="og:title" content="سوداكتف - فريق العمل" />
-  <meta property="og:description" content="اذا كان لديك اي اقتراح او فكرة او شكوى او اذا اردت انا تدعمنا لنواصل في العطاء او اذا اردت ان ترحب بنا فقط ، سنكون سعيدين جدا بالرد عليك في اقرب فرصة، شكرا لك" />
+  <meta property="og:description" content="القائمين على موقع سوداكتف" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{{ Config::get('app.url') }}}/team" />
 @stop
@@ -42,7 +42,7 @@
       <div class="large-9 columns">
         <h3>محمد عادل عبد الله</h3>
         <p>المؤسس والمدير التنفيذي</p>
-        <p style="margin-top:40px;color:#bbb"> {{{ $mr2all->email }}}</p>
+        <p style="margin-top:40px;color:#bbb"> {{{ @$mr2all->email }}}</p>
       </div>
     </div>
 
@@ -108,7 +108,7 @@
     <h3>كتاب الموقع :</h3>
 
     <br />
-    
+
     <div class="row">
       <?php $users = User::has('stories', '>=', 1)->get(); ?>
       @foreach($users as $user)
