@@ -153,6 +153,7 @@
 		    <div class="large-6 columns">
 			    <ul class="inline-list left">
 			        <li><a href="/../about/">عن سوداكتف</a></li>
+			        <li><a href="/../team/">فريق العمل</a></li>
 			        <li><a href="/../policy">سياسة الموقع</a></li>
 			        <li><a href="/../contact">اتصل بنا</a></li>
 			    </ul>

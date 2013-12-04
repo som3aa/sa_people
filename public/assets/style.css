@@ -365,3 +365,14 @@ border-radius: 3px;
 	font-weight: bold;
 	cursor: default;
 }
+
+
+
+.writer a {
+	float: right;
+	margin-left: 15px;
+	display: block;
+}
+.writer img {
+	width: 70px;height: 70px;
+}

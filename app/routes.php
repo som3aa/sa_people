@@ -169,6 +169,9 @@ Route::controller('user', 'UserController');
 Route::get('/about', function(){
     return View::make('story.pages.about');
 });
+Route::get('/team', function(){
+    return View::make('story.pages.team');
+});
 Route::get('/policy', function(){
     return View::make('story.pages.policy');
 });
