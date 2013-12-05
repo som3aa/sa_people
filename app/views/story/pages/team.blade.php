@@ -60,7 +60,7 @@
       </div>
       <div class="large-9 columns">
         <h3>إسماعيل القرشي إسماعيل </h3>
-        <p>شريك مساعد</p>
+        <p>شريك رئيسي</p>
         <p style="margin-top:40px;color:#bbb"> {{{ @$esmail->email }}}</p>
       </div>
     </div>
