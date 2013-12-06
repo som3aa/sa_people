@@ -96,7 +96,7 @@
 				  <div class="row">
 				      <div class="large-10 columns">
 				          	<form method="get" action="/../search/" class="search">
-				              <input type="text" name="keyword" placeholder="بحث عن اي اسم">
+				              <input type="text" name="keyword" placeholder="ابحث عن اي اسم">
 				              <img src="/../img/search.png" />
 				        	</form>
 				      </div>
