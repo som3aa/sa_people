@@ -78,6 +78,24 @@ class UserController extends BaseController {
             $password = Input::get( 'password' );
             $passwordConfirmation = Input::get( 'password_confirmation' );
 
+            if(!empty($password)) {
+                if($password === $passwordConfirmation) {
+                    $this->user->password = $password;
+                    // The password confirmation will be removed from model
+                    // before saving. This field will be used in Ardent's
+                    // auto validation.
+                    $this->user->password_confirmation = $passwordConfirmation;
+                } else {
+                    // Redirect to the new user page
+                    return Redirect::to('user/create')
+                        ->withInput(Input::except('password','password_confirmation'))
+                        ->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+                }
+            } else {
+                unset($this->user->password);
+                unset($this->user->password_confirmation);
+            }
+
             // check birthday
             if(Input::get('year') == '2014') {
                 // Redirect to the new user page
