@@ -9,13 +9,15 @@ use Carbon\Carbon;
 class User extends ConfideUser {
 	use HasRole; // Add this trait to your user model
 
-	/**
-	 * story relationship
-	 */
-	public function stories()
-	{
-	    return $this->hasMany('Story');
-	}
+    /**
+     * Get the URL to the post.
+     *
+     * @return string
+     */
+    public function url()
+    {
+        return URL::to('user/profile/'.$this->username);
+    }
 
     /**
      * profile relationship
@@ -24,6 +26,14 @@ class User extends ConfideUser {
     {
         return $this->hasOne('Profile');
     }
+
+	/**
+	 * story relationship
+	 */
+	public function stories()
+	{
+	    return $this->hasMany('Story');
+	}
 
     /**
      * Get the story's comments.
@@ -63,26 +73,6 @@ class User extends ConfideUser {
         return parent::delete();
     }
 
-    /**
-     * Get the URL to the post.
-     *
-     * @return string
-     */
-    public function url()
-    {
-        return URL::to('user/profile/'.$this->username);
-    }
-
-    /**
-     * Get the date the user was created.
-     *
-     * @return string
-     */
-    public function joined()
-    {
-        return String::date(Carbon::createFromFormat('Y-n-j G:i:s', $this->created_at));
-    }
-
 	/**
      * Save roles inputted from multiselect
      * @param $inputRoles
@@ -115,13 +105,17 @@ class User extends ConfideUser {
     }
 
     /**
-     * Get user by username
+     * Get user by username & the current user
      * @param $username
      * @return mixed
      */
     public function getUserByUsername( $username )
     {
         return $this->where('username', '=', $username)->first();
+    }
+    public function currentUser()
+    {
+        return (new Confide(new ConfideEloquentRepository()))->user();
     }
 
     /**
@@ -149,10 +143,42 @@ class User extends ConfideUser {
 
         return array($user, $redirectTo);
     }
-    
-    public function currentUser()
+
+    /**
+     * Get the date the post was created.
+     *
+     * @param \Carbon|null $date
+     * @return string
+     */
+    public function date($date=null)
     {
-        return (new Confide(new ConfideEloquentRepository()))->user();
+        if(is_null($date)) {
+            $date = $this->created_at;
+        }
+
+        return String::date($date);
     }
+
+    /**
+     * Returns the date of the blog post creation,
+     * on a good and more readable format :)
+     *
+     * @return string
+     */
+    public function created_at()
+    {
+        return $this->date($this->created_at);
+    }
+
+    /**
+     * Returns the date of the blog post last update,
+     * on a good and more readable format :)
+     *
+     * @return string
+     */
+    public function updated_at()
+    {
+        return $this->date($this->updated_at);
+    }  
 
 }

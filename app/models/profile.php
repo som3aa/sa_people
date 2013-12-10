@@ -3,7 +3,13 @@
 class Profile extends Eloquent {
 
 	/**
-	 * user relationship
+	 * Disabling Auto Timestamps
+	 * @var boolean
+	 */
+	public $timestamps = false;
+
+	/**
+	 * User Relationship
 	 */
 	public function user()
 	{
