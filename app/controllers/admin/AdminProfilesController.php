@@ -30,7 +30,7 @@ class AdminProfilesController extends BaseController {
         $title = Lang::get('admin/profiles/title.profile_management');
 
         // Grab all the profiles
-        $profiles = $this->profile->orderBy('created_at', 'DESC')->get();
+        $profiles = $this->profile->all();
 
         // Show the page
         return View::make('admin/profiles/index', compact('profiles', 'title'));
