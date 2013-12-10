@@ -32,22 +32,6 @@ class PermissionsTableSeeder extends Seeder {
                 'name'      => 'post_comment',
                 'display_name'      => 'post comment'
             ),
-            array(
-                'name'      => 'manage_his_profile',
-                'display_name'      => 'edit his profile'
-            ),
-            array(
-                'name'      => 'manage_hist_stories',
-                'display_name'      => 'create edit delete own stories'
-            ),
-            array(
-                'name'      => 'manage_his_user',
-                'display_name'      => 'edit his user info'
-            ),
-            array(
-                'name'      => 'manage_profiles',
-                'display_name'      => 'manage profiles'
-            )
         );
 
         DB::table('permissions')->insert( $permissions );
@@ -80,20 +64,12 @@ class PermissionsTableSeeder extends Seeder {
                 'permission_id' => 6
             ),
             array(
-                'role_id'      => 1,
-                'permission_id' => 7
-            ),
-            array(
-                'role_id'      => 1,
-                'permission_id' => 8
-            ),
-            array(
-                'role_id'      => 1,
-                'permission_id' => 9
+                'role_id'      => 2,
+                'permission_id' => 1
             ),
             array(
                 'role_id'      => 2,
-                'permission_id' => 1
+                'permission_id' => 2
             ),
             array(
                 'role_id'      => 2,
@@ -104,36 +80,8 @@ class PermissionsTableSeeder extends Seeder {
                 'permission_id' => 6
             ),
             array(
-                'role_id'      => 2,
-                'permission_id' => 7
-            ),
-            array(
-                'role_id'      => 2,
-                'permission_id' => 8
-            ),
-            array(
-                'role_id'      => 2,
-                'permission_id' => 9
-            ),
-            array(
                 'role_id'      => 3,
                 'permission_id' => 6
-            ),
-            array(
-                'role_id'      => 3,
-                'permission_id' => 7
-            ),
-            array(
-                'role_id'      => 3,
-                'permission_id' => 8
-            ),
-            array(
-                'role_id'      => 3,
-                'permission_id' => 9
-            ),
-            array(
-                'role_id'      => 1,
-                'permission_id' => 10
             )
         );
 

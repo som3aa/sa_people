@@ -17,8 +17,6 @@ class ProfilesTableSeeder extends Seeder {
                 'avatar'    => '',
                 'bio'    => $this->bio,
                 'gender'    => 1,
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime,
             ),
             array(
                 'user_id'        => 2,
@@ -28,8 +26,6 @@ class ProfilesTableSeeder extends Seeder {
                 'avatar'    => 'http://placehold.it/400x400',
                 'bio'    => $this->bio,
                 'gender'    => 2,
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime,
             ),
             array(
                 'user_id'        => 3,
@@ -39,8 +35,6 @@ class ProfilesTableSeeder extends Seeder {
                 'avatar'    => 'http://placehold.it/400x400',
                 'bio'    => $this->bio,
                 'gender'    => 2,
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime,
             ))
         );
     }

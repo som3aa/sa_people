@@ -92,7 +92,6 @@ Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirec
 Entrust::routeNeedsPermission( 'admin/comments*', 'manage_comments', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'admin/profiles*', 'manage_profiles', Redirect::to('/') );
 
 
 /*
@@ -109,8 +108,3 @@ Route::filter('account-auth', function()
     list($user,$redirect) = User::checkAuthAndRedirect(Request::url());
     if($redirect){return $redirect;}
 });
-
-// Check for permissions on account actions
-Entrust::routeNeedsPermission( 'account/profile*', 'manage_his_profile', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'account/stories*', 'manage_hist_stories', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'account/user*', 'manage_his_user', Redirect::to('/') );
