@@ -86,25 +86,6 @@
 
     <br />
 
-    <div class="row">
-      <div class="large-3 columns">
-        <?php $asaadalsayer = User::whereUsername('asaadalsayer')->first();  ?>
-
-        @if (!empty($asaadalsayer->profile->avatar))
-          {{ HTML::image($asaadalsayer->profile->avatar,$asaadalsayer->profile->name,array('class'=>'th')) }}
-        @else
-          {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
-        @endif 
-      </div>
-      <div class="large-9 columns">
-        <h3>أسعد بابكر الساير</h3>
-        <p>محرر ومراجع</p>
-        <p style="margin-top:40px;color:#bbb"> {{{ @$asaadalsayer->email }}}</p>
-      </div>
-    </div>
-
-    <br />
-
     <h3>كتاب الموقع :</h3>
 
     <br />
