@@ -34,7 +34,7 @@
 	<!-- ./ Story Content -->
 </div>
 
-@if ($n == 3)
+@if ($n == 3 && Route::getCurrentRoute()->getPath() == '/')
 	{{-- Find Us on Facebook --}}
 	<div class="row fb-slider">
 		<div class="large-7 columns">
