@@ -1,4 +1,5 @@
-@foreach ($stories as $story)
+
+@foreach ($stories as $n=>$story)
 <div class="post">
 	<!-- Story Content -->
 	<div class="row">
@@ -32,6 +33,18 @@
 	</div>
 	<!-- ./ Story Content -->
 </div>
+
+@if ($n == 3)
+	{{-- Find Us on Facebook --}}
+	<div class="row fb-slider">
+		<div class="large-7 columns">
+			<h3>تابع كل جديد من خلال صفحتنا في الفيسبوك</h3>
+		</div>
+		<div class="large-5 columns">
+			<p><a href="http://www.facebook.com/Sudactive.network"><img src="/../img/fb.jpg"></a></p>
+		</div>
+	</div>
+@endif
 
 @endforeach
 

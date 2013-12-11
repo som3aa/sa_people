@@ -107,7 +107,7 @@
 		<!-- Account Tob Bar  -->
 		<div class="large-7 columns">
 			<div class="slider">
-				<a href="/../مصطفى-عبدالله-صالح"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
+				<a href="/../مصطفى-عبدالله-محمد-صالح"><img src="/img/p1.png" class="person" style="left:25px; bottom:4px; z-index:2"></a>
 				<a href="/../الطيب-صالح"><img src="/img/p2.png" class="person" style="left:140px; bottom:4px; z-index:1"></a>
 				<a href="/../بلقيس-محمد-الحسن"><img src="/img/p5.png" class="person" style="left:250px; bottom:4px ; z-index:4"></a>
 				<a href="/../عبد-القادر-سالم"><img src="/img/p4.png" class="person" style="left:345px; bottom:4px ; z-index:3"></a>
@@ -115,26 +115,6 @@
 			</div>
 		</div>
 	</div><!-- End sub-header -->
-
-
-	<!-- Orbit Slider
-	================================================= -->
-	@if(Route::getCurrentRoute()->getPath() == '/')
-		<div class="row">
-			<div class="large-10 large-centered columns">
-				<ul class="orbit" data-orbit  data-options="
-					animation:slide;
-					pause_on_hover:false;
-					navigation_arrows:false;
-					slide_number: false;">
-					<li><img src="/../img/orbit-3.jpg" alt="slide 1" /></li>
-					<li><img src="/../img/orbit-1.jpg" alt="slide 2" /></li>
-					<li><img src="/../img/orbit-2.jpg" alt="slide 3" /></li>
-				</ul>	
-			</div>
-		</div>
-	@endif
-	<!-- End Orbit Slider -->
 
 	<!-- Middel Container
 	================================================= -->
@@ -171,10 +151,6 @@
 	{{ HTML::script('assets/foundation/js/foundation/foundation.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.alert.js') }}
 	{{ HTML::script('assets/foundation/js/foundation/foundation.dropdown.js') }}
-
-	@if(Route::getCurrentRoute()->getPath() == '/')
-	{{ HTML::script('assets/foundation/js/foundation/foundation.orbit.js') }}
-	@endif
 
 	@section('javascripts')
 	@show

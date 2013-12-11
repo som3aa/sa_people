@@ -94,7 +94,7 @@ h1.logo {
 .sub-header .slider {
 	height: 170px;
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 60px;
 }
 
 .sub-header .slider img.curve {
@@ -127,14 +127,6 @@ h1.logo {
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
        /* transform property (for Safari and Firefox) */ 
-}
-
-.orbit-container {
-	margin-bottom: 20px;
-}
-
-.orbit-container li > img {
-	border:3px solid #ddd;
 }
 
 /* Main Page Content and Sidebar */
@@ -375,4 +367,9 @@ border-radius: 3px;
 }
 .writer img {
 	width: 70px;height: 70px;
+}
+
+
+.fb-slider h3 {
+	margin:11px 31px 0 0;
 }
