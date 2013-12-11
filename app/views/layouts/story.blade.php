@@ -16,6 +16,11 @@
 
 	<!-- Sidebar -->
 	<aside class="large-3 columns sidebar">
+
+		<!-- Facebook Like Box -->
+		@if( !Auth::check() )
+			<div class="fb-like-box" style="margin-bottom:0.5em" data-href="https://www.facebook.com/Sudactive.network?" data-width="221" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+		@endif
 		
 		<!-- join us call -->
 		@if( Auth::check() )
@@ -56,12 +61,7 @@
 			@endforeach
 			</ul>
 		</section>
-
-		<!-- Facebook Like Box -->
-		@if( !Auth::check() )
-			<div class="fb-like-box" style="margin-bottom:0.5em" data-href="https://www.facebook.com/Sudactive.network?" data-width="221" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
-		@endif
-		
+	
 	</aside>
 
 </div>
