@@ -14,7 +14,7 @@
 				</div>
 				<div class="large-4 columns top_meta">
 					<span class='date'>{{{ $story->date() }}}</span>
-					<span class='comments'><a href="{{{ $story->url() }}}#disqus_thread"> links</a></span>
+					<span class='comments'><a href="{{{ $story->url() }}}#disqus_thread">تعليقات</a></span>
 				</div>
 			</div>
 
