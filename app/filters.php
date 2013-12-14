@@ -89,7 +89,6 @@ Route::filter('csrf', function()
 // Check for permissions on admin actions
 Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'admin/comments*', 'manage_comments', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
 Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );
 

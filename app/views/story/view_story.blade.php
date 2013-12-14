@@ -61,68 +61,22 @@
 
   <br/><br/>
 
-  <!-- Story Comments -->
-  <a id="comments"></a>
-  <h4>{{{ $comments->count() }}} تعليق</h4>
+  {{-- Disqus Comments --}}
+  <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'sudactive'; // required: replace example with your forum shortname
 
-  {{-- View Comments --}}
-  @foreach ($comments as $comment)
-  <div class="row comment">
-    <div class="large-2 columns">
-      @if (!empty($comment->user->profile->avatar))
-        <a href="{{ $comment->user->url() }}">{{ HTML::image($comment->user->profile->avatar,$comment->user->profile->name,array('class'=>'th')) }}</a>
-      @else
-        {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
-      @endif
-    </div>
-    <div class="large-10 columns">
-      <div class="meta">
-        <span class="username">{{ link_to($comment->user->url(),$comment->user->profile->name) }}</span>
-        <span class="date">{{{ $comment->date() }}}</span>
-      </div>
-      <p class="content">{{ $comment->content() }}</p>
-    </div>
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </div>
-  @endforeach
-
-  <br />
-  
-  {{-- Post Comment --}}
-  @if (!Auth::check())
-    اذا اردت ان تضيف تعليق يجب عليك تسجيل الدخول اولا<br /><br />
-    اضغط <a href="{{{ URL::to('user/login') }}}">هنا</a> لتسجيل الدخول.
-  @elseif (!$canComment )
-    ليس لديك صلاحيات لاضاف تعليق هنا
-  @else
-
-  <h4>اضف تعليقك</h4>
-
-  <div class="row comment">
-    <div class="large-2 columns">
-      @if (!empty(Auth::user()->profile->avatar))
-        {{ HTML::image(Auth::user()->profile->avatar,Auth::user()->profile->name,array('class'=>'th')) }}
-      @else
-        {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
-      @endif 
-    </div>
-    <div class="large-10 columns">
-      <form  method="post" action="{{{ URL::to($story->slug) }}}">
-        <input type="hidden" name="_token" value="{{{ Session::getToken() }}}" />
-
-        <p>
-        {{ Form::textarea('comment',Input::old('comment'),array('class' => $errors->has('comment') ? 'error' : '','id'=>'comment')) }}
-        {{ $errors->first('comment', '<small class="error">:message</small>') }}
-        </p>
-        
-        <input type="submit" id="submit" value="ارسال" class="button small secondary" />
-      </form>
-    </div>
-  </div>
-
-
-  @endif
-
-</div>
 
 @stop
 
