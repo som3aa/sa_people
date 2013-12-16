@@ -31,7 +31,6 @@ Route::model('profile', 'Profile');
 Route::group(array('prefix' => 'account', 'before' => 'account-auth'), function()
 {
     # Account Edit Profile
-    //:: User Account Routes ::
     Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
         ->where('profile', '[0-9]+');
     Route::controller('profile', 'AccountProfileController');
@@ -79,8 +78,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('stories', 'AdminStoriesController');
 
     # Categories Management
-    Route::get('categories/{category}/show', 'AdminCategoriesController@getShow')
-        ->where('category', '[0-9]+');
     Route::get('categories/{category}/edit', 'AdminCategoriesController@getEdit')
         ->where('category', '[0-9]+');
     Route::post('categories/{category}/edit', 'AdminCategoriesController@postEdit')
@@ -92,8 +89,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('categories', 'AdminCategoriesController');
 
     # Users Management
-    Route::get('users/{user}/show', 'AdminUsersController@getShow')
-        ->where('user', '[0-9]+');
     Route::get('users/{user}/edit', 'AdminUsersController@getEdit')
         ->where('user', '[0-9]+');
     Route::post('users/{user}/edit', 'AdminUsersController@postEdit')
@@ -104,20 +99,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         ->where('user', '[0-9]+');
     Route::controller('users', 'AdminUsersController');
 
-    # Users Management
-    Route::get('profiles/{profile}/edit', 'AdminProfilesController@getEdit')
-        ->where('profile', '[0-9]+');
-    Route::post('profiles/{profile}/edit', 'AdminProfilesController@postEdit')
-        ->where('profile', '[0-9]+');
-    Route::get('profiles/{profile}/delete', 'AdminProfilesController@getDelete')
-        ->where('profile', '[0-9]+');
-    Route::post('profiles/{profile}/delete', 'AdminProfilesController@postDelete')
-        ->where('profile', '[0-9]+');
-    Route::controller('profiles', 'AdminProfilesController');
-
     # User Role Management
-    Route::get('roles/{role}/show', 'AdminRolesController@getShow')
-        ->where('role', '[0-9]+');
     Route::get('roles/{role}/edit', 'AdminRolesController@getEdit')
         ->where('role', '[0-9]+');
     Route::post('roles/{role}/edit', 'AdminRolesController@postEdit')
@@ -131,26 +113,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
 
 /** ------------------------------------------
- *  Frontend User Routes
- *  ------------------------------------------
- */
-
-# User reset routes
-Route::get('user/reset/{token}', 'UserController@getReset')
-    ->where('token', '[0-9a-z]+');
-# User password reset
-Route::post('user/reset/{token}', 'UserController@postReset')
-    ->where('token', '[0-9a-z]+');
-
-# User Account Routes ::
-Route::post('user/login', 'UserController@postLogin');
-
-# User RESTful Routes (Login, Logout, Register, etc)
-Route::controller('user', 'UserController');
-
-
-/** ------------------------------------------
- *  Pages Routes
+ *  Frontend Pages Routes
  *  ------------------------------------------
  */
 
@@ -187,6 +150,25 @@ Route::post('/contact', function(){
     
     return Redirect::to('/contact')->with('success','تم ارسال الرسالة بنجاح, سيتم الرد عليك في اقرب فرصة');
 });
+
+
+/** ------------------------------------------
+ *  Frontend User Routes
+ *  ------------------------------------------
+ */
+
+# User reset routes
+Route::get('user/reset/{token}', 'UserController@getReset')
+    ->where('token', '[0-9a-z]+');
+# User password reset
+Route::post('user/reset/{token}', 'UserController@postReset')
+    ->where('token', '[0-9a-z]+');
+
+# User Account Routes ::
+Route::post('user/login', 'UserController@postLogin');
+
+# User RESTful Routes (Login, Logout, Register, etc)
+Route::controller('user', 'UserController');
 
 
 /** ------------------------------------------

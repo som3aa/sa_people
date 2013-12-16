@@ -56,10 +56,12 @@ class String {
 
 	public static function date(Carbon $date)
     {
-        if($date->diffInDays(Carbon::now()) < 7) {
+    	$date->setToStringFormat('j F Y');
+
+        if($date->diffInDays(Carbon::now()) < 29) {
             return $date->diffForHumans();
         } else {
-            return $date->toFormattedDateString();
+            return $date->__toString();
         }
     }
 

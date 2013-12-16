@@ -76,29 +76,12 @@ Route::filter('csrf', function()
 	}
 });
 
-
 /*
 |--------------------------------------------------------------------------
-| Role Permissions
+| Account Access
 |--------------------------------------------------------------------------
 |
-| Access filters based on roles.
-|
-*/
-
-// Check for permissions on admin actions
-Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
-Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );
-
-
-/*
-|--------------------------------------------------------------------------
-| account Access
-|--------------------------------------------------------------------------
-|
-| test
+| Redirect to Home if nout logged in the system
 |
 */
 
@@ -107,3 +90,17 @@ Route::filter('account-auth', function()
     list($user,$redirect) = User::checkAuthAndRedirect(Request::url());
     if($redirect){return $redirect;}
 });
+
+/*
+|--------------------------------------------------------------------------
+| Admin Access - Role Permissions
+|--------------------------------------------------------------------------
+|
+| Access filters based on roles.
+|
+*/
+
+Entrust::routeNeedsPermission( 'admin/stories*', 'manage_stories', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/categories*', 'manage_categories', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/users*', 'manage_users', Redirect::to('/') );
+Entrust::routeNeedsPermission( 'admin/roles*', 'manage_roles', Redirect::to('/') );

@@ -40,16 +40,6 @@ class Story extends Eloquent {
 	}
 
 	/**
-	 * Get the story's comments.
-	 *
-	 * @return array
-	 */
-	public function comments()
-	{
-		return $this->hasMany('Comment');
-	}
-
-	/**
      * Get the date the post was created.
      *
      * @param \Carbon|null $date
@@ -115,12 +105,6 @@ class Story extends Eloquent {
 	 */
 	public function delete()
     {
-        //Delete all related comments 
-        foreach($this->comments as $comment)
-        {
-            $comment->delete();
-        }
-
         //Delete attached image
         File::delete($this->image);
 
