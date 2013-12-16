@@ -54,18 +54,25 @@
     <div class="large-12 columns">
         <p>{{ $story->content }}</p>
 
-        <!-- shear Button BEGIN -->
-        <p>
-          <div class="addthis_toolbox addthis_default_style">
-          <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-          <a class="addthis_button_tweet"></a>
-          <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-          <a class="addthis_counter addthis_pill_style"></a>
-          </div>
-          <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-          <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52af6d8665899fa1"></script>
-          <!-- AddThis Button END -->
-        </p>
+        <script type="text/javascript">
+        //<![CDATA[
+          (function() {
+            var shr = document.createElement('script');
+            shr.setAttribute('data-cfasync', 'false');
+            shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+            shr.type = 'text/javascript'; shr.async = 'true';
+            shr.onload = shr.onreadystatechange = function() {
+              var rs = this.readyState;
+              if (rs && rs != 'complete' && rs != 'loaded') return;
+              var apikey = '708056eb066583bcfbe34b19e7db936f';
+              try { Shareaholic.init(apikey); } catch (e) {}
+            };
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(shr, s);
+          })();
+        //]]>
+        </script>
+        <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='4635255'></div>
 
     </div>
   </div>
