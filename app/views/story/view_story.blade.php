@@ -54,7 +54,10 @@
     <div class="large-12 columns">
         <p>{{ $story->content }}</p>
         
-        <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='4635255'></div>
+        <!-- facebook shear butoon -->
+        <div class="fb-share-button" data-href="{{{ $story->url() }}}" data-type="box_count"></div>
+       <a href="https://twitter.com/share" class="twitter-share-button" data-via="sudactivecom" data-size="large" data-dnt="true">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     </div>
   </div>
@@ -77,5 +80,20 @@
       <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </div>
+
+@stop
+
+
+@section('javascripts')
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=363335887072007";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
 @stop
