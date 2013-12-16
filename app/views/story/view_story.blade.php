@@ -52,14 +52,21 @@
 	<!-- Story content -->
   <div class="row">
     <div class="large-12 columns">
-      <p>{{ $story->content }}</p>
+        <p>{{ $story->content }}</p>
 
-      <!-- facebook shear butoon -->
-      <div class="fb-share-button" data-href="{{{ $story->url() }}}" data-type="box_count"></div>
+        <!-- shear Button BEGIN -->
+        <p>
+          <div class="addthis_toolbox addthis_default_style">
+          <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+          <a class="addthis_button_tweet"></a>
+          <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+          <a class="addthis_counter addthis_pill_style"></a>
+          </div>
+          <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+          <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52af6d8665899fa1"></script>
+          <!-- AddThis Button END -->
+        </p>
 
-      <!-- twitter shear butoon -->
-      <a href="https://twitter.com/share" class="twitter-share-button" data-via="sudactivecom" data-dnt="true">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
   </div>
 
@@ -81,19 +88,5 @@
       <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </div>
-
-@stop
-
-@section('javascripts')
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=363335887072007";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
 
 @stop
