@@ -45,7 +45,7 @@ class UserController extends BaseController {
             return Redirect::to('/');
         }
 
-        return View::make('user/create');
+        return View::make('site.users.create');
     }
 
     /**
@@ -143,7 +143,7 @@ class UserController extends BaseController {
             return Redirect::to('/');
         }
 
-        return View::make('user/login');
+        return View::make('site.users.login');
     }
 
     /**
@@ -215,7 +215,7 @@ class UserController extends BaseController {
      */
     public function getForgot()
     {
-        return View::make('user/forgot');
+        return View::make('site.users.forgot');
     }
 
     /**
@@ -244,7 +244,7 @@ class UserController extends BaseController {
     public function getReset( $token )
     {
 
-        return View::make('user/reset')
+        return View::make('site.users.reset')
             ->with('token',$token);
     }
 
@@ -305,7 +305,7 @@ class UserController extends BaseController {
         // Gram user stories
         $stories = $user->stories()->whereStatus('1')->paginate(10);
 
-        return View::make('user/profile', compact('user','stories'));
+        return View::make('site.users.profile', compact('user','stories'));
     }
 
 

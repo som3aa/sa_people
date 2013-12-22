@@ -11,7 +11,7 @@ class AccountUserController extends BaseController {
     {
         $user = Auth::user();
         // Show the page
-        return View::make('account/user/index', compact('user'));
+        return View::make('account/users/index', compact('user'));
     }
 
     /**

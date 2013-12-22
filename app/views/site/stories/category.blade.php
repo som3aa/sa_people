@@ -1,4 +1,4 @@
-@extends('layouts.story')
+@extends('site.layout')
 
 {{-- Web site Title --}}
 @section('title')
@@ -25,7 +25,7 @@
 
 @if(count($stories) > 0)
   {{--include the stories loop --}}
-  @include('story.loop')
+  @include('site.stories.loop')
 
 @else
   <!-- Post Content -->

@@ -11,7 +11,7 @@ class AccountProfileController extends BaseController {
     {
         $profile = Auth::user()->profile;
         // Show the page
-        return View::make('account/profile/index', compact('profile'));
+        return View::make('account.users.profile/index', compact('profile'));
     }
 
     /**
@@ -61,7 +61,7 @@ class AccountProfileController extends BaseController {
      */
     public function getAvatar()
     {
-        return View::make('account/profile/avatar');
+        return View::make('account.users.profile/avatar');
     }
 
     /**
@@ -108,7 +108,7 @@ class AccountProfileController extends BaseController {
     public function getCrop()
     {
         $user = Auth::user(); 
-        return View::make('account/profile/crop', compact('user') );
+        return View::make('account.users.profile/crop', compact('user') );
     }
 
     /**

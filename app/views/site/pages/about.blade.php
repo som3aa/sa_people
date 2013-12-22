@@ -1,4 +1,4 @@
-@extends('layouts.story')
+@extends('site.layout')
 
 {{-- Web site Title --}}
 @section('title')

@@ -1,4 +1,4 @@
-@extends('layouts.story')
+@extends('site.layout')
 
 {{-- SEO - General Meta --}}
 @section('meta_data')
@@ -21,6 +21,6 @@
 @section('content')
 
 	{{--include the stories loop --}}
-	@include('story.loop')
+	@include('site.stories.loop')
 
 @stop

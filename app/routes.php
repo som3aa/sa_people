@@ -16,45 +16,12 @@
  *  Route model binding
  *  ------------------------------------------
  */
+
 Route::model('story', 'Story');
 Route::model('category', 'Category');
 Route::model('user', 'User');
 Route::model('role', 'Role');
 Route::model('profile', 'Profile');
-
-
-/** ------------------------------------------
- *  Frontend Account Routes
- *  ------------------------------------------
- */
-
-Route::group(array('prefix' => 'account', 'before' => 'account-auth'), function()
-{
-    # Account Edit Profile
-    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
-        ->where('profile', '[0-9]+');
-    Route::controller('profile', 'AccountProfileController');
-
-    # Acconut Stories Managment
-    Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
-        ->where('story', '[0-9]+');
-    Route::get('stories/{story}/edit', 'AccountStoriesController@getEdit')
-        ->where('story', '[0-9]+');
-    Route::post('stories/{story}/edit', 'AccountStoriesController@postEdit')
-        ->where('story', '[0-9]+');
-    Route::get('stories/{story}/delete', 'AccountStoriesController@getDelete')
-        ->where('story', '[0-9]+');
-    Route::post('stories/{story}/delete', 'AccountStoriesController@postDelete')
-        ->where('story', '[0-9]+');
-    Route::controller('stories', 'AccountStoriesController');
-    
-    # Account Setting
-    //:: User Account Routes ::
-    Route::post('user/{user}/edit', 'AccountUserController@postEdit')
-        ->where('user', '[0-9]+');
-    Route::controller('user', 'AccountUserController');
-
-});
 
 
 /** ------------------------------------------
@@ -77,16 +44,16 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         ->where('story', '[0-9]+');
     Route::controller('stories', 'AdminStoriesController');
 
-    # Categories Management
-    Route::get('categories/{category}/edit', 'AdminCategoriesController@getEdit')
-        ->where('category', '[0-9]+');
-    Route::post('categories/{category}/edit', 'AdminCategoriesController@postEdit')
-        ->where('category', '[0-9]+');
-    Route::get('categories/{category}/delete', 'AdminCategoriesController@getDelete')
-        ->where('category', '[0-9]+');
-    Route::post('categories/{category}/delete', 'AdminCategoriesController@postDelete')
-        ->where('category', '[0-9]+');
-    Route::controller('categories', 'AdminCategoriesController');
+        # Categories Management
+        Route::get('categories/{category}/edit', 'AdminCategoriesController@getEdit')
+            ->where('category', '[0-9]+');
+        Route::post('categories/{category}/edit', 'AdminCategoriesController@postEdit')
+            ->where('category', '[0-9]+');
+        Route::get('categories/{category}/delete', 'AdminCategoriesController@getDelete')
+            ->where('category', '[0-9]+');
+        Route::post('categories/{category}/delete', 'AdminCategoriesController@postDelete')
+            ->where('category', '[0-9]+');
+        Route::controller('categories', 'AdminCategoriesController');
 
     # Users Management
     Route::get('users/{user}/edit', 'AdminUsersController@getEdit')
@@ -99,35 +66,69 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         ->where('user', '[0-9]+');
     Route::controller('users', 'AdminUsersController');
 
-    # User Role Management
-    Route::get('roles/{role}/edit', 'AdminRolesController@getEdit')
-        ->where('role', '[0-9]+');
-    Route::post('roles/{role}/edit', 'AdminRolesController@postEdit')
-        ->where('role', '[0-9]+');
-    Route::get('roles/{role}/delete', 'AdminRolesController@getDelete')
-        ->where('role', '[0-9]+');
-    Route::post('roles/{role}/delete', 'AdminRolesController@postDelete')
-        ->where('role', '[0-9]+');
-    Route::controller('roles', 'AdminRolesController');
+        # User Role Management
+        Route::get('roles/{role}/edit', 'AdminRolesController@getEdit')
+            ->where('role', '[0-9]+');
+        Route::post('roles/{role}/edit', 'AdminRolesController@postEdit')
+            ->where('role', '[0-9]+');
+        Route::get('roles/{role}/delete', 'AdminRolesController@getDelete')
+            ->where('role', '[0-9]+');
+        Route::post('roles/{role}/delete', 'AdminRolesController@postDelete')
+            ->where('role', '[0-9]+');
+        Route::controller('roles', 'AdminRolesController');
 });
 
 
 /** ------------------------------------------
- *  Frontend Pages Routes
+ *  Account Routes
  *  ------------------------------------------
  */
 
+Route::group(array('prefix' => 'account', 'before' => 'account-auth'), function()
+{
+    # Account user Setting
+    Route::post('user/{user}/edit', 'AccountUserController@postEdit')
+        ->where('user', '[0-9]+');
+    Route::controller('user', 'AccountUserController');
+
+    # Account Edit Profile
+    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
+        ->where('profile', '[0-9]+');
+    Route::controller('profile', 'AccountProfileController');
+
+    # Acconut Stories Managment
+    Route::get('stories/{story}/show', 'AccountStoriesController@getShow')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/edit', 'AccountStoriesController@getEdit')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/edit', 'AccountStoriesController@postEdit')
+        ->where('story', '[0-9]+');
+    Route::get('stories/{story}/delete', 'AccountStoriesController@getDelete')
+        ->where('story', '[0-9]+');
+    Route::post('stories/{story}/delete', 'AccountStoriesController@postDelete')
+        ->where('story', '[0-9]+');
+    Route::controller('stories', 'AccountStoriesController');
+
+});
+
+
+/** ------------------------------------------
+ *  Site Core Routes
+ *  ------------------------------------------
+ */
+
+#pages
 Route::get('/about', function(){
-    return View::make('story.pages.about');
+    return View::make('site.pages.about');
 });
 Route::get('/team', function(){
-    return View::make('story.pages.team');
+    return View::make('site.pages.team');
 });
 Route::get('/policy', function(){
-    return View::make('story.pages.policy');
+    return View::make('site.pages.policy');
 });
 Route::get('/contact', function(){
-    return View::make('story.pages.contact');
+    return View::make('site.pages.contact');
 });
 Route::post('/contact', function(){
     
@@ -143,7 +144,7 @@ Route::post('/contact', function(){
         return Redirect::to('/contact')->withErrors($validator);
     }
 
-    Mail::send('story.pages.emails.contact', Input::all() , function($message)
+    Mail::send('site.pages.emails.contact', Input::all() , function($message)
     {
         $message->to('mr2all@hotmail.com', 'mohammed adil')->subject('رسالة من سوداكتف - اتصل بنا');
     });
@@ -151,9 +152,18 @@ Route::post('/contact', function(){
     return Redirect::to('/contact')->with('success','تم ارسال الرسالة بنجاح, سيتم الرد عليك في اقرب فرصة');
 });
 
+# Index Page
+Route::get('/', function(){
+
+    // Get all the stories
+    $stories = Story::whereStatus('1')->orderBy('created_at', 'DESC')->paginate(7);
+
+    return View::make('site.home',compact('stories'));
+});
+
 
 /** ------------------------------------------
- *  Frontend User Routes
+ *  site User Routes
  *  ------------------------------------------
  */
 
@@ -172,12 +182,9 @@ Route::controller('user', 'UserController');
 
 
 /** ------------------------------------------
- *  Frontend Story Routes
+ *  Site Story Routes
  *  ------------------------------------------
  */
-
-# Index Page
-Route::get('/','StoryController@getIndex');
 
 # Search stories
 Route::get('/search','StoryController@getSearch');

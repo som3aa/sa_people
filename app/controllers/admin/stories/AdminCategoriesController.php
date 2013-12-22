@@ -13,7 +13,7 @@ class AdminCategoriesController extends BaseController {
      * Inject the models.
      * @param category $category
      */
-    public function __construct(category $category)
+    public function __construct(Category $category)
     {
         parent::__construct();
         $this->category = $category;
@@ -33,7 +33,7 @@ class AdminCategoriesController extends BaseController {
         $categories = $this->category->all();
 
         // Show the page
-        return View::make('admin/categories/index', compact('categories', 'title'));
+        return View::make('admin/stories/categories/index', compact('categories', 'title'));
     }
 
 	/**
@@ -47,7 +47,7 @@ class AdminCategoriesController extends BaseController {
         $title = Lang::get('admin/categories/title.create_a_new_category');
 
         // Show the page
-        return View::make('admin/categories/create', compact('title'));
+        return View::make('admin/stories/categories/create', compact('title'));
 	}
 
 	/**
@@ -99,7 +99,7 @@ class AdminCategoriesController extends BaseController {
         $title = Lang::get('admin/categories/title.category_update');
 
         // Show the page
-        return View::make('admin/categories/edit', compact('category', 'title'));
+        return View::make('admin/stories/categories/edit', compact('category', 'title'));
 	}
 
     /**
@@ -154,7 +154,7 @@ class AdminCategoriesController extends BaseController {
         $title = Lang::get('admin/categories/title.category_delete');
 
         // Show the page
-        return View::make('admin/categories/delete', compact('category', 'title'));
+        return View::make('admin/stories/categories/delete', compact('category', 'title'));
     }
 
     /**

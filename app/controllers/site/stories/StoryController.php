@@ -24,7 +24,7 @@ class StoryController extends BaseController {
      * Inject the models.
      * @param Story $story
      */
-    public function __construct(Story $story, category $category,User $user)
+    public function __construct(Story $story, Category $category,User $user)
     {
         parent::__construct();
 
@@ -33,20 +33,10 @@ class StoryController extends BaseController {
         $this->user = $user;
     }
     
-	/**
-	 * Returns all the stories.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
-		// Get all the stories
-		$stories = $this->story->whereStatus('1')->orderBy('created_at', 'DESC')->paginate(7);
-
-		// Show the page
-		return View::make('story/index', compact('stories'));
-	}
-
+    /**
+     * [getSearch description]
+     * @return [type] [description]
+     */
 	public function getSearch() 
 	{
 		// Get the Keyword
@@ -56,7 +46,7 @@ class StoryController extends BaseController {
 		$stories = $this->story->whereStatus('1')->where('title', 'LIKE', '%'.$keyword.'%')->paginate(7);
 
 		// Show the page
-		return View::make('story/search', compact('stories','keyword'));
+		return View::make('site.stories.search', compact('stories','keyword'));
 	}
 
 	/**
@@ -82,7 +72,7 @@ class StoryController extends BaseController {
 		$stories = $category->story()->whereStatus('1')->orderBy('created_at', 'DESC')->paginate(7);
 
 		// Show the page
-		return View::make('story/category', compact('category','stories'));
+		return View::make('site.stories.category', compact('category','stories'));
 	}
 
 	/**
@@ -108,7 +98,7 @@ class StoryController extends BaseController {
 		}
 
 		// Show the page
-		return View::make('story/view_story', compact('story'));
+		return View::make('site.stories.view_story', compact('story'));
 	}
 
 }

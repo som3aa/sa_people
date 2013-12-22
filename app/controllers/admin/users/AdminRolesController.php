@@ -49,7 +49,7 @@ class AdminRolesController extends BaseController {
         $roles = $this->role->all();
 
         // Show the page
-        return View::make('admin/roles/index', compact('roles', 'title'));
+        return View::make('admin/users/roles/index', compact('roles', 'title'));
     }
 
     /**
@@ -69,7 +69,7 @@ class AdminRolesController extends BaseController {
         $title = Lang::get('admin/roles/title.create_a_new_role');
 
         // Show the page
-        return View::make('admin/roles/create', compact('permissions', 'selectedPermissions', 'title'));
+        return View::make('admin/users/roles/create', compact('permissions', 'selectedPermissions', 'title'));
     }
 
     /**
@@ -139,7 +139,7 @@ class AdminRolesController extends BaseController {
         $title = Lang::get('admin/roles/title.role_update');
 
         // Show the page
-        return View::make('admin/roles/edit', compact('role', 'permissions', 'title'));
+        return View::make('admin/users/roles/edit', compact('role', 'permissions', 'title'));
     }
 
     /**
@@ -195,7 +195,7 @@ class AdminRolesController extends BaseController {
         $title = Lang::get('admin/roles/title.role_delete');
 
         // Show the page
-        return View::make('admin/roles/delete', compact('role', 'title'));
+        return View::make('admin/users/roles/delete', compact('role', 'title'));
     }
 
     /**

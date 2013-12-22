@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('master')
 
 @section('container')
 
@@ -7,7 +7,7 @@
 	<!-- Main Page Content -->
     <div class="large-6 large-centered columns post" role="content">
         <!-- Notifications -->
-        @include('layouts.components.notifications') 
+        @include('notifications') 
 
 		<!-- Content -->
 		@yield('content')
