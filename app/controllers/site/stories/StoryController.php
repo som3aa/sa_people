@@ -68,6 +68,7 @@ class StoryController extends BaseController {
 			// 404 error page.
 			return App::abort(404);
 		}
+		
 		// Get the stories
 		$stories = $category->story()->whereStatus('1')->orderBy('created_at', 'DESC')->paginate(7);
 

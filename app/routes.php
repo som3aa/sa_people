@@ -182,7 +182,7 @@ Route::controller('user', 'UserController');
 
 
 /** ------------------------------------------
- *  Site Story Routes
+ *  Site stories Routes
  *  ------------------------------------------
  */
 
