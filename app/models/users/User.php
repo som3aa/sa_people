@@ -36,6 +36,14 @@ class User extends ConfideUser {
 	}
 
     /**
+     * conversation relationship
+     */
+    public function conversations()
+    {
+        return $this->belongsToMany('Conversation');
+    }
+
+    /**
      * delete related profile & roles with the user
      * 
      */
