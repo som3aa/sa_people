@@ -33,7 +33,7 @@
 	<!-- ./ Story Content -->
 </div>
 
-@if ($n == 2 && Route::getCurrentRoute()->getPath() == '/')
+@if ($n == 2 && Route::current()->getPath() == '/')
 	{{-- Find Us on Facebook --}}
 	<div class="row fb-slider">
 		<div class="large-7 columns">
