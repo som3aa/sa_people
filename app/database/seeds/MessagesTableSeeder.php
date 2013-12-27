@@ -11,7 +11,7 @@ class MessagesTableSeeder extends Seeder {
         $conversation = new Conversation(array('supject' => 'See Line Jeurny'));
 
         // attach users to coversations & save
-        User::find(1)->conversations()->save($conversation);
+        User::find(1)->conversations()->save($conversation, array('conversation_last_view' =>  new DateTime));
 
         // create the messages
         $message = new Message;

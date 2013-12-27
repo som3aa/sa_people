@@ -25,6 +25,7 @@
     <li class="active"><a href="#">البروفايل</a></li>
     @if(Auth::check() && Auth::user()->username == $user->username)
     <li class=""><a href="/../account/profile">تعديل بروفايلي</a></li>
+    <li class=""><a href="/../account/messages">الرسائل الخاصة</a></li>
     <li class=""><a href="/../account/stories">ادارة المقالات</a></li>
     <li class=""><a href="/../account/user">اعدادات الحساب</a></li>
     @endif

@@ -15,8 +15,27 @@ class Conversation extends Eloquent {
      */
     public function users()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('User')->withPivot('conversation_last_view');
     }
+
+    /**
+     * unread
+     */
+    public function unread()
+    {
+        $unread = 0;
+        
+        $conversation_last_view = $this->users->find(Auth::user()->id)->pivot->conversation_last_view ;
+        $last__message_datetime = $this->messages()->orderBy('created_at', 'DESC')->first()->created_at->toDateTimeString() ;
+
+        //check if the conversation read or not
+        if (new DateTime($conversation_last_view) < new DateTime($last__message_datetime) ){
+            $unread = 1;   
+        }
+
+        return $unread;
+    }
+
 
     /**
      * Get the date the post was created.

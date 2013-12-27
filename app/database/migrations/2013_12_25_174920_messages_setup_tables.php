@@ -27,6 +27,8 @@ class MessagesSetupTables extends Migration {
             $table->integer('conversation_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users'); // assumes a users table
             $table->foreign('conversation_id')->references('id')->on('conversations');
+            $table->timestamp('conversation_last_view');
+
         });
 
         // Creates the messages table

@@ -22,6 +22,7 @@ Route::model('category', 'Category');
 Route::model('user', 'User');
 Route::model('role', 'Role');
 Route::model('profile', 'Profile');
+Route::model('conversation', 'Conversation');
 
 
 /** ------------------------------------------
@@ -76,6 +77,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::post('roles/{role}/delete', 'AdminRolesController@postDelete')
             ->where('role', '[0-9]+');
         Route::controller('roles', 'AdminRolesController');
+
 });
 
 
@@ -91,10 +93,19 @@ Route::group(array('prefix' => 'account', 'before' => 'account-auth'), function(
         ->where('user', '[0-9]+');
     Route::controller('user', 'AccountUserController');
 
-    # Account Edit Profile
-    Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
-        ->where('profile', '[0-9]+');
-    Route::controller('profile', 'AccountProfileController');
+        # Account Edit Profile
+        Route::post('profile/{profile}/edit', 'AccountProfileController@postEdit')
+            ->where('profile', '[0-9]+');
+        Route::controller('profile', 'AccountProfileController');
+        
+        # Acconut messages Managment
+        Route::get('messages/{conversation}/show', 'AccountMessagesController@getShow')
+            ->where('conversation', '[0-9]+');
+        Route::post('messages/{conversation}/show', 'AccountMessagesController@postShow')
+            ->where('conversation', '[0-9]+');
+        Route::get('messages/{conversation}/delete', 'AccountMessagesController@getDelete')
+            ->where('conversation', '[0-9]+');
+        Route::controller('messages', 'AccountMessagesController');
 
     # Acconut Stories Managment
     Route::get('stories/{story}/show', 'AccountStoriesController@getShow')

@@ -381,3 +381,65 @@ border-radius: 3px;
 .twitter-share-button {
 	margin: 0 15px;
 }
+
+
+
+
+
+/* messages */
+.conversation {
+	margin-bottom: 1.25rem;
+}
+
+.conversation a {
+	display: block;
+	width: 100%; height: 100%;
+	padding: 5px;
+	background: #F1F1F1;
+	overflow: hidden;
+	color: #bbb ;
+}
+
+.conversation img {
+	display: block;
+	width: 70px; height:70px;
+	float: right;
+	margin-left: 10px;
+}
+
+.conversation .cov_meta {
+	float: right;
+}
+
+.conversation.unread a{
+	background: #FFFFC0;
+}
+
+#message {
+	height: 150px;
+}
+
+.message {
+	padding: 15px 0;
+}
+
+.message .meta {
+	margin: 0;
+	height: 22px;
+}
+
+.message span.username a {
+	float: right;
+	line-height: 22px;
+}
+
+.message span.date {
+	float: left;
+	direction: ltr;
+	line-height: 22px;
+}
+
+.message p.content {
+	padding: 10px;
+	background: #F1F1F1;
+}

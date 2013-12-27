@@ -63,6 +63,20 @@
 			<div class="login_bar">
 			@if( Auth::check())
 				<span>
+
+					<?php 
+						$unread_count = 0 ;
+						foreach( auth::user()->conversations()->get() as $conversation) {
+							if( $conversation->unread()  ) {
+								$unread_count++;	
+							}
+						}
+					?>
+
+					@if($unread_count > 0)
+						<a href="/../account/messages"><img src="/../img/mail.png"></a>
+					@endif
+
 					<a href="#" data-dropdown="drop" class="dropdown">
 					{{ Auth::user()->profile->name }}
 					@if (!empty(Auth::user()->profile->avatar))
@@ -73,6 +87,7 @@
 			        <ul id="drop" data-dropdown-content class="f-dropdown tiny">
 						@if(Entrust::hasRole('admin') or Entrust::hasRole('reviewer')) <li><a href="/../admin/stories">لوحة التحكم</a></li> @endif
 			       	 	<li><a href="/../user/profile/{{ Auth::user()->username }}">بروفايلي</a></li>
+			       	 	<li><a href="/../account/messages">الرسائل الخاصة</a></li>
 			       	 	<li><a href="/../account/stories">ادارة المقالات</a></li>
 						<li style="border-bottom:1px solid #cecece;padding-bottom:2"><a href="/../account/user">اعدادات الحساب</a></li>
 				 		<li><a href="/../user/logout">تسجيل الخروج</a></li>
