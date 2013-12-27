@@ -19,7 +19,8 @@ class Conversation extends Eloquent {
     }
 
     /**
-     * unread
+     * check if the conversation read or not
+     * @return boolen
      */
     public function unread()
     {
@@ -28,7 +29,6 @@ class Conversation extends Eloquent {
         $conversation_last_view = $this->users->find(Auth::user()->id)->pivot->conversation_last_view ;
         $last__message_datetime = $this->messages()->orderBy('created_at', 'DESC')->first()->created_at->toDateTimeString() ;
 
-        //check if the conversation read or not
         if (new DateTime($conversation_last_view) < new DateTime($last__message_datetime) ){
             $unread = 1;   
         }
@@ -36,6 +36,15 @@ class Conversation extends Eloquent {
         return $unread;
     }
 
+    /**
+     * [unread description]
+     * @return [type] [description]
+     */
+    public function avatar()
+    {
+        $avatar = $this->messages()->orderBy('created_at', 'ASC')->first()->user->profile->avatar;
+        return $avatar;
+    }
 
     /**
      * Get the date the post was created.

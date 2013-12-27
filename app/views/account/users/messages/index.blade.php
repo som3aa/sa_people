@@ -27,8 +27,8 @@
   <div class="conversation @if($conversation->unread() ) {{{ 'unread' }}} @endif">
     <a href="{{{ URL::to('account/messages/'.$conversation->id.'/show') }}}">
 
-      @if (!empty($message->user->profile->avatar))
-        <a href="{{ $message->user->url() }}">{{ HTML::image($message->user->profile->avatar,$message->user->profile->name,array('class'=>'th')) }}</a>
+      @if ($conversation->avatar() !== '' )
+        {{ HTML::image($conversation->avatar(),'',array('class'=>'th')) }}
       @else
         {{ HTML::image('img/avatar.jpg','',array('class'=>'th')) }}
       @endif
@@ -36,7 +36,6 @@
       <div class="cov_meta">
         <h4>{{{ $conversation->supject }}}</h4>
         <span>{{{ $conversation->date() }}}</span>
-
       </div>
 
     </a> 
